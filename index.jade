@@ -151,8 +151,9 @@ html(lang="en")
         +nbr(2)
         span 或 
         +nbr(2)
-        a(href="#") 不清楚自己該去哪嗎？試試揪松網分類帽吧！#[img(src="img/magic.svg")]
-
+        a(href="#",data-toggle="modal",
+        data-target="#sorting-hat") 不清楚自己該去哪嗎？試試揪松網分類帽吧！#[img(src="img/magic.svg")]
+      include sorting-hat.jade
     .footer
       .row
         .col-4
