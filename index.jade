@@ -4,18 +4,18 @@ doctype html
 - var use = { cdn: false, og: false, favicon: true }
 - var lib = { jquery: true, d3js: false, angular: true, bootstrap: true, semantic: false, fontawesome: true, reactjs: false, revealjs: false, ionrangeslider: false, ldcolorpicker: false }
 - var assets = "assets"
-- var favicon = "/img/favicon.png"
-- var title = "template"
+- var favicon = "img/favicon.png"
+- var title = "jothon-net mockup"
 - var og = {}
 - og.title = title
 - og.twitter = {type: "summary_large_image", site: "@zbryikt", creator: "@zbryikt"}
-- og.domain = "zbryikt.github.io"
+- og.domain = "g0v.github.io"
 - og.url = ""
 - og.thumbnail = {width: 200, height: 200, type: "image/png"}
 - og.thumbnail.url = "thumbnail.png"
 - og.author = "zbryikt"
 - og.section = "Taiwan"
-- og.keyword = "zbryikt,template"
+- og.keyword = "zbryikt,jothon,g0v"
 - og.description = ""
 - var fb = {}
 - fb.app_id = ""
@@ -26,7 +26,7 @@ html(lang="en")
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
     // libraries
-    script(src="/assets/popper/index.js")
+    script(src="assets/popper/index.js")
     include mixins.jade
     include library.jade
     // custom files
@@ -34,7 +34,7 @@ html(lang="en")
     script(type="text/javascript",src="index.js")
   body
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      .navbar-brand(href="#") #[img.mr-1(src="/img/jothon-bg-dark.svg")] 揪松網
+      .navbar-brand(href="#") #[img.mr-1(src="img/jothon-bg-dark.svg")] 揪松網
       button.navbar-toggler(type="button",data-toggle="collapse",data-target="#navbarSupportedContent")
         span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarSupportedContent
@@ -151,12 +151,12 @@ html(lang="en")
         +nbr(2)
         span 或 
         +nbr(2)
-        a(href="#") 不清楚自己該去哪嗎？試試揪松網分類帽吧！#[img(src="/img/magic.svg")]
+        a(href="#") 不清楚自己該去哪嗎？試試揪松網分類帽吧！#[img(src="img/magic.svg")]
 
     .footer
       .row
         .col-4
-          h5 #[img(style="width:24px;margin-top:-5px",src="/img/jothon-bg-dark.svg")] 揪松團 / g0v-jothon
+          h5 #[img(style="width:24px;margin-top:-5px",src="img/jothon-bg-dark.svg")] 揪松團 / g0v-jothon
           div #[i.fa.fa-users] 關於我們 / About Us #[.badge.badge-primary Coming Soon]
           div #[i.fa.fa-credit-card] 收支明細 / Spending #[.badge.badge-primary Coming Soon]
           a(href="http://g0v.tw") #[i.fa.fa-globe] 零時政府官網 / g0v.tw
@@ -168,5 +168,5 @@ html(lang="en")
           a(href="github.com/g0v/") #[i.fa.fa-github] 源碼庫 / Github 
           a(href="http://join.g0v.today") #[i.fa.fa-slack] 即時討論 / Slack
         .col-4.text-center
-          img(style="max-width:100px;width:100%",src="/img/g0v-bg-dark.svg")
+          img(style="max-width:100px;width:100%",src="img/g0v-bg-dark.svg")
           div(style="color:#fff") powered by g0v
