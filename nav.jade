@@ -1,5 +1,5 @@
 //- module
-nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark
   .navbar-brand(href="#") #[img.mr-1(src="img/jothon-bg-dark.svg")] 揪松網
   button.navbar-toggler(type="button",data-toggle="collapse",data-target="#navbarSupportedContent")
     span.navbar-toggler-icon
@@ -8,20 +8,22 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       //-li.nav-item.active
         a.nav-link(href="#") Home
       li.nav-item.dropdown
-        a.nav-link.dropdown-toggle#navbarDropdown(href="#",role="button",data-toggle="dropdown") 過往活動
+        a.nav-link.dropdown-toggle#navbarDropdown(
+        href="#",role="button",data-toggle="dropdown") 過往活動 #[small / Events]
         .dropdown-menu
           a.dropdown-item(href="#") 27th - 全球開放立法松
           a.dropdown-item(href="#") 26th - 五週年黑客松
           a.dropdown-item(href="#") 25th - 一本多綱黑客松
           a.dropdown-item(href="#") 24th - 凍省黑客松
           a.dropdown-item(href="#") 23th - 開放資料黑客松
-          a.dropdown-item(href="#") ... 更多
+          a.dropdown-item(href="#") ... 更多 #[small / More]
           .dropdown-divider
-          a.dropdown-item(href="#") 活動照片
-          a.dropdown-item(href="#") 簡報影片
-          a.dropdown-item(href="#") 過往電子報
-      li.nav-item.active
-        a.nav-link(href="#") 專案列表
+          a.dropdown-item(href="#") 活動照片 #[small / Photo Records]
+          a.dropdown-item(href="#") 簡報影片 #[small / Pitch Videos]
+          a.dropdown-item(href="#") 過往電子報 #[small / Newsletters]
+      li.nav-item: a.nav-link(href="#") 專案列表 #[small / Projects]
+      li.nav-item: a.nav-link(href="#") 常見問題 #[small / FAQ]
+      li.nav-item: a.nav-link(href="#") 關於揪松 #[small / About]
       //-li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdown(href="#",role="button",data-toggle="dropdown") Dropdown
         .dropdown-menu
