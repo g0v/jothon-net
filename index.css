@@ -95,3 +95,28 @@ body {
 .gray {
   color: #999;
 }
+#carousel-video p.text-left {
+  font-size: 0.8em;
+}
+#carousel-video .carousel-control-prev,
+#carousel-video .carousel-control-next {
+  width: 20px;
+  mix-blend-mode: difference;
+}
+#carousel-video .carousel-control-prev span,
+#carousel-video .carousel-control-next span {
+  background-size: 60%;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: #222;
+}
+#carousel-video .carousel-indicators {
+  margin: 0;
+  bottom: -25px;
+}
+#carousel-video .carousel-indicators li.active {
+  background-color: #f00;
+}
+#carousel-video .carousel-indicators li {
+  background-color: rgba(0,0,0,0.5);
+}
