@@ -150,7 +150,7 @@ body {
 }
 .events .event .thumb {
   background-color: #eee;
-  background-image: url("../img/events/na.jpg");
+  background-image: url("img/events/na.jpg");
 }
 .events .event .thumb,
 .events .event .inner {
