@@ -173,3 +173,7 @@ body {
 .events .event .desc {
   font-size: 0.9em;
 }
+a.anchor {
+  margin-top: -60px;
+  position: absolute;
+}

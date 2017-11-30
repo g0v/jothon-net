@@ -15,6 +15,7 @@ block body
     +nbr(1)
     .events
       each item in events
+        a.anchor(id="hackath" + item.id + "n")
         .event.media
           .mr-3
             .thumb: .inner(style="background-image:url(../img/events/" + item.id + ".jpg)")
