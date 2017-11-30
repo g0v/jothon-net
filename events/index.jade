@@ -1,6 +1,8 @@
 extends /base.jade
 block vars
-  - var assets = "../assets"
+  - var assets = "../assets";
+  - var events = yamls("data/events");
+  - events.sort(function(a,b) { return b.id - a.id; });
 block head
   //- TODO unify with base.jade
   link(rel="stylesheet",type="text/css",href="../index.css")
@@ -10,24 +12,23 @@ block body
     h1.mb-0 過往活動 / Past Events
     small.gray 自 2012 年 12 月起
     hr
+    +nbr(1)
     .events
-      each i in [27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0]
+      each item in events
         .event.media
           .mr-3
-            .thumb(style="background-image:url(../img/events/" + i + ".jpg)")
+            .thumb: .inner(style="background-image:url(../img/events/" + item.id + ".jpg)")
           .media-body
-            h4.mt-0 第 #{i} 次全球開放立法黑客松 / g0v hackath#{i}n
-
-            //-.row.text-left(style="font-size:12px")
-              .col: a(href="http://beta.hackfoldr.org/g0v-hackath" + i + "n") #[i.fa.fa-link] 共筆入口
-              .col: a(href="https://www.youtube.com/watch?v=AiJq0g_HkYs&list=PLdwQWxpS513AE-87nwhQWcIwsORSix54f") #[i.fa.fa-link] 提案
-              .col: a(href="https://www.youtube.com/watch?v=AiJq0g_HkYs&list=PLdwQWxpS513AE-87nwhQWcIwsORSix54f") #[i.fa.fa-link] 短講
-              .col: a(href="https://www.youtube.com/watch?v=AiJq0g_HkYs&list=PLdwQWxpS513AE-87nwhQWcIwsORSix54f") #[i.fa.fa-link] 成果報告
-            p GLOW^4 是開放政府夥伴聯盟（OGP）開放立法工作小組所舉辦的年度活動，由智利國會與美國民主研究院（NDI）所主持，每年這一週，全球相關開放立法的團體與公民科技專案會在網路上進行國際串聯，包括會透過社群媒體對話、互相展現視覺化的成果或透明立法的相關專案。
-
-            p 本次 g0v 雙月大松加入 GLOW^4 聯名主題與贊助，響應全球開放立法週串連！
-            //-.links
-              .link: .link-inner #[i.fa.fa-link]#[br]共筆
-              .link: .link-inner #[i.fa.fa-link]#[br]提案
-              .link: .link-inner #[i.fa.fa-link]#[br]短講
-              .link: .link-inner #[i.fa.fa-link]#[br]成果
+            h4.mt-0 #{item.name.replace("台灣零時政府","")} #[.en / g0v hackath#{item.id}n]
+            .links
+              .btn.btn-sm.btn-primary.mr-1 #{item.date}
+              .btn.btn-sm.btn-light.mr-1(href="http://beta.hackfoldr.org/g0v-hackath" + item.id + "n") #[i.fa.fa-link.mr-1] 共筆入口 / Note
+              .btn.btn-sm.btn-light.mr-1(href="https://www.youtube.com/watch?v=AiJq0g_HkYs&list=PLdwQWxpS513AE-87nwhQWcIwsORSix54f") #[i.fa.fa-video-camera.mr-1] 提案簡報 / Pitch
+              .btn.btn-sm.btn-light.mr-1(href="https://www.youtube.com/watch?v=AiJq0g_HkYs&list=PLdwQWxpS513AE-87nwhQWcIwsORSix54f") #[i.fa.fa-video-camera.mr-1] 中場短講 / Talk
+              .btn.btn-sm.btn-light.mr-1(href="https://www.youtube.com/watch?v=AiJq0g_HkYs&list=PLdwQWxpS513AE-87nwhQWcIwsORSix54f") #[i.fa.fa-video-camera.mr-1] 成果報告 / Demo
+              .btn.btn-sm.btn-light.mr-1.disabled.has-tips(href="/projects/tag/hackath" + item.id + "n",
+              data-toggle="tooltip",data-placement="top",title="coming soon") #[i.fa.fa-group.mr-1] 相關專案
+              .sep.huge-gap
+              .desc !{md(item.description)}
+  script.
+    $('.has-tips').tooltip();

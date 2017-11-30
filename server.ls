@@ -1,4 +1,4 @@
-require! <[chokidar http fs path jade stylus markdown]>
+require! <[chokidar http fs path jade stylus markdown js-yaml]>
 require! 'uglify-js': uglify, LiveScript: lsc
 
 useMarkdown = true
@@ -8,6 +8,20 @@ RegExp.escape = -> it.replace /[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"
 
 cwd = path.resolve process.cwd!
 cwd-re = new RegExp RegExp.escape "#cwd#{if cwd[* - 1]=='/' => "" else \/}"
+
+yaml-reader = do
+  md: -> markdown.toHTML it
+  yaml: -> yaml.safe-load fs.read-file-sync it
+  yamls: (dir) ->
+    ret = fs.readdir-sync dir
+      .map -> "#dir/#it"
+      .filter -> /\.yaml$/.exec(it)
+      .map ->
+        try
+          js-yaml.safe-load(fs.read-file-sync it)
+        catch e
+          console.log "[ERROR@#it]: ", e
+    return ret
 
 pad = -> if "#it".length < 2 => "0#it" else "#it"
 now = -> new Date! |> -> 
@@ -320,6 +334,7 @@ update-file = ->
         console.log "[BUILD]   #src failed: "
         console.log e.message
 
+
   if type == \jade => 
     des = src.replace /\.jade$/, ".html"
     try 
@@ -327,7 +342,7 @@ update-file = ->
       if /^\/\/- ?(module|view) ?/.exec(code) => return
       desdir = path.dirname(des)
       if !fs.exists-sync(desdir) or !fs.stat-sync(desdir).is-directory! => mkdir-recurse desdir
-      fs.write-file-sync des, jade.render code, {filename: src, basedir: path.join(cwd)}
+      fs.write-file-sync des, jade.render code, {filename: src, basedir: path.join(cwd)} <<< yaml-reader
       console.log "[BUILD] #src --> #des"
     catch
       console.log "[BUILD] #src failed: "

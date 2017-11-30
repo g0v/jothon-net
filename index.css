@@ -1,4 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:300");
+.sep {
+  border-top: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  margin: 7px auto;
+  height: 0;
+}
+.sep.huge-gap {
+  margin: 21px auto;
+}
+.sep.dashed {
+  border-top-style: dashed;
+}
+.sep.nogap {
+  margin: 0 auto;
+}
+.sep.light {
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.sep.grayed {
+  border-top-color: #666;
+}
 @font-face {
   font-family: hack-zh;
   font-weight: 300;
@@ -121,38 +142,34 @@ body {
   background-color: rgba(0,0,0,0.5);
 }
 .events .event {
-  margin: 15px 0 40px;
+  margin: 15px 0 50px;
+}
+.events .event h4 .en {
+  display: inline;
+  font-size: 0.9em;
 }
 .events .event .thumb {
+  background-color: #eee;
+  background-image: url("../img/events/na.jpg");
+}
+.events .event .thumb,
+.events .event .inner {
   width: 240px;
-  height: 220px;
+  height: 290px;
   margin-bottom: 5px;
   border-radius: 6px;
-  background-color: #eee;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 2px 2px rgba(0,0,0,0.4);
 }
-.events .event .links {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+.events .event .thumb .thumb-inner,
+.events .event .inner .thumb-inner {
+  margin: 0;
 }
-.events .event .links .link {
-  -webkit-flex: 1 1 48px;
-  flex: 1 1 48px;
-  padding: 5px;
+.events .event .links .btn {
+  font-size: 0.65em;
 }
-.events .event .links .link .link-inner {
-  background: #f85;
-  border-radius: 5px;
-  padding: 7px;
-  display: inline-block;
-  width: 48px;
-  height: 50px;
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
+.events .event .desc {
+  font-size: 0.9em;
 }
