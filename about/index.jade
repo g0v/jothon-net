@@ -1,0 +1,42 @@
+extends /base.jade
+block vars
+  - var assets = "../assets";
+  - var members = yamls("data/members");
+  - members.sort(function(a,b) { return (a.since > b.since ? 1 : a.since < b.since ? -1 : 0); });
+block head
+  //- TODO unify with base.jade
+  link(rel="stylesheet",type="text/css",href="../index.css")
+  script(type="text/javascript",src="../index.js")
+block body
+  div(style="width:100%;height:500px;background:#eee url(../img/about/members.jpg) center top no-repeat;background-size:cover;margin:auto;border-raidus:5px")
+    div(style="background:rgba(0,0,0,0.5);width:100%;height:100%;position:relative")
+      div(style="width:250px;height:120px;color:#fff;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;text-align:center")
+        small About g0v Jothon
+        h1 關於揪松團
+  .content
+    h1.mb-0.mt-0 尋找公民科技的續航力
+    small.gray 零時政府揪松團自 2015 年 4 月起 / g0v Jothon, Since April, 2015
+    hr
+    p 這裡要放一些感性的、揪松的介紹，大約兩百字吧我猜。所以說現在接著的這些字完全就只是為了要測量一下實際上如果有填滿到兩百字的時候可能會有的一個佔滿空間的感覺，沒有其它特別的意義。可是光打到這邊也才大概一百字，所以我必須要再多打一些、再一些、再一些、... 好吧我真的撐不下去了我想感覺大概抓到這邊就好了請各位朋友見諒喔科科。
+    p 阿，分個段再測一下好了，文章不一定只有一段嘛如果有多段的話比較好讀，就像這樣。很感謝你的寶貴時間看完這段根本沒有特別意義的文字，我要去尿尿了，掰～
+    br
+    h4 百字分隔線
+    p 尿尿回來再加一些文字好了。分成兩段的話，不如加上一個標題，再來個第三段？這樣的話起承轉合就都顧到，所謂無三不成禮嘛呵呵呵。
+    +nbr(2)
+    h3 揪松團夥伴 #[small.en / g0v Jothon Staff]
+    hr
+    .members
+      each member in members
+        if member.status == 'active'
+          .member.media.mb-3(style="min-height:180px")
+            img.mr-3(src="../img/about/avatar/" + member.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
+            .media-body
+              h5.mt-0.mb-0 #{member.name} / #{member.nick}
+              if member.grant
+                .mb-2: small.gray 公民科技創新獎助金：#{member.grant}
+              p !{md(member.description.trim())}
+
+    +nbr(2)
+    h3 合作窗口 / Contact
+    hr
+    p 相關事宜可聯繫 g0v-jothon@googlegroups.com，願意幫忙大松籌辦請來 #[a(href="http://join.g0v.today/") g0v slack 聊天室] 的 jothon 群組聊聊。
