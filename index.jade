@@ -26,6 +26,10 @@ block body
       br
       img(src="img/down.gif")
   .content
+    blockquote
+      h5 「自從參加黑客松之後，人長高了也變壯了，考試都得一百分！」
+      .pull-rightt.text-right — 鄭遠祥，資深健美教練 #[br]#[small.gray should be random and carousel]
+    +nbr(3)
     h1 什麼是零時政府黑客松？#[small / about g0v hackathon]
     div(style="width:100%;height:220px;background:url(img/photo/1.jpg) center no-repeat fixed;background-size:cover;margin:10px 0;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,0.4)")
     .row(style="margin:-5px -5px 10px")
@@ -66,9 +70,36 @@ block body
       li 缺乏的資源與#[b.red 需求]。會吵的小孩有糖吃，大聲說出你哪裡需要幫忙。
       li 最終成果如何#[b.red 分享]。大家一起蓋的橋，就要讓大家一起用。
     p 零時政府黑客松提供你提案的舞台，只要在當期共筆登記你的專案，放鬆心情到黑客松與大家分享，就很有機會吸引到與你的想法有共鳴的人喔！
+    p TODO: 自主提案 → 現場組隊
     div(style="width:100%;height:100px;position:relative;border: 1px solid #ccc")
       div(style="width:500px;height:32px;margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;")
         | 流程圖 #[small ( 報名 -> 填表 -> 簡報 -> 開工 -> 發表 ) ( 內含連結與圖與範例簡報 ) ]
+    +nbr(2)
+    h4 零時政府黑客松的理念 / Our Core Value
+    p 現在你已經了解了黑客松的運作模式，那什麼樣子的想法適合來到零時政府黑客松提案呢？
+    h5 開源的
+    p 這是一個號召民眾一同開幹的場域，因此你的成果必須要與大家分享。無論是原始碼、文案、設計稿、流程圖、錄音檔，專案成果必須要採用「#[b.red 開放授權]」，讓任何人都可以合理的使用你們的成果。
+    h5 行動主義
+    p 不要再問為什麼沒有人做這個了，因為你就是沒有人！我們鼓勵任何提案任何形式的偷跑，在來提案之前先把概念、做法、困難、需求等基本問題思考清楚，由身為提案人的你揭竿起跑，讓更多同志與你一同衝鋒陷陣。
+    h5 公民精神
+    p 這是一個號召民眾一同開幹的場域，你的成果自然必須要與大家分享。無論是原始碼、文案、設計稿、流程圖、錄音檔，專案成果必須要採用「#[b.red 公民精神]」，讓任何人都可以合理的使用你們的成果。
+    hr
+    h5.text-center 舉例來說
+    +nbr(1)
+    .row.text-center
+      .col
+        big: i.fa.fa-times.text-danger
+        h5 美容保養品集資專案
+        p 缺乏公民精神，群募但無開放授權。
+      .col
+        big: i.fa.fa-circle-o.text-success
+        h5 政治獻金透明化群眾外包
+        p 成果開放、公民運動，身先士卒。
+      .col
+        big: i.fa.fa-times.text-danger
+        h5 blah blah
+        p 再來一個範例吧
+    hr
     +nbr(2)
     small.pull-right(style="margin-top:15px") 提案影片庫 #[i.fa.fa-link]
     h4 提案實況 / Pitch Video of Projects
