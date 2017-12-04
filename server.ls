@@ -294,7 +294,8 @@ update-file = ->
         mkdir-recurse path.dirname(des)
         fs.write-file-sync(
           des,
-          uglify.minify(lsc.compile(fs.read-file-sync(src)toString!,{bare:true}),{fromString:true}).code
+          #uglify.minify(lsc.compile(fs.read-file-sync(src)toString!,{bare:true}),{fromString:true}).code
+          lsc.compile(fs.read-file-sync(src)toString!,{bare:true})
         )
         console.log "[BUILD] #src --> #des"
       catch
