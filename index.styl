@@ -142,9 +142,61 @@ a.anchor
   display: block
   background-position: center center
   background-repeat: no-repeat
+  background-size: contain
   margin: auto
+  opacity: 0
+  transition(opacity 0.5s linear)
+.reveal.on
+  opacity: 1
   
 .reveal.s67
   width: 60%
   padding-top: 70%
 
+.reveal.cover
+  background-size: cover
+.reveal-shadow
+  position: fixed
+  background: rgba(0,0,0,0.5)
+  width: 0
+  height: 0
+  top: 0
+  left: 0
+  opacity: 0
+  & > div
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    margin :auto
+    width: 90%
+    height: 90%
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: contain
+    background-attachment: fixed
+
+.reveal-shadow.active
+  transition(all .5s ease-out)
+
+.photos
+  margin: -5px -5px 10px
+.photo.lg
+  width: 100%
+  height: 220px
+  margin: 0 0 10px
+.photo
+  height: 180px
+  background: url(img/photo/1.jpg) center no-repeat fixed
+  background-size: cover
+  margin: 10px 0
+  border-radius: 3px
+  box-shadow: 0 0 2px rgba(0,0,0,0.4)
+  margin: 3px 5px
+  padding: 0
+  .inner
+    width: 100%
+    height: 100%
+    background: url(img/photo/1.jpg) center center no-repeat
+    background-size: cover
