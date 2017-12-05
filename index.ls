@@ -9,7 +9,7 @@ shadow.addEventListener \click, ->
   shadow.style <<< shadow.source <<< do
     opacity: 0, zIndex: -1
   
-imgs.map (img) ->
+Array.from(document.querySelectorAll \.lightbox).map (img) ->
   img.addEventListener \click, ->
     box = img.getBoundingClientRect!
     shadow.setAttribute \class, 'reveal-shadow'

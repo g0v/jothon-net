@@ -13,7 +13,7 @@ $(document).ready(function(){
       zIndex: -1
     });
   });
-  imgs.map(function(img){
+  Array.from(document.querySelectorAll('.lightbox')).map(function(img){
     return img.addEventListener('click', function(){
       var box;
       box = img.getBoundingClientRect();
