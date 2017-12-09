@@ -1,0 +1,51 @@
+- - type: milestone
+    date: 11/13
+    title:
+      zh: 活動開跑 
+      en: Open for Registration
+    detail: |
+      * 活動 **前兩週 ( 14 天前 )** 開放報名
+      * 訂閱揪松電子報便可收到活動通知
+      * 活動情報亦會公布在臉書後勤中心與粉絲專頁
+      即使報名額滿，因為常有人臨時取消，可以隨時注意報名情況喔！
+  - type: event
+    title:
+      zh: 提案與短講登記 
+      en: Project & Talk Registration
+
+    detail: |
+      span 完成報名後，隨時都可以進行提案登記。
+- - type: milestone
+    date: 11/27
+    action:
+      zh: 活動開場
+      en: Opening
+  - type: event
+    date: 09:00
+    title:
+      zh: 報到
+      en: Check In
+    detail:
+      1. 出示你的報到碼
+      2. 掛好自己的名牌
+      3. 貼好技能貼紙
+      4. 登入 WIFI 網路
+      5. 找個好位置
+  - type: event
+    date: 10:00
+    title:
+      zh: 三分鐘提案
+      en: Project Pitch
+    detail: |
+      依照提案登記的順序輪流簡報，每組三分鐘。簡報重點：
+      * 想要做什麼
+      * 為什麼要做
+      * 需要誰幫忙
+      * 是否開源
+  - type: event
+    date: 10:40
+    title:
+      zh: 自我介紹
+      en: Self Introduction
+    detail: |
+      首先全體參與者一起說「大家好」，接著逐一的向大家介紹自己的名字與三個關鍵字。
