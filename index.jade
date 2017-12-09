@@ -39,9 +39,6 @@ block body
             .name — #{name.zh}，#{title.zh}
             small.gray #{name.en} / #{title.en}
     #carousel-testimony.carousel.slide(data-ride="carousel")
-      //-ol.carousel-indicators
-        each item,index in testimonies
-          li(class=(index==0?"active":""),data-target="#carousel-testimony",data-slide-to=index)
       .carousel-inner
         each item,index in testimonies
           +carousel-testimony(item.title, item.name, item.quote, index == 0)
@@ -52,16 +49,36 @@ block body
     +nbr(3)
     h1 什麼是零時政府黑客松？#[small / about g0v hackathon]
     .photo.lg: .inner.reveal.lightbox(data-lg-src="img/photo/lg/1.jpg")
-    .row.photos
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/2.jpg",data-lg-src="img/photo/lg/2.jpg")
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/3.jpg",data-lg-src="img/photo/lg/3.jpg")
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/4.jpg",data-lg-src="img/photo/lg/4.jpg")
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/5.jpg",data-lg-src="img/photo/lg/5.jpg")
-    .row.photos
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/6.jpg",data-lg-src="img/photo/lg/6.jpg")
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/7.jpg",data-lg-src="img/photo/lg/7.jpg")
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/8.jpg",data-lg-src="img/photo/lg/8.jpg")
-      .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/9.jpg",data-lg-src="img/photo/lg/9.jpg")
+
+    #carousel-photo.carousel.slide(data-ride="carousel")
+      .carousel-inner
+        .carousel-item.active
+          .row.photos
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/2.jpg",data-lg-src="img/photo/lg/2.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/3.jpg",data-lg-src="img/photo/lg/3.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/4.jpg",data-lg-src="img/photo/lg/4.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/5.jpg",data-lg-src="img/photo/lg/5.jpg")
+          .row.photos
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/6.jpg",data-lg-src="img/photo/lg/6.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/7.jpg",data-lg-src="img/photo/lg/7.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/8.jpg",data-lg-src="img/photo/lg/8.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/9.jpg",data-lg-src="img/photo/lg/9.jpg")
+        .carousel-item
+          .row.photos
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/10.jpg",data-lg-src="img/photo/lg/10.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/11.jpg",data-lg-src="img/photo/lg/11.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/12.jpg",data-lg-src="img/photo/lg/12.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/13.jpg",data-lg-src="img/photo/lg/13.jpg")
+          .row.photos
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/14.jpg",data-lg-src="img/photo/lg/14.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/15.jpg",data-lg-src="img/photo/lg/15.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/16.jpg",data-lg-src="img/photo/lg/16.jpg")
+            .col.photo: .inner.reveal.cover.lightbox(data-src="img/photo/17.jpg",data-lg-src="img/photo/lg/17.jpg")
+      a.carousel-control-prev(href="#carousel-photo",role="button",data-slide="prev")
+        span.carousel-control-prev-icon: i.fa.fa-chevron-left
+      a.carousel-control-next(href="#carousel-photo",role="button",data-slide="next")
+        span.carousel-control-next-icon: i.fa.fa-chevron-right
+
     p 零時政府黑客松由 g0v 揪松團舉辦，#[b 兩個月一次的單天活動]，百名與會者來自#[b 不同的城市、背景、專長與年紀]，利用#[b 三分鐘]的時間將自己想做的事快速發表，並在活動現場尋找志同道合的#[b 夥伴]，發揮各自所長，同時透過#[b 線上與線下協作]的方式，用弄髒雙手的精神來「#[b.red 讓事情發生]」。
     p 這些想法不光在黑客松發酵，更常延燒到會後，以不定時的方式持續發展，像是「#[a(href="https://moe.kktix.cc/",target="_blank") 萌典松]」、「#[a(href="https://cofacts.kktix.cc/",target="_blank") 真的假的 Line Bot]」、「#[a(href="https://vote.ly.g0v.tw/",target="_blank") 立委投票指南]」等專案，也因此形成了一個長期關注公民科技的民間社群。
     +nbr(1)

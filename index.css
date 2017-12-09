@@ -135,6 +135,27 @@ body {
   padding-left: 30px;
   padding-right: 30px;
 }
+#carousel-photo .carousel-control-prev {
+  left: -35px;
+}
+#carousel-photo .carousel-control-next {
+  right: -35px;
+}
+#carousel-photo .carousel-control-prev,
+#carousel-photo .carousel-control-next {
+  width: 30px;
+}
+#carousel-photo .carousel-control-prev span,
+#carousel-photo .carousel-control-next span {
+  font-size: 32px;
+  padding: 5px;
+  border-radius: 50%;
+  background: none;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  display: block;
+}
 #carousel-video p.text-left,
 #carousel-testimony p.text-left {
   font-size: 0.8em;
@@ -229,7 +250,7 @@ a.anchor {
 }
 .reveal-shadow {
   position: fixed;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.5) url("img/loader-jothon.svg") center center no-repeat;
   width: 0;
   height: 0;
   top: 0;
@@ -260,12 +281,16 @@ a.anchor {
 .photos {
   margin: -5px -5px 10px;
 }
+.photos:nth-child(2) {
+  margin-bottom: 0;
+}
 .photo.lg {
   width: 100%;
   height: 220px;
   margin: 0 0 10px;
 }
 .photo {
+  cursor: pointer;
   height: 180px;
   background: url("img/photo/1.jpg") center no-repeat fixed;
   background-size: cover;
