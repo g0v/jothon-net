@@ -403,3 +403,36 @@ a.anchor {
 .timeline.timeline-orange .action:after {
   border-bottom-color: #f93;
 }
+.timeline.timeline-green {
+  border-left-color: #9f9;
+}
+.timeline.timeline-green .milestone .action:before {
+  background: #fff;
+  border-color: #9f9;
+}
+.timeline.timeline-green .action:before {
+  background: #9f9;
+  border-color: #9f9;
+}
+.timeline.timeline-green .action:after {
+  border-bottom-color: #9f9;
+}
+.timeline.timeline-blue {
+  border-left-color: #48f;
+}
+.timeline.timeline-blue .milestone .action:before {
+  background: #fff;
+  border-color: #48f;
+}
+.timeline.timeline-blue .action:before {
+  background: #48f;
+  border-color: #48f;
+}
+.timeline.timeline-blue .action:after {
+  border-bottom-color: #48f;
+}
+.timeline.end {
+  border-left-color: #ccc;
+  border-left-style: dashed;
+  padding-bottom: 100px;
+}

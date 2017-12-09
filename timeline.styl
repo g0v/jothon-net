@@ -61,27 +61,24 @@
   .entry.milestone
     margin-left: 0px
 
-$timeline-red = #d31
-.timeline.timeline-red
-  border-left-color: $timeline-red
-  .milestone .action:before
-    background: #fff
-    border-color: $timeline-red
-  .action:before
-    background: #d31
-    border-color: $timeline-red
-  .action:after
-    border-bottom-color: $timeline-red
+timeline = 'timeline-red' #d31,
+           'timeline-orange' #f93,
+           'timeline-green' #9f9,
+           'timeline-blue' #48f
 
+for color,i in timeline
+  .timeline.{color[0]}
+    border-left-color: color[1]
+    .milestone .action:before
+      background: #fff
+      border-color: color[1]
+    .action:before
+      background: color[1]
+      border-color: color[1]
+    .action:after
+      border-bottom-color: color[1]
 
-$timeline-orange = #f93
-.timeline.timeline-orange
-  border-left-color: $timeline-orange
-  .milestone .action:before
-    background: #fff
-    border-color: $timeline-orange
-  .action:before
-    background: $timeline-orange
-    border-color: $timeline-orange
-  .action:after
-    border-bottom-color: $timeline-orange
+.timeline.end
+  border-left-color: #ccc
+  border-left-style: dashed
+  padding-bottom: 100px
