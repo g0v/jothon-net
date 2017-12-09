@@ -213,10 +213,14 @@ block body
 
     +nbr(3)
     .text-center
-      div 手癢了嗎？
+      div #[small Wanna Join?]#[br]手癢了嗎？
       +nbr(1)
-      .btn.btn-primary.mr-2.btn-lg 立刻報名
-      .btn.btn-primary.btn-lg 當期共筆
+      if event
+        .btn.btn-primary.mr-2.btn-lg #[small Register Now]#[br]立刻報名
+      else
+        .btn.btn-primary.mr-2.btn-lg #[small Subscribe Newsletter]#[br]訂閱電子報
+      .btn.btn-primary.btn-lg.mr-2 #[small Collaborative Note]#[br]當期共筆
+      a.btn.btn-primary.btn-lg(href="http://x.co/g0v27") #[small Donate by Subscribing] #[br] 定期定額贊助
       +nbr(2)
       span 或 
       +nbr(2)
