@@ -2,15 +2,16 @@ extends /base.jade
 block vars
   - var videos = yaml("data/demo-videos.yaml");
   - var testimonies = yaml("data/testimonies.yaml");
+  - var reviews = yaml("data/reviews.yaml");
 block body
   .jumbotron: .inner
     .text-center
-      - var event = true
+      - var event = false
       if !event
         div Let's Hack!
         h1.mb-4 來黑客松吧！
         .lead
-          .zh 不要問為什麼沒有人做這個，先承認你就是「沒有人」！
+          .zh: small 不要問為什麼沒有人做這個，先承認你就是「沒有人」
           .en Nobody gonna do this? You are the one.
       else
         .lead(style="font-size:1.3em")
@@ -21,7 +22,10 @@ block body
 
     .text-center
       p.lead
-        a.btn.btn-primary.btn-lg.mr-1(href="https://g0v-jothon.kktix.cc/") #[small Register Now] #[br] 立刻報名
+        if event
+          a.btn.btn-primary.btn-lg.mr-1(href="https://g0v-jothon.kktix.cc/") #[small Register Now] #[br] 立刻報名
+        else
+          a.btn.btn-primary.btn-lg.mr-1(href="https://g0v-jothon.kktix.cc/") #[small Subscribe Newsletter] #[br] 訂閱電子報
         a.btn.btn-primary.btn-lg(href="http://x.co/g0v27") #[small Note for Latest Event] #[br] 本期共筆
       br
       #learn-more(onclick="scrollto('#content')")
@@ -108,9 +112,6 @@ block body
       li #[b.red 新聞小幫手] — 回報問題新聞並即時提醒讀者的實用瀏覽器擴充。
 
     img(src="img/flow.png",style="width:1024px;margin:auto;display:block")
-    //-div(style="width:100%;height:100px;position:relative;border: 1px solid #ccc")
-      div(style="width:600px;height:32px;margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;")
-        | 流程圖 #[small ( 對事情感到不滿 / 可以改善 -> 寫下你的想法 -> 帶到黑客松來自我行銷 )]
     +nbr(2)
     h4 要怎麼「讓事情發生」？ / #[big.red How] to "Let's Hack?"?
     p 萬事起頭難。首先針對你碰到的問題，構思一個具體提案，並用三分鐘的電梯式簡報告訴大家。成功的提案包含了以下的要素：
@@ -185,11 +186,30 @@ block body
           span.carousel-control-next-icon 
 
     +nbr(2)
-    h4 沒有想法，我也可以貢獻嗎？ / Contribute without Proposal
+    h4 沒有想法，我也可以貢獻嗎？ / Contribute by Join Others
     p 可以！帶上你的腦袋與雙手，到活動現場找尋志同道合的提案吧！
-    div(style="width:100%;height:100px;position:relative;border: 1px solid #ccc")
-      div(style="width:500px;height:32px;margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;")
-        | 流程圖 #[small ( 報名 -> 自介 -> 找需求 -> 分工 ) ( 內含連結與圖 ) ]
+    p 或者，來看看其它參與者的心得 —
+    +nbr(1)
+    mixin carousel-review(item, index)
+      if item
+        blockquote: a(href=item.link,target="_blank")
+          h5= item.title
+          p: small= item.desc
+          .text-right: small.gray — #{item.author} / #{item.job}
+
+    #carousel-review.carousel.slide(data-ride="carousel")
+      .carousel-inner
+        each item,index in reviews
+          if !(index % 3)
+            .carousel-item(class=(index == 0 ? "active" : ""))
+              .row
+                .col-sm-4: +carousel-review(reviews[index], index)
+                .col-sm-4: +carousel-review(reviews[index + 1], index)
+                .col-sm-4: +carousel-review(reviews[index + 2], index)
+      a.carousel-control-prev(href="#carousel-review",role="button",data-slide="prev")
+        span.carousel-control-prev-icon: i.fa.fa-chevron-left
+      a.carousel-control-next(href="#carousel-review",role="button",data-slide="next")
+        span.carousel-control-next-icon: i.fa.fa-chevron-right
 
     +nbr(3)
     .text-center

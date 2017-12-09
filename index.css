@@ -125,6 +125,18 @@ body {
 .gray {
   color: #999;
 }
+#carousel-review blockquote a {
+  color: #222;
+  text-decoration: none;
+}
+#carousel-review h5 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
 #carousel-testimony h5 {
   margin-bottom: -5px;
 }
@@ -135,18 +147,24 @@ body {
   padding-left: 30px;
   padding-right: 30px;
 }
-#carousel-photo .carousel-control-prev {
+#carousel-photo .carousel-control-prev,
+#carousel-review .carousel-control-prev {
   left: -35px;
 }
-#carousel-photo .carousel-control-next {
+#carousel-photo .carousel-control-next,
+#carousel-review .carousel-control-next {
   right: -35px;
 }
 #carousel-photo .carousel-control-prev,
-#carousel-photo .carousel-control-next {
+#carousel-review .carousel-control-prev,
+#carousel-photo .carousel-control-next,
+#carousel-review .carousel-control-next {
   width: 30px;
 }
 #carousel-photo .carousel-control-prev span,
-#carousel-photo .carousel-control-next span {
+#carousel-review .carousel-control-prev span,
+#carousel-photo .carousel-control-next span,
+#carousel-review .carousel-control-next span {
   font-size: 32px;
   padding: 5px;
   border-radius: 50%;
