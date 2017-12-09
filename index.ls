@@ -43,3 +43,21 @@ window.addEventListener \scroll, ->
           img.setAttribute(\class, cls.join(' '))
         ), Math.random! * 200
       img.node.src = img.getAttribute(\data-src) or ''
+
+window.scrollto = (node, dur = 500) ->
+  element = document.documentElement or document.body
+  if typeof(node) == \string => node = document.querySelector node
+  [des, src]= [node.getBoundingClientRect!top, window.pageYOffset]
+  [diff,start] = [des - src, -1]
+  animateScroll = (timestamp) ->
+    if start < 0 => start := timestamp
+    val = easeInOutQuad timestamp - start, src, diff, dur
+    element.scrollTop = val
+    if timestamp <= start + dur => requestAnimationFrame animateScroll
+  requestAnimationFrame animateScroll
+
+easeInOutQuad = (t,b,c,d) ->
+  t = t / (d * 0.5)
+  if t < 1 => return c * 0.5 * t * t + b
+  t = t - 1
+  return -c * 0.5 * ( t * (t - 2) - 1 ) + b

@@ -23,11 +23,12 @@ block body
         a.btn.btn-primary.btn-lg.mr-1(href="https://g0v-jothon.kktix.cc/") #[small Register Now] #[br] 立刻報名
         a.btn.btn-primary.btn-lg(href="http://x.co/g0v27") #[small Note for Latest Event] #[br] 本期共筆
       br
-      small.en Learn More #[br]
-      big.zh 了解更多
-      br
-      img(src="img/down.gif")
-  .content
+      #learn-more(onclick="scrollto('#content')")
+        small.en Learn More #[br]
+        big.zh 了解更多
+        br
+        img(src="img/down.gif")
+  #content.content
     blockquote
       h5 「自從參加黑客松之後，人長高了也變壯了，考試都得一百分！」
       .pull-rightt.text-right — 鄭遠祥，資深健美教練 #[br]#[small.gray should be random and carousel]
