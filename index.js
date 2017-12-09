@@ -47,7 +47,7 @@ $(document).ready(function(){
     return imgs.map(function(img){
       var top;
       top = img.getBoundingClientRect().top;
-      if (top < h && !img.revealed) {
+      if (top < h * 0.8 && !img.revealed) {
         img.revealed = true;
         img.node = new Image();
         img.node.onload = function(){

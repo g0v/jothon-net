@@ -32,7 +32,7 @@ window.addEventListener \scroll, ->
   y = window.pageYOffset
   imgs.map (img) ->
     top = img.getBoundingClientRect!top
-    if top < h and !img.revealed =>
+    if top < h * 0.8 and !img.revealed =>
       img.revealed = true
       img.node = new Image!
       img.node.onload = ->

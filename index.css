@@ -125,29 +125,47 @@ body {
 .gray {
   color: #999;
 }
-#carousel-video p.text-left {
+#carousel-testimony h5 {
+  margin-bottom: -5px;
+}
+#carousel-testimony .name {
+  margin-bottom: -5px;
+}
+#carousel-testimony .carousel-item {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#carousel-video p.text-left,
+#carousel-testimony p.text-left {
   font-size: 0.8em;
 }
 #carousel-video .carousel-control-prev,
-#carousel-video .carousel-control-next {
+#carousel-testimony .carousel-control-prev,
+#carousel-video .carousel-control-next,
+#carousel-testimony .carousel-control-next {
   width: 20px;
   mix-blend-mode: difference;
 }
 #carousel-video .carousel-control-prev span,
-#carousel-video .carousel-control-next span {
+#carousel-testimony .carousel-control-prev span,
+#carousel-video .carousel-control-next span,
+#carousel-testimony .carousel-control-next span {
   background-size: 60%;
   padding: 15px;
   border-radius: 50%;
   background-color: #222;
 }
-#carousel-video .carousel-indicators {
+#carousel-video .carousel-indicators,
+#carousel-testimony .carousel-indicators {
   margin: 0;
   bottom: -25px;
 }
-#carousel-video .carousel-indicators li.active {
+#carousel-video .carousel-indicators li.active,
+#carousel-testimony .carousel-indicators li.active {
   background-color: #f00;
 }
-#carousel-video .carousel-indicators li {
+#carousel-video .carousel-indicators li,
+#carousel-testimony .carousel-indicators li {
   background-color: rgba(0,0,0,0.5);
 }
 .events .event {

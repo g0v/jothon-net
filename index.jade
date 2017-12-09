@@ -1,6 +1,7 @@
 extends /base.jade
 block vars
   - var videos = yaml("data/demo-videos.yaml");
+  - var testimonies = yaml("data/testimonies.yaml");
 block body
   .jumbotron: .inner
     .text-center
@@ -29,9 +30,25 @@ block body
         br
         img(src="img/down.gif")
   #content.content
-    blockquote
-      h5 「自從參加黑客松之後，人長高了也變壯了，考試都得一百分！」
-      .pull-rightt.text-right — 鄭遠祥，資深健美教練 #[br]#[small.gray should be random and carousel]
+    mixin carousel-testimony(title, name, quote, active)
+      .carousel-item(class=(active ? "active" : ""))
+        blockquote
+          h5 「 #{quote.zh}」
+          small.gray.ml-3 "#{quote.en}"
+          .pull-rightt.text-right
+            .name — #{name.zh}，#{title.zh}
+            small.gray #{name.en} / #{title.en}
+    #carousel-testimony.carousel.slide(data-ride="carousel")
+      //-ol.carousel-indicators
+        each item,index in testimonies
+          li(class=(index==0?"active":""),data-target="#carousel-testimony",data-slide-to=index)
+      .carousel-inner
+        each item,index in testimonies
+          +carousel-testimony(item.title, item.name, item.quote, index == 0)
+      a.carousel-control-prev(href="#carousel-testimony",role="button",data-slide="prev")
+        span.carousel-control-prev-icon 
+      a.carousel-control-next(href="#carousel-testimony",role="button",data-slide="next")
+        span.carousel-control-next-icon 
     +nbr(3)
     h1 什麼是零時政府黑客松？#[small / about g0v hackathon]
     .photo.lg: .inner.reveal.lightbox(data-lg-src="img/photo/lg/1.jpg")
@@ -138,7 +155,6 @@ block body
         .carousel-inner
           each video,index in videos
             +carousel-video(video.title, video.name, video.desc, video.url, index == 0)
-
         a.carousel-control-prev(href="#carousel-video",role="button",data-slide="prev")
           span.carousel-control-prev-icon 
         a.carousel-control-next(href="#carousel-video",role="button",data-slide="next")
