@@ -306,3 +306,100 @@ a.anchor {
   background: url("img/photo/1.jpg") center center no-repeat;
   background-size: cover;
 }
+.timeline {
+  position: relative;
+  border-left: 4px solid;
+  padding-left: 32px;
+  padding-bottom: 30px;
+}
+.timeline .entry {
+  margin-bottom: 30px;
+}
+.timeline .date {
+  position: absolute;
+  left: -88px;
+  margin-top: 2px;
+  text-align: right;
+  width: 60px;
+}
+.timeline .milestone .action .text {
+  font-size: 32px;
+  font-weight: 900;
+  position: relative;
+  top: -8px;
+}
+.timeline .milestone .action:before {
+  content: " ";
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: absolute;
+  left: -18px;
+  margin-top: 0;
+  border: 4px solid;
+}
+.timeline .action .text {
+  font-size: 24px;
+  font-weight: 900;
+  position: relative;
+  top: -4px;
+}
+.timeline .action:before {
+  content: " ";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: -8px;
+  margin-top: 8px;
+  border: 4px solid;
+}
+.timeline .milestone .action:after {
+  display: none;
+}
+.timeline .action:after {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  width: 46px;
+  height: 0;
+  border-bottom: 2px solid;
+  left: 0px;
+  margin-top: -23px;
+}
+.timeline .entry {
+  margin-left: 32px;
+}
+.timeline .entry.milestone {
+  margin-left: 0px;
+}
+.timeline.timeline-red {
+  border-left-color: #d31;
+}
+.timeline.timeline-red .milestone .action:before {
+  background: #fff;
+  border-color: #d31;
+}
+.timeline.timeline-red .action:before {
+  background: #d31;
+  border-color: #d31;
+}
+.timeline.timeline-red .action:after {
+  border-bottom-color: #d31;
+}
+.timeline.timeline-orange {
+  border-left-color: #f93;
+}
+.timeline.timeline-orange .milestone .action:before {
+  background: #fff;
+  border-color: #f93;
+}
+.timeline.timeline-orange .action:before {
+  background: #f93;
+  border-color: #f93;
+}
+.timeline.timeline-orange .action:after {
+  border-bottom-color: #f93;
+}

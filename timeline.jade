@@ -1,0 +1,49 @@
+extends /base.jade
+block vars
+  - var videos = yaml("data/demo-videos.yaml");
+  - var testimonies = yaml("data/testimonies.yaml");
+block body
+  .content
+    .timeline.timeline-red
+      .entry.milestone
+        .date 11/13
+        .action: .text 活動開跑 #[small.en / Open for Registration]
+        .detail
+          ul
+            li 活動#[b.red 前兩週 ( 14 天前 )] 開放報名
+            li 訂閱揪松電子報便可收到活動通知
+            li 活動情報亦會公布在臉書後勤中心與粉絲專頁
+          .tips 即使報名額滿，因為常有人臨時取消，可以隨時注意報名情況喔！
+      .entry
+        .action: .text 提案與短講登記 / Project &amp; Talk Registration
+        .detail
+          span 完成報名後，隨時都可以進行提案登記。
+    .timeline.timeline-orange
+      .entry.milestone
+        .date 11/27
+        .action: .text 活動開場 #[small.en / Opening]
+      .entry
+        .date 09:00
+        .action: .text 報到 #[small.en / Check In]
+        .detail
+          ol
+            li 出示你的報到碼
+            li 掛好自己的名牌
+            li 貼好技能貼紙
+            li 登入 WIFI 網路
+            li 找個好位置
+      .entry
+        .date 10:00
+        .action: .text 三分鐘提案 #[small.en / Project Pitch]
+        .detail
+          span 依照提案登記的順序輪流簡報，每組三分鐘。簡報重點：
+          ul
+            li 想要做什麼
+            li 為什麼要做
+            li 需要誰幫忙
+            li 是否開源
+      .entry
+        .date 10:40
+        .action: .text 自我介紹 #[small.en / Self Introduction]
+        .detail
+          span 首先全體參與者一起說「大家好」，接著逐一的向大家介紹自己的名字與三個關鍵字。
