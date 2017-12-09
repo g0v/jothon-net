@@ -1,0 +1,28 @@
+extends /base.jade
+block vars
+  - var assets = "../assets";
+  - var members = yamls("data/members");
+  - members.sort(function(a,b) { return (a.since > b.since ? 1 : a.since < b.since ? -1 : 0); });
+block head
+  //- TODO unify with base.jade
+  link(rel="stylesheet",type="text/css",href="../index.css")
+  script(type="text/javascript",src="../index.js")
+block body
+  .content
+    small.gray 揪松團與零時政府黑客松
+    h1.mb-0.mt-0 收支明細表 / Account book
+    .sep
+    p 本帳務為 g0v 揪松團為籌備雙月大松、投入社群基礎建設等用途，主要來源為 KKTIX 香油票、OCF 定期定額捐款等，若你認同零時政府的理念，也想透過小額捐款協助我們的話，歡迎 #[a(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18",target="_blank") 透過此頁面] 直接成為 g0v 黑客松的認養人喔！
+    .text-center
+      a.btn.btn-primary.btn-lg(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18",target="_blank") #[small Donate by Subscribing] #[br] 立刻成為大松認養人
+    br
+    iframe(src="https://docs.google.com/spreadsheets/d/1CUbN8OkTQSsjl7dct-qnulv5zmy2e-z1NwiGVzJPrwM/pubhtml?gid=1796067577&amp;single=true&amp;widget=true&amp;headers=false", width="100%", height="500px")
+    iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTtiOSfupf5R740c6EthLBUtNIAg8hF8WKOSKAqarlnIQzt_imnYazYqEBJlVFOdpwzJdE53GZueyS4/pubhtml?widget=true&amp;headers=false",width="100%",height="500px")
+    +nbr(2)
+    p 註記：
+    small: ol
+      li 透過開放文化基金會（OCF）定期定額捐款支持 g0v 揪松團，將每兩個月於 OCF 公布捐款徵信，並將雙月收入記錄在上方表格中。
+      li 透過 KKTIX 香油票捐款，則將於每次大松結束後，向 KKTIX 申請入帳，個別捐款徵信也將在 OCF 捐款徵信中呈現。
+      li g0v 揪松團由 OCF 支持法人專戶，所有捐款回撥 7% 支持行政基金。OCF + g0v 認養人每月定期捐款則回撥 50% + (50% * 7%)。
+      li 金流手續費部分，KKTIX 為 6%、信用卡定期定額 2016/06/16 含以前為 2.45%，之後為 2.25%、現金捐款與銀行匯款則無需手續費。
+      li 揪松經費試算表為新竹物流 2016 年對 OCF + g0v 揪松團的捐款，該筆基金則留存為聘請專案人事薪資。
