@@ -11,7 +11,7 @@ cwd-re = new RegExp RegExp.escape "#cwd#{if cwd[* - 1]=='/' => "" else \/}"
 
 yaml-reader = do
   md: -> markdown.toHTML it
-  yaml: -> yaml.safe-load fs.read-file-sync it
+  yaml: -> js-yaml.safe-load fs.read-file-sync it
   yamls: (dir) ->
     ret = fs.readdir-sync dir
       .map -> "#dir/#it"

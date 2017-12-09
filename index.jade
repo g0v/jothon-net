@@ -1,4 +1,6 @@
 extends /base.jade
+block vars
+  - var videos = yaml("data/demo-videos.yaml");
 block body
   .jumbotron: .inner
     .text-center
@@ -106,87 +108,35 @@ block body
         p 再來一個範例吧
     hr
     +nbr(2)
-    small.pull-right(style="margin-top:15px") 提案影片庫 #[i.fa.fa-link]
+    a(href="https://www.youtube.com/user/g0vTW/playlists",target="_blank")
+      small.pull-right(style="margin-top:15px") 完整影片列表 #[i.fa.fa-arrow-right]
     h4 提案實況 / Pitch Video of Projects
+    mixin carousel-video(title, name, desc, url, active)
+      .carousel-item(class=(active ? "active" : ""))
+        .row
+          .col-sm-7
+            .text-center #[br] #[h3= title] #[small.gray= name]
+            hr
+            p.text-left= desc
+          .col-sm-5
+            div(style="width:100%;height:250px;margin:auto;background:#222;position:relative")
+              div(style="position:relative;height:0;padding-bottom:56.12%;width:100%")
+                iframe(src=url,width="641",height="360",frameborder="0",gesture="media",
+                style="position:absolute;width:100%;height:100%;left:0;margin:18px 0",allowfullscreen)
+
     .card: .card-body(style="padding-bottom:2.2rem")
       #carousel-video.carousel.slide(data-ride="carousel",style="background:#fff")
         ol.carousel-indicators
-          li.active(data-target="#carousel-video",data-slide-to="0")
-          li(data-target="#carousel-video",data-slide-to="1")
-          li(data-target="#carousel-video",data-slide-to="2")
-
+          each video,index in videos
+            li(class=(index==0?"active":""),data-target="#carousel-video",data-slide-to=index)
         .carousel-inner
-
-          .carousel-item.active
-            .row
-              .col-sm-7
-                .text-center
-                  br
-                  h3 超農域
-                  small.gray 奧客慢 @ g0v hackath7n
-                hr
-                p.text-left 傲客慢於第 N 次不拉不拉黑客松的提案「超農域」，訴求打造全新的農業體驗，以「農育的農育農預農預的農預」一詞成功吸引到了許多與會者的協助。
-              .col-sm-5
-                div(style="width:100%;height:250px;margin:auto;background:#222;position:relative")
-                  div(style="position:relative;height:0;padding-bottom:56.12%;width:100%")
-                    iframe(src="https://www.youtube.com/embed/K9E27sSTQew?ecver=2",
-                    style="position:absolute;width:100%;height:100%;left:0;margin:18px 0",
-                    width="641",height="360",frameborder="0",gesture="media",allowfullscreen)
-
-          .carousel-item
-            .row
-              .col-sm-7
-                .text-center
-                  br
-                  h3 超農域
-                  small.gray 奧客慢 @ g0v hackath7n
-                hr
-                p.text-left 傲客慢於第 N 次不拉不拉黑客松的提案「超農域」，訴求打造全新的農業體驗，以「農育的農育農預農預的農預」一詞成功吸引到了許多與會者的協助。
-              .col-sm-5
-                div(style="width:100%;height:250px;margin:auto;background:#222;position:relative")
-                  div(style="position:relative;height:0;padding-bottom:56.12%;width:100%")
-                    iframe(src="https://www.youtube.com/embed/K9E27sSTQew?ecver=2",
-                    style="position:absolute;width:100%;height:100%;left:0;margin:18px 0",
-                    width="641",height="360",frameborder="0",gesture="media",allowfullscreen)
-
-          .carousel-item
-            .row
-              .col-sm-7
-                .text-center
-                  br
-                  h3 超農域
-                  small.gray 奧客慢 @ g0v hackath7n
-                hr
-                p.text-left 傲客慢於第 N 次不拉不拉黑客松的提案「超農域」，訴求打造全新的農業體驗，以「農育的農育農預農預的農預」一詞成功吸引到了許多與會者的協助。
-              .col-sm-5
-                div(style="width:100%;height:250px;margin:auto;background:#222;position:relative")
-                  div(style="position:relative;height:0;padding-bottom:56.12%;width:100%")
-                    iframe(src="https://www.youtube.com/embed/K9E27sSTQew?ecver=2",
-                    style="position:absolute;width:100%;height:100%;left:0;margin:18px 0",
-                    width="641",height="360",frameborder="0",gesture="media",allowfullscreen)
+          each video,index in videos
+            +carousel-video(video.title, video.name, video.desc, video.url, index == 0)
 
         a.carousel-control-prev(href="#carousel-video",role="button",data-slide="prev")
           span.carousel-control-prev-icon 
         a.carousel-control-next(href="#carousel-video",role="button",data-slide="next")
           span.carousel-control-next-icon 
-
-
-    //-
-      .row
-        .col-sm-7
-          .text-center
-            br
-            h3 超農域
-            small.gray 奧客慢 @ g0v hackath7n
-          hr
-          p.text-left 傲客慢於第 N 次不拉不拉黑客松的提案「超農域」，訴求打造全新的農業體驗，以「農育的農育農預農預的農預」一詞成功吸引到了許多與會者的協助。
-        .col-sm-5
-          div(style="width:100%;height:250px;margin:auto;background:#222;position:relative")
-            div(style="position:relative;height:0;padding-bottom:56.12%;width:100%")
-              iframe(src="https://www.youtube.com/embed/K9E27sSTQew?ecver=2",
-              style="position:absolute;width:100%;height:100%;left:0;margin:18px 0",
-              width="641",height="360",frameborder="0",gesture="media",allowfullscreen)
-      .text-center 。。。。。
 
     +nbr(2)
     h4 沒有想法，我也可以貢獻嗎？ / Contribute without Proposal
