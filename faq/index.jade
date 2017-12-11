@@ -1,8 +1,13 @@
 extends /base.jade
 block vars
-  - var events = yamls("data/events");
-  - events.sort(function(a,b) { return b.id - a.id; });
+  - var questions = yaml("data/faq.yaml");
 block head
 block body
   .content
     h1.mb-0 常見問題 / FAQ
+    .sep.huge-gap
+    each item,index in questions
+      a.anchor(id="q" + index)
+      h4: a(href="#q" + index) #[img(src="/img/qa.svg",style="width:36px;margin:-2px 0 0 -44px")] #{item.q}
+      p #{item.a}
+      br

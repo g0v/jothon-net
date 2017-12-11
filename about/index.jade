@@ -25,7 +25,7 @@ block body
       each member in members
         if member.status == 'active'
           .member.media.mb-3(style="min-height:180px")
-            img.mr-3(src="../img/about/avatar/" + member.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
+            img.mr-3(src="/img/about/avatar/" + member.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
             .media-body
               h5.mt-0.mb-0 #{member.name} / #{member.nick}
               if member.grant
