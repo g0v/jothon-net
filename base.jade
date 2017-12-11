@@ -4,7 +4,7 @@ doctype html
 //-                  fontawesome(4.4.0), reactjs(0.14.0)
 - var use = { cdn: false, og: false, favicon: true }
 - var lib = { jquery: true, d3js: false, angular: true, bootstrap: true, semantic: false, fontawesome: true, reactjs: false, revealjs: false, ionrangeslider: false, ldcolorpicker: false }
-- var assets = "assets"
+- var assets = "/assets"
 - var favicon = "img/favicon.png"
 - var title = "jothon-net mockup"
 - var og = {}
@@ -32,8 +32,8 @@ html(lang="en")
     include mixins.jade
     include library.jade
     // custom files
-    link(rel="stylesheet",type="text/css",href="index.css")
-    script(type="text/javascript",src="index.js")
+    link(rel="stylesheet",type="text/css",href="/index.css")
+    script(type="text/javascript",src="/index.js")
     block head
   body
     include nav.jade

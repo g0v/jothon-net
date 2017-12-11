@@ -1,12 +1,8 @@
 extends /base.jade
 block vars
-  - var assets = "../assets";
   - var members = yamls("data/members");
   - members.sort(function(a,b) { return (a.since > b.since ? 1 : a.since < b.since ? -1 : 0); });
 block head
-  //- TODO unify with base.jade
-  link(rel="stylesheet",type="text/css",href="../index.css")
-  script(type="text/javascript",src="../index.js")
 block body
   .content
     small.gray 揪松團與零時政府黑客松
