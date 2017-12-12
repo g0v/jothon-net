@@ -1,0 +1,1 @@
+!function(){var n,a;return n={"static":!0},"undefined"!=typeof angular&&null!==angular?window._backend_?angular.module("backend"):(a=angular.module("backend",[]),a.factory("global",[].concat(function(){return n})),a):void 0}();

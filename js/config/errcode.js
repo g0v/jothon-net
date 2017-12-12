@@ -1,0 +1,1 @@
+!function(){var n,u,e,o;if(n=function(){},"undefined"!=typeof angular&&null!==angular){try{u=angular.module("loadingIO")}catch(r){e=r,u=angular.module("loadingIO",[])}return o=u,o.factory("errcode",[].concat(function(){return n})),o}return"undefined"!=typeof module&&null!==module?module.exports=n:void 0}();
