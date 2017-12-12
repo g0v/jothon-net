@@ -341,6 +341,11 @@ a.anchor {
   text-align: right;
   width: 60px;
 }
+.timeline .milestone .date {
+  font-size: 1.2em;
+  font-weight: 900;
+  margin-top: -0.05em;
+}
 .timeline .milestone .action .text {
   font-size: 32px;
   font-weight: 900;
@@ -382,7 +387,7 @@ a.anchor {
   content: " ";
   display: inline-block;
   position: absolute;
-  width: 46px;
+  width: 54px;
   height: 0;
   border-bottom: 2px solid;
   left: 0px;
