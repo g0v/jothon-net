@@ -167,7 +167,6 @@ backend = do
         user: req.user, global: true, csrfToken: req.csrfToken!, production: config.is-production
       })
       if req.user => delete req.user.{}payment.strip
-      console.log 1
       res.send """(function() { var req = #payload;
       if(req.user && req.user.key) window.userkey = req.user.key;
       if(typeof(angular) != "undefined" && angular) {
