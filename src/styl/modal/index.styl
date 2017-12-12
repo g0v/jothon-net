@@ -1,0 +1,145 @@
+//- module
+@import '../vars'
+@import '../basic'
+
+.panel .hint-img
+  width: 100%
+  height: 200px
+  background: #999
+  border-radius: 3px
+  background-color: #eee
+  background-position: center center
+  background-repeat: no-repeat
+
++keyframes(modal-in)
+  0%
+    opacity: 0
+    z-index: -1
+    top: -20px
+  100%
+    opacity: 1
+    z-index: index(order, 'high-modal-wrapper')
+    top: 0
+
++keyframes(modal-out)
+  0%
+    opacity: 1
+    z-index: index(order, 'high-modal-wrapper')
+    top: 0
+  100%
+    opacity: 0
+    z-index: -1
+    top: -20px
+
++keyframes(modal-inner-in)
+  0%
+    transform(scale(.8))
+  100%
+    transform(scale(1))
+
++keyframes(modal-inner-out)
+  0%
+    transform(scale(1))
+  100%
+    transform(scale(.9))
+
+.cover-modal-wrapper
+  display: block
+  position: fixed
+  top: -20px
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1
+  opacity: 0
+  animation-delay: 1s
+  pointer-events: none
+  &.inactive
+    animation(modal-out .3s ease-out 1 forwards)
+  &.active
+    animation(modal-in .3s ease-out 1 forwards)
+    z-index: index(order, 'high-modal-wrapper')
+    opacity: 1
+    top: 0
+    pointer-events: all
+
+.cover-modal-inner
+  animation(modal-inner-out .3s ease-out 1 forwards)
+
+.cover-modal-wrapper.active .cover-modal-inner
+  animation(modal-inner-in .3s ease-out 1 forwards)
+
+.cover-modal
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,0.7)
+  z-index: index(order, 'high-modal')
+
+.cover-modal-inner
+  position: relative
+  width: 640px
+  margin: 100px auto
+  z-index: index(order, 'high-modal-inner')
+
+.cover-modal-inner > .panel.panel-default
+  box-shadow: 0 3px 6px rgba(0,0,0,.6)
+
+.cover-modal-wrapper.narrow > .cover-modal-inner
+  width: 500px
+  .panel-default
+    width: 500px
+
+.cover-modal-wrapper.tight > .cover-modal-inner, .tight > .cover-modal-wrapper > .cover-modal-inner
+  width: 360px
+  .panel-default
+    width: 360px
+
+.cover-modal-wrapper.full > .cover-modal-inner, .full > .cover-modal-wrapper > .cover-modal-inner
+  width: 100%
+  height: 100%
+  margin: auto
+  .panel-default, .panel-body
+    width: 100%
+    height: 100%
+    border-radius: 0
+
+.cover-modal-inner .panel-default
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4)
+
+.cover-modal-inner.centered
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  margin: auto
+
+.cover-modal-inner
+  .panel-heading, .panel-footer
+    padding-top: 5px
+  .panel-footer
+    padding-right: 5px
+    padding-bottom: 5px
+
+.cover-modal-inner .nav-tabs
+  margin-top: -47px
+  margin-bottom: 13px
+
+.cover-modal-inner .nav-tabs > li > a
+  padding: 5px 9px
+  font-size: 0.95em
+  line-height: 1.51em
+
+.cover-modal-inner.ng-hide-animate, .cover-modal.ng-hide-animate
+  transition(all 0.5s cubic-bezier(0,0,0,1))
+.cover-modal-inner.ng-hide-animate.ng-hide
+  top: -30px
+  opacity: 0
+  z-index: -1
+.cover-modal.ng-hide-animate.ng-hide
+  opacity: 0
+  z-index: -1
+
+@import 'authpanel'

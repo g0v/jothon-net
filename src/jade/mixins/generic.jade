@@ -1,0 +1,48 @@
+//- module
+include /version.jade
+- var decache = "?v=" + version
+- var escjson = function(obj) { return 'JSON.parse(unescape("' + escape(JSON.stringify(obj)) + '"))'; };
+- var eschtml = (function() { var MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&#34;', "'": '&#39;' }; var repl = function(c) { return MAP[c]; }; return function(s) { return s.replace(/[&<>'"]/g, repl); }; })();
+mixin margin-break
+  .margin-break &nbsp;
+mixin cover-modal(model,className)
+  .cover-modal-wrapper(ng-modal,ng-model=model,config=model + ".config",
+  ng-class="{'active':" + model + ".ctrl.toggled,'inactive':" + model + ".ctrl.toggled==false}",class=className)
+    .cover-modal(ng-click=model+".ctrl.toggle(false)")
+    .cover-modal-inner
+      block
+mixin slider(model,config,size)
+  - if(!size) size = "sm"
+  - var value = "slidemode['" + model + "']";
+  .irs-switch(ng-click=value + " = !!!" + value)
+    .icon-form-slider-left(ng-show="!" + value)
+    .icon-form-inputbox(ng-show=value)
+  .up.irs-input: input.form-control(class="input-" + size,
+  ng-ion-slider,ng-value=model,config=config,ng-switch=value,default-switch="false")
+mixin color-input(model,idx,context)
+  - if(!context) context = "random";
+  div(style="position:relative")
+    input.form-control(ng-model=model,ng-idx=idx,ldColorPicker
+    config="{context: " + context + "}",
+    data-exclusive="true",data-cpclass="compact-palette")
+    div(ng-attr-style="background:{{" + model + "}};position:absolute;top:3px;right:3px;width:7px;bottom:3px;border-radius:3px;border:1px solid #eee")
+mixin carbon(className)
+  div(class=className)
+    div
+      include /module/carbon/index.jade
+mixin nbr(count)
+  - for (var i = 0; i < count; i++)
+    br
+- if(!scriptLoader) { scriptLoader = {url: {}, config: {}}; }
+mixin script(url,config)
+  - scriptLoader.config = (config ? config : {});
+  if !scriptLoader.url[url]
+    - scriptLoader.url[url] = true;
+    if /^https?:\/\/./.exec(url)
+      script(type="text/javascript",src=url,
+      defer=!!scriptLoader.config.defer,async=!!scriptLoader.config.async)
+    else
+      script(type="text/javascript",src=url + decache,
+      defer=!!scriptLoader.config.defer,async=!!scriptLoader.config.async)
+mixin css(url)
+  link(rel="stylesheet",type="text/css",href=url + decache)

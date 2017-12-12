@@ -14,7 +14,7 @@ Usage
     ./node_modules/.bin/lsc server.ls
 ```
 
-然後使用瀏覽器開啟 [http://localhost:9999/](http://localhost:9999/).
+然後使用瀏覽器開啟 [http://localhost:9000/](http://localhost:9000/).
 
 
 

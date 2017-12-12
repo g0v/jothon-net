@@ -1,0 +1,59 @@
+//- module
+@import '../vars'
+@import '../basic'
+
+.closebtn
+  position: absolute
+  top: 0
+  right: 0
+  float: right
+  font-size: 20px
+  line-height: 12px
+  text-align: right
+  margin: 10px 10px 0 0
+  cursor: pointer
+  color: #444
+  z-index: index(order, 'closebtn')
+  &:after
+    content: "\0000d7"
+    display: inline
+.closebtn.lg
+  font-size: 32px
+  line-height: 17px
+
+.closebtn.inverse
+  position: relative
+  border-radius: 50%
+  background: #444
+  color: #fff
+  width: 15px
+  height: 15px
+  padding: 0
+  text-align: center
+  float:right
+  margin: -2px -2px 0 0
+
+.closebtn.lg
+  font-size: 25px
+  width: 23px
+  height: 23px
+  line-height: 18px
+.closebtn.inverse
+  color: #444
+  background: none
+  font-weight: 900
+.closebtn.inner
+  position: absolute
+  top: 4px
+  right: 4px
+.closebtn.lg
+  font-size: 32px
+  &.inner
+    top: 12px
+    right: 12px
+
+.closebtn.outer
+  position: absolute
+  top: -4px
+  right: -4px
+

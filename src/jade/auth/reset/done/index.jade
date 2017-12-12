@@ -1,0 +1,25 @@
+extends /base.jade
+block body
+  .spc1
+  #root.narrow
+    br
+    br
+    br
+    h1.text-center Password Reset Done.
+    p.text-center.grayed Now let's try if you can login with your brand new password
+    .text-center(ng-click="auth.ctrl.toggle()")
+      i.fa.fa-cog.ld.ld-cycle(style="font-size:6em;animation-duration:2s")
+    script(type="text/javascript").
+      $(document).ready(function() {
+        setTimeout(function() {
+          var auth = angular.element("#root").scope().auth;
+          auth.isSignIn = true;
+          auth.ctrl.toggle();
+        }, 1000);
+      });
+
+    p.text-center #[br] #[a(href="/") back to home]
+    br
+    script.
+      if(!window.location.search) { window.location.search = "?nexturl=/" }
+  include /module/footer.jade

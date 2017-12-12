@@ -1,0 +1,18 @@
+extends /base.jade
+block body
+  .spc1
+  style
+  #root.narrow
+    br
+    br
+    br
+    h1.text-center Reset Link Sent.
+    p.text-center: big check your email inbox for the password reset email.
+    #auth-reset-sent.text-center
+      img(src="/assets/img/auth/sent.gif")
+      i.fa.fa-check
+    p.text-center.grayed not receiving mail? #[br] try #[a(href="/auth/reset/") send it again]
+
+    p.text-center #[br] #[a(href="/") back to home]
+    br
+

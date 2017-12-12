@@ -1,0 +1,25 @@
+//- module
+nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark
+  a.navbar-brand(href="/") #[img.mr-1(src="/assets/img/jothon-bg-dark.svg")] 揪松網
+  button.navbar-toggler(type="button",data-toggle="collapse",data-target="#navbarSupportedContent")
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarSupportedContent
+    ul.navbar-nav.mr-auto
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle#navbarDropdown(
+        href="#",role="button",data-toggle="dropdown") 過往活動 #[small / Events]
+        .dropdown-menu
+          a.dropdown-item(href="/events/#hackath27n") 27th - 全球開放立法松
+          a.dropdown-item(href="/evetns/#hackath26n") 26th - 五週年黑客松
+          a.dropdown-item(href="/events/#hackath25n") 25th - 一本多綱黑客松
+          a.dropdown-item(href="/events/#hackath24n") 24th - 凍省黑客松
+          a.dropdown-item(href="/events/#hackath23n") 23th - 開放資料黑客松
+          a.dropdown-item(href="/events/") ... 更多 #[small / More]
+          .dropdown-divider
+          a.dropdown-item(href="https://www.flickr.com/photos/tkirby/collections/72157632969946032/",target="_blank") 活動照片 #[small / Photo Records]
+          a.dropdown-item(href="https://www.youtube.com/user/g0vTW/playlists",target="_blank") 簡報影片 #[small / Pitch Videos]
+          a.dropdown-item(href="http://us13.campaign-archive1.com/home/?u=688c0f30e2af41c2fa09114f2&id=24c8450e9a",target="_blank") 過往電子報 #[small / Newsletters]
+      //-li.nav-item: a.nav-link(href="#") 專案列表 #[small / Projects]
+      li.nav-item: a.nav-link(href="/faq/") 常見問題 #[small / FAQ]
+      li.nav-item: a.nav-link(href="/about/") 關於揪松 #[small / About]
+      li.nav-item: a.nav-link(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18") 認養大松 #[small / Donate]

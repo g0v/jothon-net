@@ -1,0 +1,33 @@
+extends /base.jade
+block vars
+  - var rootid = "authview"
+  - var rootclass = "invert auth-static"
+block head
+block body
+  .spc1
+  style(type="text/css").
+    body {background: url(/assets/img/bk.jpg)}
+  #root.narrow(ng-cloak)
+    br
+    br
+    br
+    br
+    br
+    - var authPanelTitle = "Can't Let You In.";
+    - var authPanelDesc = "Try a different method to login";
+    div(style="max-width:480px;margin:auto")
+      include ../static.jade
+    script.
+      $(document).ready(function() {
+        setTimeout(function() { 
+          var $scope = angular.element("#root").scope();
+          var auth = $scope.auth;
+          $scope.$apply(function() { auth.isSignIn = true; });
+        }, 0);
+      });
+    p.text-center #[br] #[a(href="/") back to home]
+    br
+    script.
+      if(!window.location.search) { window.location.search = "?nexturl=/" }
+  include /module/footer.jade
+

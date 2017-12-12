@@ -1,0 +1,254 @@
+//- module
+@import '../vars'
+@import '../basic'
+
+.spc1
+  height: 0
+  &:after
+    content: " "
+
+#debug
+  &:after
+    content: "DEBUG"
+  display: block
+  position: fixed
+  top: 10px
+  left: 10px
+  z-index: 99999
+  background: #f00
+  width: 48px
+  height: 19px
+  font-size: 10px
+  color: #fff
+  padding: 4px 7px
+  opacity: 0.8
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3)
+  border-radius: 3px
+
+.sep
+  border-top: 1px solid rgba(0,0,0,0.2)
+  width: 100%
+  margin: 7px auto
+  height: 0
+.sep.huge-gap
+  margin: 21px auto
+.sep.dashed
+  border-top-style: dashed
+.sep.nogap
+  margin: 0 auto
+.sep.light
+  border-top: 1px solid rgba(0,0,0,0.1)
+
+.btn.has-tips
+  overflow: visible
+  .inner
+    width: 100%
+    height: 100%
+    overflow: hidden
+    position: absolute
+    top: 0
+    left: 0
+  .hover-tip
+    display: block
+    opacity: 0
+    z-index: -1
+    transition(all 0.5s linear)
+.btn.has-tips:hover
+  .hover-tip
+    display: block
+    opacity: 1
+    z-index: 10
+
+.btn-upload
+  position: relative
+  overflow: hidden
+  input
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 10
+    top: 0
+    left: 0
+    opacity: 0.005
+    cursor: pointer
+
+.loader
+  display: none
+  opacity: 0
+  transition(all 0.5s linear)
+  &.active
+    display: block
+    opacity: 1
+.loader.fade
+  display: block
+
+svg
+  display: block
+  no-selection()
+
+.no-select
+  no-selection()
+
+.clickable
+  cursor: pointer!important
+
++keyframes(bk-drift)
+  0%
+    background-position: 0 0
+  50%
+    background-position: 1440px 0
+  100%
+    background-position: 0 0
+
+hr
+  border-top: 1px solid rgba(200,200,200,0.8)
+
+h1,h2,h3,h4,h5,h6
+  font-weight: bold
+  &.tag
+    display: inline-block
+    clear: both
+    padding: 5px 15px 7px 50px
+    border-radius: 10px 4px 4px 10px
+    min-width: 200px
+    text-align: right
+    margin-left: -10px
+    margin-right: 10px
+    border-left: 10px solid #520
+    background: #920
+    color: #fff
+    text-shadow: 0 2px 2px rgba(0,0,0,0.4)
+
+.tag-center 
+  text-align: center
+  h1,h2,h3,h4,h5,h6
+    &.tag
+      text-align: center
+      padding-left: 25px
+      padding-right: 25px
+      border-radius: 10px
+      border-right: 10px solid #520
+
+.light
+  font-weight: normal
+
+.code
+  font-family: 'courier new'
+  overflow-x: scroll
+  padding: 10px
+  background: rgba(0,0,0,0.1)
+  white-space: pre
+  margin: 15px auto
+
+.hidden-xs-inline
+  display: inline
+  @media (max-width: 480px)
+    display: none!important
+
+.shown-xs-inline
+  display: none
+  @media (max-width: 480px)
+    display: inline
+
+.hidden-640-inline
+  display: inline
+  @media (max-width: 640px)
+    display: none!important
+
+.hidden-800-inline
+  display: inline
+  @media (max-width: 800px)
+    display: none
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
+  display: none !important
+
+.hover-tip
+  background: #000
+  border-radius: 3px
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  min-width: 100px
+  color: #fff
+  padding: 5px 10px
+  text-align: center
+  z-index: index(order, 'hover-tip')
+  font-size: 13px
+  a
+    color: #73baf7
+  &:before
+    width: 10px
+    height: 10px
+    position: absolute
+    top: -5px
+    left: 50%
+    margin-left: -7px
+    background: #000
+    display: block
+    content: " "
+    transform(rotate(45deg))
+.hover-tip.right
+  &:before
+    top: 50%
+    left: 2px
+    margin-top: -5px
+    margin-left: -5px
+.hover-tip.bottom
+  top: 100%
+  margin-top: 14px
+.hover-tip.top
+  top: auto
+  bottom: 100%
+  &:before
+    top: auto
+    bottom: -5px
+
+.rel
+  position: relative
+.abs
+  position: absolute
+
+.inline
+  display: inline!important
+
+.inline-block
+  display: inline-block!important
+
+.block
+  display: block!important
+
+.flexbox
+  flexbox()
+  flex-wrap(wrap)
+.flexbox.nowrap
+  flex-wrap(nowrap)
+.flex
+  flex(1 1 auto)
+
+.flex-end
+  &:after
+    content: " "
+    display: inline-block
+  flex(999 1 auto!important)
+
+.block1024
+  max-width: 1024px
+  width: 95%
+  margin: auto
+
+.ellipsis
+  ellipsis()
+
+.centered
+  centered()
+
+.chunk
+  padding: 10px 10px
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05)
+  border-radius: 3px
+  border: 1px solid #ddd
+
+
+@import 'closebtn'
+@import 'variation'

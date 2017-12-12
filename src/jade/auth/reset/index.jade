@@ -1,0 +1,25 @@
+extends ../../base.jade
+block vars
+  - var rootid = "errorview"
+block head
+block body
+  .spc1
+  #root.narrow
+    br
+    br
+    br
+    h1.text-center Forgot Password?
+    p.text-center.grayed Enter your email below for us to send you a reset password link
+    #authpanel(ng-controller="resetpassword")
+      form.modal-dialog(method="POST",action="/d/me/passwd/reset"): .modal-content
+        .modal-body
+          input#_csrf(type="hidden",name="_csrf")
+          input.form-control.input-lg(type="email",name="email",placeholder="e.g., me@someurl.com")
+        .modal-footer
+          input.btn.btn-success.btn-lg.btn-block(type="submit",value="Send Reset Link")
+      script.
+        angular.module("backend").controller("resetpassword",["$scope","global",function($scope,global) {
+         document.getElementById("_csrf").value = global.csrfToken;
+        }]);
+    p.text-center #[br] #[a(href="/") back to home]
+    br

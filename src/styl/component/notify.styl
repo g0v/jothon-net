@@ -1,0 +1,99 @@
+//- module
+@import 'basic'
+@import 'vars'
+
+#notifications
+  position: fixed
+  top: 100px
+  right: 100px
+  z-index: index(order, 'notifications')
+
++keyframes(fadeout)
+  0%
+    opacity: 1
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
++keyframes(notify-slide-in)
+  0%, 10%, 18%, 25%
+    animation-timing-function: cubic-bezier(.3,0,1,.7)
+  5%, 15%, 22%, 28%
+    animation-timing-function: cubic-bezier(0,.3,.7,1)
+  0%
+    transform(translate(0,-100px))
+    opacity: 0
+  5%
+    transform(translate(0,0))
+  10%
+    transform(translate(0,-40px))
+  15%
+    transform(translate(0,0))
+  18%
+    transform(translate(0,-16px))
+    opacity: 1
+  22%
+    transform(translate(0,0))
+  25%
+    transform(translate(0,-5px))
+  28%
+    transform(translate(0,0))
+    opacity: 1
+  70%
+    opacity: 1
+  100%
+    opacity: 0
+
+
+.notify
+  border-radius: 5px
+  padding: 5px 10px
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3)
+  margin-bottom: 3px
+  animation(notify-slide-in 5s linear 1 forwards)
+  &:after
+    font-size: 14px
+    margin-left: 10px
+    font-family: FontAwesome
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    font-style: normal
+    font-weight: normal
+    float: right
+    display: block
+
+.notify.notify-danger
+  background: #c00
+  border: 1px solid #b00
+  color: #fff
+  &:after
+    content: "\f00d"
+
+.notify.notify-warning
+  background: #c90
+  border: 1px solid #b80
+  color: #fff
+  &:after
+    content: "\f12a"
+
+.notify.notify-success
+  background: #0c0
+  border: 1px solid #0b0
+  color: #fff
+  &:after
+    content: "\f00c"
+
+.notify.notify-info
+  background: #0cc
+  border: 1px solid #0bb
+  color: #fff
+  &:after
+    content: "\f129"
+
+.notify.notify-note
+  background: #eee
+  border: 1px solid #ddd
+  color: #fff
+  &:after
+    content: "\f0f3"

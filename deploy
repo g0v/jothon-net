@@ -1,0 +1,11 @@
+REV=`git describe --always`
+rm -rf _public
+git clone git@github.com:g0v/jothon-net --depth 1 -b gh-pages _public
+cd _public
+git rm -r *
+cp -R ../static/ ./
+git add *
+git commit -m "regen for $REV"
+git push
+cd ..
+#git push -f -u middle2 master
