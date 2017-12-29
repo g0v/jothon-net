@@ -7,7 +7,14 @@ jothon-net
 Usage
 -----------
 
-網站使用 nodejs 搭配 jade, stylus, livescript 產生靜態頁面，需先安裝 nodejs 。若僅需預覽，可直接開啟 index.html；參與開發則執行：
+網站使用 nodejs 搭配 jade, stylus, livescript 產生靜態頁面，需先安裝 nodejs，並確定 nodejs 的版本至少在 7.6.0 以上。版本檢驗方式：
+
+```
+    node --version
+```
+
+
+接著，請執行：
 
 ```
     npm i
