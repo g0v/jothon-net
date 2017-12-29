@@ -11,6 +11,7 @@ Usage
 
 ```
     npm i
+    mv secret-default.ls secret.ls
     ./node_modules/.bin/lsc server.ls
 ```
 
