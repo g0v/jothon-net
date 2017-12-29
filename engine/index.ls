@@ -111,19 +111,20 @@ backend = do
         get-user profile.emails.0.value, null, false, profile, true, done
     )
 
-    app.use express-session do
-      secret: config.session.secret
-      resave: true
-      saveUninitialized: true
-      store: new session-store!
-      proxy: true
-      cookie: do
-        path: \/
-        httpOnly: true
-        maxAge: 86400000 * 30 * 12 #  1 year
-        domain: \localhost
-    app.use passport.initialize!
-    app.use passport.session!
+    if config.usedb =>
+      app.use express-session do
+        secret: config.session.secret
+        resave: true
+        saveUninitialized: true
+        store: new session-store!
+        proxy: true
+        cookie: do
+          path: \/
+          httpOnly: true
+          maxAge: 86400000 * 30 * 12 #  1 year
+          domain: \localhost
+      app.use passport.initialize!
+      app.use passport.session!
 
     passport.serializeUser (u,done) ->
       authio.user.serialize u .then (v) ->
@@ -157,14 +158,16 @@ backend = do
         successRedirect: \/u/200
         failureRedirect: \/u/403
 
-    backend.csrfProtection = csurf!
-    app.use backend.csrfProtection
+    if config.usedb =>
+      backend.csrfProtection = csurf!
+      app.use backend.csrfProtection
     app.use "/e", extapi!
 
-    app.get \/js/global.js, backend.csrfProtection, (req, res) ->
+    app.get \/js/global.js, (backend.csrfProtection or (req,res,next)->next!), (req, res) ->
       res.setHeader \content-type, \application/javascript
       payload = JSON.stringify({
-        user: req.user, global: true, csrfToken: req.csrfToken!, production: config.is-production
+        user: req.user, global: true, production: config.is-production
+        csrfToken: if req.csrfToken => that! else null
       })
       if req.user => delete req.user.{}payment.strip
       res.send """(function() { var req = #payload;
