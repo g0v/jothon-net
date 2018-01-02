@@ -1,5 +1,6 @@
 //- module
 include /version.jade
+- var ordinal = function(v) { return ((v % 10) == 1 ? (v + "st") : (v % 10) == 2 ? (v + "nd") : (v % 10) == 3 ? (v + "rd") : v + "th"); }
 - var decache = "?v=" + version
 - var escjson = function(obj) { return 'JSON.parse(unescape("' + escape(JSON.stringify(obj)) + '"))'; };
 - var eschtml = (function() { var MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&#34;', "'": '&#39;' }; var repl = function(c) { return MAP[c]; }; return function(s) { return s.replace(/[&<>'"]/g, repl); }; })();

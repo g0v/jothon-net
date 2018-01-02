@@ -11,6 +11,7 @@
       /assets/jquery/1.10.2/jquery.min.js
       /assets/popper/1.12.5/index.js
       /assets/bootstrap/4.0.0-beta/js/bootstrap.min.js
+      /assets/js-yaml/3.7.0/index.min.js
     ]>
     servlet: <[
       /js/ldBase/index.js

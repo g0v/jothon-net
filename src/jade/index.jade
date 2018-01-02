@@ -3,30 +3,54 @@ block vars
   - var videos = yaml("data/demo-videos.yaml");
   - var testimonies = yaml("data/testimonies.yaml");
   - var reviews = yaml("data/reviews.yaml");
+  - var featuring = yaml("data/featuring.yaml");
+  - var now = new Date().getTime();
+  - if(now < new Date(featuring.publish_date).getTime() || now > new Date(featuring.date).getTime()) {
+  -   var event = false;
+  - } else {
+  -   var event = true;
+  - }
+block head
+  script.
+    var featuring = !{escjson(featuring)};
 block body
   .jumbotron: .inner
+    .background(style="background-image:url(/assets/img/events/" + featuring.id + ".jpg)")
     .text-center
-      - var event = false
-      if !event
+      div
         div Let's Hack!
         h1.mb-4 來黑客松吧！
         .lead
           .zh: small 不要問為什麼沒有人做這個，先承認你就是「沒有人」
           .en Nobody gonna do this? You are the one.
-      else
+      div(style="display:none")
         .lead(style="font-size:1.3em")
           .zh
-            div(style="font-size:0.5em") g0v hackath27n / 零時政府第 27 次
-            div(style="font-weight:900;font-size:1.5em;margin:10px 0 10px") 全球立法黑客松
-            div(style="font-size:0.65em") 2017/11/25 @ IIS, Academia Sinica / #[small 中央研究院資訊所]
+            div(style="font-size:0.5em") g0v hackath#{featuring.id}n / 零時政府第 #{featuring.id} 次
+            div(style="font-weight:900;font-size:1.5em;margin:10px 0 10px") #{featuring.shortname}
+            div(style="font-size:0.65em")
+              span #{featuring.date} @ #{featuring.location.en} / 
+              small #{featuring.location.zh}
+      script.
+        var start = new Date(featuring.publish_date).getTime();
+        var end = new Date(featuring.date).getTime();
+        var now = new Date().getTime();
+        if(now < start || now > end) {
+          $(".jumbotron .text-center > div:nth-child(1)").show();
+          $(".jumbotron .text-center > div:nth-child(2)").hide();
+        } else {
+          $(".jumbotron .text-center > div:nth-child(1)").hide();
+          $(".jumbotron .text-center > div:nth-child(2)").show();
+          $(".jumbotron .background").show();
+        }
 
     .text-center
       p.lead
         if event
-          a.btn.btn-primary.btn-lg.mr-1(href="https://g0v-jothon.kktix.cc/") #[small Register Now] #[br] 立刻報名
+          a.btn.btn-primary.btn-lg.mr-1(href="https://g0v-jothon.kktix.cc/events/g0v-hackath" + featuring.id + "n",target="_blank") #[small Register Now] #[br] 立刻報名
         else
           a.btn.btn-primary.btn-lg.mr-1(href="#",onclick="scrollto('#subscribe-newsletter',2000)") #[small Subscribe Newsletter] #[br] 訂閱電子報
-        a.btn.btn-primary.btn-lg(href="http://x.co/g0v27") #[small Note for Latest Event] #[br] 本期共筆
+        a.btn.btn-primary.btn-lg(href="http://beta.hackfoldr.org/g0v-hackath" + featuring.id + "n") #[small Note for Latest Event] #[br] 本期共筆
       br
       #learn-more(onclick="scrollto('#content')")
         small.en Learn More #[br]
