@@ -263,9 +263,19 @@ a.anchor
     background: url(/assets/img/photo/1.jpg) center center no-repeat
     background-size: cover
 
+.g0v
+  display: inline
+  &:after
+    display: inline
+    content: "g0v"
+    font-family: consolas, "Source Code Pro", Courier New, fixedsys, monospace
+
+.g0v.tw
+  &:after
+    content: "g0v.tw"
 
 @import 'generic/index.styl'
 @import 'modal/index.styl'
 @import 'component/index.styl'
 @import 'timeline.styl'
-
+@import 'page/index.styl'
