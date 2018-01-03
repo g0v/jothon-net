@@ -321,6 +321,17 @@ a.anchor {
   background: url("/assets/img/photo/1.jpg") center center no-repeat;
   background-size: cover;
 }
+.g0v {
+  display: inline;
+}
+.g0v:after {
+  display: inline;
+  content: "g0v";
+  font-family: consolas, "Source Code Pro", Courier New, fixedsys, monospace;
+}
+.g0v.tw:after {
+  content: "g0v.tw";
+}
  {
   width: 100%;
 }
@@ -2537,4 +2548,13 @@ h6.tag {
   border-left-color: #ccc;
   border-left-style: dashed;
   padding-bottom: 10px;
+}
+.grantee-badge {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 25%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
