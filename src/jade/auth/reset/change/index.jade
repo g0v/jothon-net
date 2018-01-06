@@ -2,11 +2,10 @@ extends /base.jade
 block body
   .spc1
   #root.narrow
-    br
-    br
-    br
-    h1.text-center Reset Your Password
-    p.text-center.grayed be sure to pick a strong enough password!
+    +nbr(1)
+    .text-center
+      small.gray Reset Your Password
+      h1 重設密碼
     #authpanel(ng-controller="resetpassword")
       form#pwreset-form.modal-dialog(method="POST",
       action="/d/me/passwd/reset",onsubmit="return window.formError"): .modal-content
@@ -14,15 +13,15 @@ block body
           input#_csrf(type="hidden",name="_csrf")
           input#_token(type="hidden",name="_token")
           .form-group(ng-class="{'has-error':err.code=='pw1','has-feedback':err.code=='pw1'}")
-            label type new password
+            label 輸入新密碼 #[small.gray / type new password]
             input.form-control.input-lg(type="password",name="password",placeholder="",ng-model="pw1")
-            .form-control-feedback.with-text(ng-show="err.code=='pw1'",ng-cloak) {{err.msg}} #[i.fa.fa-close]
+            //.form-control-feedback.with-text(ng-show="err.code=='pw1'",ng-cloak) {{err.msg}} #[i.fa.fa-close]
           .form-group(ng-class="{'has-error':err.code=='pw2','has-feedback':err.code=='pw2'}")
-            label type it again
+            label 再輸入一次 #[small.gray / type it again]
             input.form-control.input-lg(type="password",name="confirm",placeholder="",ng-model="pw2")
-            .form-control-feedback.with-text(ng-show="err.code=='pw2'",ng-cloak) {{err.msg}} #[i.fa.fa-close]
+            //.form-control-feedback.with-text(ng-show="err.code=='pw2'",ng-cloak) {{err.msg}} #[i.fa.fa-close]
         .modal-footer
-          input.btn.btn-success.btn-lg.btn-block(type="submit",value="Set Password",ng-click="checkPassword()")
+          input.btn.btn-success.btn-lg.btn-block(type="submit",value="確定 / Update",ng-click="checkPassword()")
       script.
         window.formError = false;
         angular.module("backend").controller("resetpassword",["$scope","global",function($scope,global) {
@@ -39,5 +38,6 @@ block body
            window.formError = !!!$scope.err;
          };
         }]);
-    p.text-center #[br] #[a(href="/") back to home]
-    br
+    p.text-center
+      a(href="/") 回首頁  #[small /  Back to Home]
+    +nbr(3)

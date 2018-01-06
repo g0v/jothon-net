@@ -1,0 +1,5 @@
+(->
+  auth = do
+    login: ->
+    signup: ->
+)!

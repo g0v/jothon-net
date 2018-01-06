@@ -2,13 +2,14 @@ extends /base.jade
 block body
   .spc1
   #root.narrow
-    br
-    br
-    br
-    h1.text-center Password Reset Done.
-    p.text-center.grayed Now let's try if you can login with your brand new password
-    .text-center(ng-click="auth.ctrl.toggle()")
-      i.fa.fa-cog.ld.ld-cycle(style="font-size:6em;animation-duration:2s")
+    +nbr(2)
+    .text-center
+      small.gray Password Reset Done.
+      h1 密碼重設完成
+      p
+        div 那麼就來試試用新密碼登入吧！
+        small.gray Now let's try if you can login with your brand new password
+      i.fa.fa-check.text-success(style="display:block;font-size:80px")
     script(type="text/javascript").
       $(document).ready(function() {
         setTimeout(function() {
@@ -17,9 +18,9 @@ block body
           auth.ctrl.toggle();
         }, 1000);
       });
-
-    p.text-center #[br] #[a(href="/") back to home]
-    br
+    +nbr(1)
+    p.text-center
+      a(href="/") 回首頁  #[small /  Back to Home]
+    +nbr(2)
     script.
       if(!window.location.search) { window.location.search = "?nexturl=/" }
-  include /module/footer.jade
