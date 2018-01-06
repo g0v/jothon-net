@@ -111,7 +111,7 @@ block body
         span.carousel-control-prev-icon: i.fa.fa-chevron-left
       a.carousel-control-next(href="#carousel-photo",role="button",data-slide="next")
         span.carousel-control-next-icon: i.fa.fa-chevron-right
-
+    +nbr(1)
     p 零時政府黑客松由 g0v 揪松團舉辦，#[b 兩個月一次的單天活動]，百名與會者來自#[b 不同的城市、背景、專長與年紀]，利用#[b 三分鐘]的時間將自己想做的事快速發表，並在活動現場尋找志同道合的#[b 夥伴]，發揮各自所長，同時透過#[b 線上與線下協作]的方式，用弄髒雙手的精神來「#[b.red 讓事情發生]」。
     p 這些想法不光在黑客松發酵，更常延燒到會後，以不定時的方式持續發展，像是「#[a(href="https://moe.kktix.cc/",target="_blank") 萌典松]」、「#[a(href="https://cofacts.kktix.cc/",target="_blank") 真的假的 Line Bot]」、「#[a(href="https://vote.ly.g0v.tw/",target="_blank") 立委投票指南]」等專案，也因此形成了一個長期關注公民科技的民間社群。
     +nbr(1)
@@ -211,9 +211,14 @@ block body
           span.carousel-control-next-icon 
 
     +nbr(2)
+    small.gray 滿腔熱血無處去
     h4 沒有想法，我也可以貢獻嗎？ / Contribute by Join Others
-    p 可以！帶上你的腦袋與雙手，到活動現場找尋志同道合的提案吧！
-    p 或者，來看看其它參與者的心得 —
+    p
+      | 可以！只要帶上你的腦袋與雙手，直接到活動現場找尋志同道合的提案吧！或者你也可以成為黑客松小幫手，先加入 
+      a(href="http://join.g0v.today/") g0v slack
+      |  線上聊天室的 #jothon 群組自我介紹，再到每次黑客松共筆的資訊列表看看是否還缺少什麼人力喔！
+    +nbr(2)
+    h4 參與者心得 / Blogs and Reviews
     +nbr(1)
     mixin carousel-review(item, index)
       if item
