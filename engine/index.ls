@@ -255,7 +255,7 @@ backend = do
           colors.yellow(err.path)
         )
         console.error colors.grey(err.stack)
-        res.status 500 .render '500'
+        res.status 500 .render 'err/500'
     if @config.watch => watch.start @config
     server = @app.listen @config.port, -> console.log "listening on port #{server.address!port}"
 

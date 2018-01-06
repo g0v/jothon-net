@@ -15,12 +15,14 @@
       zh: 提案與短講登記 
       en: Project & Talk Registration
     detail: |
-      **TODO**
       完成報名後，隨時可登記提案。以下幾個資源：
 
-      * 簡報空白範本 — [PDF 格式]() / [Keynote 格式]() / [PowerPoint 格式]() / [Hackmd 範本]()
-      * 提案簡報實例 — [萌典]() / [動民主]() / [國會大代誌]() 
-      * [當次提案登記表]()
+      * 簡報空白範本 — [Keynote 格式](/assets/slide/sample.key) / [Google Slide 範本](https://docs.google.com/presentation/d/1_j7sPeqbZU_VQ_K7RqTWb3G8n6ThXpAS3GQs8SLQRPs/edit?usp=sharing) / [Hackmd 範本](https://hackmd.io/GYNgpiwKxQjAtAE2ATgMbwCyM5+KAmNAZnlgCM0xiAGG4WFTNIA=)
+      * 提案簡報實例 —
+        * [發文附上判決書運動](/assets/slide/ronnywang-judicial.pdf), by Ronnywang, g0v hackath14n
+        * [政治承諾追蹤網](https://speakerdeck.com/mrorz/political-promise-tracker-zheng-zhi-cheng-nuo-zhui-zong-wang-g0v-hackath12n-ti-an), by Johnson, g0v hackath12n
+        * [全民除霉計畫](https://prezi.com/87ugn3no80yt/app4am/), by Rhozan, g0v hackath9n
+      * [當次提案登記表](/latest/project/registration/)
 
       最最重要的是 — 務必要說明清楚_成果授權_ 的方式喔！
 
@@ -50,7 +52,7 @@
       zh: 三分鐘提案
       en: Project Pitch
     detail: |
-      依照 [提案登記表]() 的順序輪流簡報，每組三分鐘。簡報重點：
+      依照 [提案登記表](/latest/project/registration/) 的順序輪流簡報，每組三分鐘。簡報重點：
 
       * 想要做什麼
       * 為什麼要做
@@ -80,7 +82,7 @@
       zh: 短講
       en: Short Talks
     detail: |
-      一場八分鐘的短講，[開放登記]()，題目隨喜
+      一場八分鐘的短講，[開放登記](/latest/project/registration/)，題目隨喜
   - type: event
     date: 17:00 前
     title:

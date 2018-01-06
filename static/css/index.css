@@ -9,7 +9,7 @@
 @font-face {
   font-family: justfont-zh;
   font-weight: 400;
-  src: local("cwtexqyuan");
+  src: local("jf-jinxuan");
   unicode-range: U+4E00-9FFF;
 }
 html,
@@ -19,7 +19,10 @@ body {
   margin: 0;
   padding: 0;
   font-size: 21px;
-  font-family: "Saira Extra Condensed", cwtexqyuan, Helvetica, Arial, sans-serif;
+  font-family: "Saira Extra Condensed", jf-jinxuan, Helvetica, Arial, sans-serif;
+}
+p {
+  line-height: 1.6em;
 }
 .navbar {
   font-size: 0.8em;
