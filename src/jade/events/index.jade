@@ -14,7 +14,13 @@ block body
         a.anchor(id="hackath" + item.id + "n")
         .event.media
           .mr-3
-            .thumb: .inner(style="background-image:url(/assets/img/events/" + item.id + ".jpg)")
+            .thumb
+              .inner.reveal.cover.lightbox.clickable(
+                style="background-image:url(/assets/img/events/" + item.id + ".jpg)",
+                data-src="/assets/img/events/" + item.id + ".jpg",
+                data-lg-src="/assets/img/events/" + item.id + ".jpg"
+              )
+
           .media-body
             h4.mt-0 #{item.name.replace("台灣零時政府","")} #[.en / g0v hackath#{item.id}n]
             .links
