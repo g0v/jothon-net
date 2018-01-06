@@ -6,3 +6,4 @@ config/nginx/local.config
 !.gitignore
 secret.ls
 _public
+config/keys/
