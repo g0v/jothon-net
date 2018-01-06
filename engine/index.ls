@@ -1,7 +1,8 @@
 require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment]>
-require! <[express body-parser express-session connect-multiparty]>
+require! <[express body-parser express-session connect-multiparty oidc-provider]>
 require! <[passport passport-local passport-facebook passport-google-oauth2]>
 require! <[nodemailer nodemailer-smtp-transport csurf]>
+require! <[../config/keys/openid-keystore.json ./io/postgresql/openid-adapter]>
 require! <[./aux ./watch]>
 require! 'uglify-js': uglify-js, LiveScript: lsc
 colors = require \colors/safe
@@ -22,6 +23,13 @@ backend = do
   #session-store: (backend) -> @ <<< backend.dd.session-store!
   init: (config, authio, extapi) -> new bluebird (res, rej) ~>
     @config = config
+    console.log config.domain
+    oidc = new oidc-provider config.domain, { features: devInteractions: false }
+    <~ oidc.initialize({
+      keystore: openid-keystore
+      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://localhost/cb]>}]
+      #adapter: openid-adapter
+    }).then _
     if @config.debug => # for weinre debug
       ip = get-ip!0 or "127.0.0.1"
       (list) <- content-security-policy.map
@@ -39,7 +47,6 @@ backend = do
       res.header "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
       res.header "Access-Control-Allow-Methods", "PUT"
       next!
-
 
     app.use (req, res, next) ->
       #console.log "[#{req.method}] #{req.url}".green
@@ -211,6 +218,11 @@ backend = do
       ..get \/auth/facebook/callback, passport.authenticate \facebook, do
         successRedirect: \/
         failureRedirect: \/auth/failed/
+
+    app.get \/interaction/:grant, (req, res) ->
+      oidc.interactionDetails(req).then (details) ->
+        res.send \ok
+    app.use oidc.callback
 
     postman = nodemailer.createTransport nodemailer-smtp-transport config.mail
 
