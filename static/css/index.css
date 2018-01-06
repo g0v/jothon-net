@@ -2561,3 +2561,6 @@ h6.tag {
   background-repeat: no-repeat;
   background-size: cover;
 }
+body.auth {
+  background: url("/assets/img/matrix.svg");
+}
