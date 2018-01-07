@@ -1,5 +1,5 @@
 - - type: milestone
-    date: 11/13
+    date: 01/01
     title:
       zh: 報名開跑 
       en: Open for Registration
@@ -28,7 +28,7 @@
 
 
 - - type: milestone
-    date: 11/27
+    date: 01/13
     title:
       zh: 活動當天
       en: Opening
@@ -96,7 +96,7 @@
     detail: |
       一組五分鐘的成果報告，無論進度如何都可以談談今天的進展喔！
 - - type: milestone
-    date: 11/28
+    date: 01/14
     title:
       zh: 活動後
       en: After Event
