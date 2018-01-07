@@ -2564,3 +2564,18 @@ h6.tag {
 body.auth {
   background: url("/assets/img/matrix.svg");
 }
+#carousel-review h5 {
+  padding-bottom: 7px;
+  margin-bottom: 3px;
+}
+#carousel-review .review-thumb {
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #eee;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+}
