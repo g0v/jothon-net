@@ -189,6 +189,20 @@ backend = do
       }}})()"""
 
     # this goes after global.js so the static global.js will never be served.
+
+    app.use \/, (req, res, next) ->
+      path = req.path.replace(/^\/?/,'/').replace(/\/?$/,'/')
+      file = [
+        ["static#{path}index.html", "src/jade#{path}index.jade"]
+        ["static#{path}", "src/jade#{path}".replace(/\.html$/, '.jade')]
+      ].filter(-> fs.exists-sync(it.1)).0
+      if !file => return next!
+      logs = []
+      res.header "Content-Type", "text/html"
+      if watch.jade(file.1, file.0, null, logs, null, true) => return res.send logs.join('<br>')
+      console.log "[BUILD] On Demand: #{file.1} --> #{file.0}"
+      res.send fs.read-file-sync file.0
+
     app.use \/, express.static(path.join(__dirname, '../static'))
 
     app

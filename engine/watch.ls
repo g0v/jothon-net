@@ -208,7 +208,7 @@ base = do
       try
         des = src.replace(/src\/md/, "static/doc").replace(/.md/, ".html")
         markdown = affix-anchor(fs.read-file-sync src .toString!)
-        affix markdown .then (affix-code) ->
+        affix markdown .then (affix-code) ~>
           content = ([
             """extends /doc.jade
             block markdown
@@ -218,13 +218,7 @@ base = do
           content ++= ["block affix"]
           content ++= affix-code
           content = content.join(\\n)
-
-          result = jade.render(
-            content,
-            {filename: src, basedir: path.join(cwd,\src/jade/)} <<< {config: data} <<< jade-extapi
-          )
-          <- fs-extra.mkdirs path.dirname(des), _
-          fs.write-file-sync des, result
+          @jade src, des, content
           console.log "[BUILD]   #src --> #des"
 
       catch
@@ -234,7 +228,6 @@ base = do
     # other - for triggering jade rebuilding
     if type == \jade or type == \other =>
       if /^src\/jade\/view\//.exec(src) => return
-      data = reload "../config/site/#{@config.config}.ls"
       try
         if type == \jade => jade-tree.parse src
         srcs = jade-tree.find-root src
@@ -245,24 +238,7 @@ base = do
       if srcs.indexOf(_src) < 0 and type == \jade => srcs ++= _src
       if type == \other => srcs = srcs.filter(->it != _src)
       logs = []
-      if srcs => for src in srcs
-        if !/src\/jade/.exec(src) => continue
-        try
-          code = fs.read-file-sync src .toString!
-          if /^\/\/- ?(module|view) ?/.exec(code) => continue
-          des = src.replace(/src\/jade/, "static").replace(/\.jade/, ".html")
-          if newer(des, _src) => continue
-          desdir = path.dirname(des)
-          if !fs.exists-sync(desdir) or !fs.stat-sync(desdir).is-directory! => mkdir-recurse desdir
-          try
-            fs.write-file-sync(des, jade.render(
-              code,
-              {filename: src, basedir: path.join(cwd,\src/jade/)} <<< {config: data} <<< jade-extapi
-            ))
-            logs.push "[BUILD]   #src --> #des"
-          catch
-            logs.push "[BUILD]   #src failed: "
-            logs.push e.message
+      (srcs or []).filter(-> /src\/jade/.exec(src)).map ~> @jade src, null, null, logs, _src
       if logs.length =>
         logs = ["[BUILD] recursive from #_src:"] ++ logs
         console.log logs.join(\\n)
@@ -329,6 +305,30 @@ base = do
         if logs.length =>
           logs = ["[BUILD] recursive from #src:"] ++ logs
           console.log logs.join(\\n)
+
+  # _src: optional dependency for checking timestamp
+  # force: regardless of timestamp
+  # return 0 for success, 1 for error
+  jade: (src, des = null, code = null, logs = [], _src, force) ->
+    data = reload "../config/site/#{@config.config}.ls"
+    try
+      if !code => code = fs.read-file-sync src .toString!
+      if /^\/\/- ?(module|view) ?/.exec(code) => return
+      if !des => des = src.replace(/src\/jade/, "static").replace(/\.jade/, ".html")
+      if newer(des, (_src or src)) and !force => return
+      desdir = path.dirname(des)
+      if !fs.exists-sync(desdir) or !fs.stat-sync(desdir).is-directory! => mkdir-recurse desdir
+      try
+        fs.write-file-sync(des, jade.render(
+          code,
+          {filename: src, basedir: path.join(cwd,\src/jade/)} <<< {config: data} <<< jade-extapi
+        ))
+        logs.push "[BUILD]   #src --> #des"
+        return 0
+      catch
+        logs.push "[BUILD]   #src failed: "
+        logs.push e.message
+        return 1
 
   build: (cmd, des, dess) ->
     filecache[des] = null
