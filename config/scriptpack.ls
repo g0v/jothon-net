@@ -13,6 +13,7 @@
       /assets/popper/1.12.5/index.js
       /assets/bootstrap/4.0.0-beta/js/bootstrap.min.js
       /assets/js-yaml/3.7.0/index.min.js
+      /js/auth/index.js
     ]>
     servlet: <[
       /js/ldBase/index.js
