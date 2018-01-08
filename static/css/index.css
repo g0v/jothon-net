@@ -9,7 +9,7 @@
 @font-face {
   font-family: justfont-zh;
   font-weight: 400;
-  src: local("jf-jinxuan");
+  src: local("xingothic-tc");
   unicode-range: U+4E00-9FFF;
 }
 html,
@@ -19,6 +19,15 @@ body {
   margin: 0;
   padding: 0;
   font-size: 21px;
+  font-family: "Saira Extra Condensed", xingothic-tc, Helvetica, Arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heavy {
   font-family: "Saira Extra Condensed", jf-jinxuan, Helvetica, Arial, sans-serif;
 }
 p {
