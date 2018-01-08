@@ -3,6 +3,7 @@ auth = (dom, data, parent) ->
   dom["tab.signup"].addEventListener \click, ~> @tab 'signup'
   dom["tab.login"].addEventListener \click, ~> @tab 'login'
   dom["action"].addEventListener \click, ~> @signin @mode == 0
+  @listen 'signout', ~> @signout!
 
 auth
   ..controller = 'auth'
@@ -11,23 +12,26 @@ auth
       tabs = <[signup login]>
       text = <[註冊 登入]>
       @mode = i = tabs.indexOf(name)
-      @dom["tab.#{tabs[i]}"].setAttribute("class", "active nav-link")
-      @dom["tab.#{tabs[1 - i]}"].setAttribute("class", "nav-link")
+      helper.add-class @dom["tab.#{tabs[i]}"], 'active'
+      helper.remove-class @dom["tab.#{tabs[1 - i]}"], 'active'
       @set-text \action, text[i]
       @dom["displayname"].style.display = if i => "none" else "block"
       @dom["newsletter"].style.display = if i => "none" else "block"
     error: (des, value) ->
       @set-text "error.#des", value
-      @dom.model[des].setAttribute("class", "form-control is-invalid")
+      helper.add-class @dom.model[des], 'is-invalid'
       @running false
     running: (is-running = true) ->
-      @dom["action"].setAttribute("class",
-        if is-running => @dom["action"].getAttribute("class") + " running"
-        else @dom["action"].getAttribute("class").replace(/ *running */g, ' ')
-      )
+      helper.add-class @dom["action"], \running
+      helper.remove-class @dom["action"], \running
+      helper.toggle-class @dom["action"], \running, is-running
+
+    signout: ->
+      $.ajax url: \/u/logout, method: \GET
+        .done ~> @parent.fire 'signout.done'
 
     signin: (is-signup = true) ->
-      <[email displayname passwd]>.map ~> @dom.model[it].setAttribute("class", "form-control")
+      <[email displayname passwd]>.map ~> helper.remove-class @dom.model[it], 'is-invalid'
       if !/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.[a-z]{2,}|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.exec(@data.email) =>
         return @error \email, "這不是電子郵件"
       else if is-signup and !@data.displayname =>
@@ -38,7 +42,7 @@ auth
       $.ajax url: (if is-signup => \/u/signup else \/u/login), method: \POST, data: @data
         .done ~>
           @parent.fire 'authpanel.off'
-          @parent.fire 'login', it
+          @parent.fire 'signin', it
           @running false
         .fail ~>
           if it.status == 403 =>

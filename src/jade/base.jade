@@ -19,7 +19,8 @@ html(lang="en")
     +script("/js/global.js")
     +script("/js/pack/base.js")
     +script("/js/main.js")
-  body(id=rootid,class=rootclass)
+  body.ld.ld-over-full-inverse(id=rootid,class=rootclass,style="overflow:scroll")
+    .ld.ld-hourglass.ld-spin-fast.huge
     include /nav.jade
     include /auth/panel.jade
     // For now we don't need this, since it's a static site

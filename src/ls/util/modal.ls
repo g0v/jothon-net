@@ -1,6 +1,7 @@
 modal = (dom, data) ->
   dom["mask"].addEventListener \click, ->
-    dom.root.setAttribute \class, dom.root.getAttribute("class").replace(/ *active/g,"") + " inactive"
+    helper.remove-class dom.root, 'active'
+    helper.add-class dom.root, 'inactive'
 
 modal
   ..controller = 'modal'
