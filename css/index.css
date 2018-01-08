@@ -9,7 +9,7 @@
 @font-face {
   font-family: justfont-zh;
   font-weight: 400;
-  src: local("jf-jinxuan");
+  src: local("xingothic-tc");
   unicode-range: U+4E00-9FFF;
 }
 html,
@@ -19,6 +19,15 @@ body {
   margin: 0;
   padding: 0;
   font-size: 21px;
+  font-family: "Saira Extra Condensed", xingothic-tc, Helvetica, Arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heavy {
   font-family: "Saira Extra Condensed", jf-jinxuan, Helvetica, Arial, sans-serif;
 }
 p {
@@ -26,6 +35,15 @@ p {
 }
 .navbar {
   font-size: 0.8em;
+}
+.navbar .avatar {
+  width: 24px;
+  height: 24px;
+  background: #ccc;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+  border-radius: 3px;
 }
 .navbar-brand img {
   width: 32px;
@@ -1417,7 +1435,6 @@ h6.tag {
   padding-bottom: 5px;
 }
 .cover-modal-inner .nav-tabs {
-  margin-top: -47px;
   margin-bottom: 13px;
 }
 .cover-modal-inner .nav-tabs > li > a {
@@ -2409,6 +2426,10 @@ h6.tag {
   padding: 3px 8px;
   border-radius: 5px 5px 0 0;
   right: 10px;
+}
+.invalid-feedback.abs {
+  top: 0;
+  right: 0;
 }
 .has-feedback .form-control-feedback.with-text.up-tag {
   top: -20px;

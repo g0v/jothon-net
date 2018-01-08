@@ -1,0 +1,1 @@
+$(document).ready(function(){var r,n;return r=function(r,n){},n=r,n.controller="modal",controller.register(r)});

@@ -1,0 +1,1 @@
+var modal,x$;modal=function(t,e){return t.mask.addEventListener("click",function(){return t.root.setAttribute("class",t.root.getAttribute("class").replace(/ *active/g,"")+" inactive")})},x$=modal,x$.controller="modal";
