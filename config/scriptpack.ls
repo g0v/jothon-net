@@ -5,6 +5,7 @@
       /assets/bootstrap/4.0.0-beta/css/bootstrap.min.css
       /assets/fontawesome/4.7.0/css/font-awesome.min.css
       /assets/loading/loading.css
+      /assets/loading/loading-btn.css
       /css/index.css
     ]>
   config.js <<< do
@@ -13,6 +14,7 @@
       /assets/popper/1.12.5/index.js
       /assets/bootstrap/4.0.0-beta/js/bootstrap.min.js
       /assets/js-yaml/3.7.0/index.min.js
+      /js/util/controller.js
       /js/auth/index.js
     ]>
     servlet: <[

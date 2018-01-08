@@ -3,47 +3,31 @@
   .closebtn.lg(ng-click="auth.ctrl.toggle()")
   .card-header(style="padding-bottom:0")
     .text-center
-      .nav.nav-tabs(data-comp="tabs",style="margin-bottom:-1px")
-        .nav-item: a.nav-link 註冊
-        .nav-item: a.nav-link 登入
+      .nav.nav-tabs(style="margin-bottom:-1px")
+        .nav-item: a.nav-link.active(data-dom="tab.signup") 註冊
+        .nav-item: a.nav-link(data-dom="tab.login") 登入
   .card-body
     form.form
-      .form-group(data-comp="email",ng-class="{'has-error':auth.error.email,'has-feedback':auth.error.email}")
+      .form-group.rel(data-dom="email")
         label 電子郵件帳號 #[small.gray / Email]
-        input.form-control(type="text",placeholder="Email, 例如: nobody@g0v.tw",
-        tabindex=1)
-        //-input.form-control(type="text",placeholder="Email, 例如: nobody@g0v.tw",ng-model="auth.email",
-           tabindex=1)
-        //-
-          .form-control-feedback.with-text.up-tag(ng-show="auth.error.email") {{auth.error.email}}
-          .form-control-feedback(ng-show="auth.error.email") #[i.fa.fa-close]
-      .form-group(data-comp="displayname",ng-show="!auth.isSignIn",
-      ng-class="{'has-error':auth.error.displayname,'has-feedback':auth.error.displayname}")
+        input.form-control(type="text",placeholder="Email, 例如: nobody@g0v.tw",data-model="email")
+        .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.email")]
+      .form-group.rel(data-dom="displayname")
         label 顯示名稱 #[small.gray / Display Name]
-        input.form-control(type="text",placeholder="例如：㊣煞氣哥㊣",ng-model="auth.displayname",
-        tabindex=2)
-        //-
-          .form-control-feedback.with-text.up-tag(ng-show="auth.error.displayname") {{auth.error.displayname}}
-          .form-control-feedback(ng-show="auth.error.displayname") #[i.fa.fa-close]
-      .form-group(data-comp="passwd",ng-class="{'has-error':auth.error.passwd,'has-feedback':auth.error.passwd}")
+        input.form-control(type="text",placeholder="例如：㊣煞氣哥㊣",data-model="displayname")
+        .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.displayname")]
+      .form-group.rel(data-dom="passwd")
         label 密碼 #[small.gray / Password]
-        input.form-control(type="password",placeholder="6 個字元以上",ng-model="auth.passwd",
-        tabindex=3)
-        //-
-          .form-control-feedback.with-text.up-tag(ng-show="auth.error.passwd") {{auth.error.passwd}}
-          .form-control-feedback(ng-show="auth.error.passwd") #[i.fa.fa-close]
-      .btn.btn-block.btn-success.btn-lg(data-comp="action") 註冊
+        input.form-control(type="password",placeholder="6 個字元以上",data-model="passwd")
+        .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.passwd")]
+      .btn.btn-block.btn-success.btn-lg.ld.ld-ext-right(data-dom="action")
+        span(data-text="action") 註冊
+        .ld.ld-ring.ld-spin-fast
 
-      //-
-        .btn.btn-block.btn-success.btn-lg.ld.ld-ext-right(ng-click="auth.login()",ng-cloak,
-        ng-class="{'running':auth.loading}")
-          span(ng-show="!auth.isSignIn") SIGNUP
-          span(ng-show="auth.isSignIn") LOGIN
-          .ld.ld-ring.ld-spin-fast
       .row(style="margin:10px 0 0")
         .col-sm-6.textx-left(style="padding-left:0")
-          .checkbox(ng-show="!auth.isSignIn",style="margin:3px 0;font-size:16px;"): label
-            input(data-comp="newsletter",type="checkbox",style="margin-top:2px",ng-model="auth.subscribe")
+          .checkbox(data-dom="newsletter",style="margin:3px 0;font-size:16px;"): label
+            input(data-model="newsletter",type="checkbox",style="margin-top:2px")
             | 同時訂閱電子報
         .col-sm-6.text-right
           a(href="/auth/reset/",style="margin-top:12px;font-size:16px;") 我忘了密碼 &#xbb;
