@@ -1,11 +1,11 @@
 //- module
 .card(data-controller="auth",style="box-shadow:0 2px 3px rgba(0,0,0,.2)")
-  .closebtn.lg(ng-click="auth.ctrl.toggle()")
+  .closebtn.lg(data-dom="closebtn")
   .card-header(style="padding-bottom:0")
     .text-center
       .nav.nav-tabs(style="margin-bottom:-1px")
-        .nav-item: a.nav-link.active(data-dom="tab.signup") 註冊
-        .nav-item: a.nav-link(data-dom="tab.login") 登入
+        .nav-item: a.nav-link.active.clickable(data-dom="tab.signup") 註冊 #[small  / Signup ]
+        .nav-item: a.nav-link.clickable(data-dom="tab.login") 登入 #[small  / Login]
   .card-body
     form.form
       .form-group.rel(data-dom="email")
@@ -21,13 +21,13 @@
         input.form-control(type="password",placeholder="6 個字元以上",data-model="passwd")
         .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.passwd")]
       .btn.btn-block.btn-success.btn-lg.ld.ld-ext-right(data-dom="action")
-        span(data-text="action") 註冊
+        span(data-text="action") 註冊 / Sign Up
         .ld.ld-ring.ld-spin-fast
 
-      .row(style="margin:10px 0 0")
-        .col-sm-6.textx-left(style="padding-left:0")
-          .checkbox(data-dom="newsletter",style="margin:3px 0;font-size:16px;"): label
-            input(data-model="newsletter",type="checkbox",style="margin-top:2px")
-            | 同時訂閱電子報
-        .col-sm-6.text-right
-          a(href="/auth/reset/",style="margin-top:12px;font-size:16px;") 我忘了密碼 &#xbb;
+      div(style="font-size:16px;margin-top:10px")
+        .checkbox(data-dom="newsletter",style="margin:0 0 6px"): label(style="margin:0")
+          input(data-model="newsletter",type="checkbox",style="margin:2px 4px 0 0",checked)
+          .clickable.inline 訂閱電子報 #[small.gray  / Subscribe Newsletter]
+        a(href="/auth/reset/")
+          i.fa.fa-question-circle.mr-1
+          | 忘記密碼 #[small  / Forget Password] &#xbb;

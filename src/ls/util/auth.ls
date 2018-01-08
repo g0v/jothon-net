@@ -3,6 +3,7 @@ auth = (dom, data, parent) ->
   dom["tab.signup"].addEventListener \click, ~> @tab 'signup'
   dom["tab.login"].addEventListener \click, ~> @tab 'login'
   dom["action"].addEventListener \click, ~> @signin @mode == 0
+  dom["closebtn"].addEventListener \click, ~> parent.fire 'authpanel.off'
   @listen 'signout', ~> @signout!
 
 auth
@@ -10,7 +11,7 @@ auth
   ..prototype <<< do
     tab: (name) ->
       tabs = <[signup login]>
-      text = <[註冊 登入]>
+      text = ["註冊 / Sign Up", "登入 / Login"]
       @mode = i = tabs.indexOf(name)
       helper.add-class @dom["tab.#{tabs[i]}"], 'active'
       helper.remove-class @dom["tab.#{tabs[1 - i]}"], 'active'
