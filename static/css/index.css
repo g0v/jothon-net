@@ -36,6 +36,15 @@ p {
 .navbar {
   font-size: 0.8em;
 }
+.navbar .avatar {
+  width: 24px;
+  height: 24px;
+  background: #ccc;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+  border-radius: 3px;
+}
 .navbar-brand img {
   width: 32px;
 }
@@ -1426,7 +1435,6 @@ h6.tag {
   padding-bottom: 5px;
 }
 .cover-modal-inner .nav-tabs {
-  margin-top: -47px;
   margin-bottom: 13px;
 }
 .cover-modal-inner .nav-tabs > li > a {

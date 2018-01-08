@@ -15,7 +15,10 @@
       /assets/bootstrap/4.0.0-beta/js/bootstrap.min.js
       /assets/js-yaml/3.7.0/index.min.js
       /js/util/controller.js
-      /js/auth/index.js
+      /js/util/modal.js
+      /js/util/auth.js
+      /js/util/nav.js
+      /js/util/main.js
     ]>
     servlet: <[
       /js/ldBase/index.js

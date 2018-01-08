@@ -7,9 +7,8 @@ include /version.jade
 mixin margin-break
   .margin-break &nbsp;
 mixin cover-modal(model,className)
-  .cover-modal-wrapper(ng-modal,ng-model=model,config=model + ".config",
-  ng-class="{'active':" + model + ".ctrl.toggled,'inactive':" + model + ".ctrl.toggled==false}",class=className)
-    .cover-modal(ng-click=model+".ctrl.toggle(false)")
+  .cover-modal-wrapper(data-controller="modal",class=className)
+    .cover-modal(data-dom="mask")
     .cover-modal-inner
       block
 mixin slider(model,config,size)

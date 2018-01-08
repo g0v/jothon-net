@@ -1,5 +1,5 @@
 //- module
 include /mixins/index.jade
-div(ng-if="!staticMode")
+#auth-panel(ng-if="!staticMode")
   +cover-modal("auth", 'authpanel')
     include static.jade

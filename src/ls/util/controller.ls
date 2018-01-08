@@ -10,7 +10,7 @@ controller = do
         | otherwise
           node.addEventListener \input, -> data[name] = @value
 
-  root-wrap: (cls, root) ->
+  root-wrap: (cls, root, parent) ->
     [dom,data] = [{root, model: {}, text: {}},{}]
     nodes = root.querySelectorAll '*[data-dom]'
     for it in nodes => dom[it.getAttribute('data-dom')] = it
@@ -18,12 +18,14 @@ controller = do
     for it in nodes => @model-wrap it, data, dom
     nodes = root.querySelectorAll '*[data-text]'
     for it in nodes => dom.text[it.getAttribute('data-text')] = it
-    node = new cls dom, data
+    node = new cls dom, data, parent
+    node <<< {dom, data}
 
-  register: (cls) ->
+  register: (cls, parent) ->
     roots = document.querySelectorAll "*[data-controller=#{cls.controller}]"
     cls.prototype <<< do
-      listen: (name, cb) -> @_handlers[][name].push cb
+      fire: (name, value) -> for cb in @{}_handlers[][name] => cb value
+      listen: (name, cb) -> @{}_handlers[][name].push cb
       set-text: (name, value) -> @dom.text[name].innerText = value
       set: (name, value) ->
         @data[name] = value
@@ -33,6 +35,6 @@ controller = do
             node.checked = !!value
           | otherwise
             node.value = value
-        for cb in @_handlers[][name] => cb value
+        @fire name, value
       get: (name) -> return @data[name]
-    for root in roots => @root-wrap cls, root
+    return for root in roots => @root-wrap cls, root, parent

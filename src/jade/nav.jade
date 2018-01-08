@@ -2,7 +2,7 @@
 - var navEvents = yamls("data/events");
 - navEvents.sort(function(a,b) { return b.id - a.id; });
 - navEvents = navEvents.splice(0, 5)
-nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark
+nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav")
   a.navbar-brand(href="/") #[img.mr-1(src="/assets/img/jothon-bg-dark.svg")] 揪松網
   button.navbar-toggler(type="button",data-toggle="collapse",data-target="#navbarSupportedContent")
     span.navbar-toggler-icon
@@ -24,3 +24,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark
       li.nav-item: a.nav-link(href="/about/") 關於揪松 #[small / About]
       li.nav-item: a.nav-link(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18",
       target="_blank") 認養大松 #[small / Donate]
+    ul.navbar-nav.ml-auto
+      li.nav-item(data-dom="profile"): a.nav-link
+        .avatar
+        span(data-text="displayname") 沒有人
+      li.nav-item: a.nav-link(data-dom="signin") 登入

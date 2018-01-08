@@ -1,0 +1,1 @@
+var nav,x$;nav=function(n,e,i){var t=this;return n.signin.addEventListener("click",function(){return i.fire("authpanel.on")}),this.listen("user",function(n){return t.dom.signin.style.display=n?"none":"block",t.dom.profile.style.display=n?"block":"none",t.setText("displayname",n?n.displayname:"沒有人")})},x$=nav,x$.controller="nav";

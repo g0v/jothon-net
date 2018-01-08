@@ -1,8 +1,5 @@
-<- $(document).ready
-
-auth = (dom, data) ->
-  @ <<< data: data, dom: dom
-  @ <<< mode: 0
+auth = (dom, data, parent) ->
+  @ <<< mode: 0, parent: parent
   dom["tab.signup"].addEventListener \click, ~> @tab 'signup'
   dom["tab.login"].addEventListener \click, ~> @tab 'login'
   dom["action"].addEventListener \click, ~> @signin @mode == 0
@@ -39,12 +36,12 @@ auth
       else if @data.passwd.length < 4 => return @error \passwd, "密碼太弱"
       @running!
       $.ajax url: (if is-signup => \/u/signup else \/u/login), method: \POST, data: @data
-        .done ~> @running false
+        .done ~>
+          @parent.fire 'authpanel.off'
+          @parent.fire 'login', it
+          @running false
         .fail ~>
           if it.status == 403 =>
             if is-signup => @error \email, "已經註冊過了"
             else @error \passwd, "密碼不符"
           else @error \email, "系統問題，請稍候再試"
-
-
-controller.register auth
