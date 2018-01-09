@@ -2,7 +2,7 @@ require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment jade]>
 require! <[express body-parser express-session connect-multiparty oidc-provider]>
 require! <[passport passport-local passport-facebook passport-google-oauth2]>
 require! <[nodemailer nodemailer-smtp-transport csurf require-reload]>
-require! <[../config/keys/openid-keystore.json ./io/postgresql/openid-adapter]>
+require! <[../config/keys/openid-keystore.json]>
 require! <[./aux ./watch]>
 require! 'uglify-js': uglify-js, LiveScript: lsc
 reload = require-reload require
@@ -26,12 +26,14 @@ backend = do
   init: (config, authio, extapi) -> new bluebird (res, rej) ~>
     @config = config
     oidc = new oidc-provider config.domain, do
-      features: devInteractions: false
-      findById: -> authio.oidc.find-by-id
+      features: devInteractions: false, clientCredentials: true, discovery: true
+      findById: authio.oidc.find-by-id
       interactionUrl: -> "/openid/i/#{it.oidc.uuid}"
+      scopes: <[openid offline_access email]>
+      claims: email: <[username]>
     <~ oidc.initialize({
       keystore: openid-keystore
-      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://localhost:9000/cb]>}]
+      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://local.host:8999/u/auth/g0v/cb]>}]
       adapter: authio.oidc.adapter
     }).then _
     oidc.app.proxy = true
@@ -58,8 +60,7 @@ backend = do
       res.setHeader \Content-Security-Policy, content-security-policy
       res.setHeader \X-Content-Security-Policy, content-security-policy
       next!
-    app.use body-parser.json limit: config.limit
-    app.use body-parser.urlencoded extended: true, limit: config.limit
+
     app.engine \jade, (file-path, options, cb) ~>
       if !/\.jade$/.exec(file-path) => file-path = "#{file-path}.jade"
       fs.read-file file-path, (e, content) ~>
@@ -161,6 +162,22 @@ backend = do
         return null
       return null
 
+    app.get \/openid/i/:grant, (req, res) ->
+      oidc.interactionDetails(req).then (details) ->
+        if !req.user => return res.render \auth/index
+        ret = do
+          login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+        oidc.interactionFinished(req, res, ret)
+    app.get \/openid/i/:grant/login, (req, res) ->
+      if !req.user => return res.render \auth/index
+      ret = do
+        login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+      oidc.interactionFinished(req, res, ret)
+    app.use \/openid/, oidc.callback
+
+    app.use body-parser.json limit: config.limit
+    app.use body-parser.urlencoded extended: true, limit: config.limit
+
     router = do
       user: express.Router!
       api: express.Router!
@@ -182,10 +199,10 @@ backend = do
         successRedirect: \/u/200
         failureRedirect: \/u/403
 
+    app.use "/e", extapi!
     if config.usedb =>
       backend.csrfProtection = csurf!
       app.use backend.csrfProtection
-    app.use "/e", extapi!
 
     app.get \/js/global.js, (backend.csrfProtection or (req,res,next)->next!), (req, res) ->
       res.setHeader \content-type, \application/javascript
@@ -249,19 +266,6 @@ backend = do
       ..get \/auth/facebook/callback, passport.authenticate \facebook, do
         successRedirect: \/
         failureRedirect: \/auth/failed/
-
-    app.get \/openid/i/:grant, (req, res) ->
-      oidc.interactionDetails(req).then (details) ->
-        if !req.user => return res.render \auth/index
-        ret = do
-          login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
-        oidc.interactionFinished(req, res, ret)
-    app.get \/openid/i/:grant/login, (req, res) ->
-      ret = do
-        login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
-      oidc.interactionFinished(req, res, ret)
-
-    app.use \/openid/, oidc.callback
 
     postman = nodemailer.createTransport nodemailer-smtp-transport config.mail
 
