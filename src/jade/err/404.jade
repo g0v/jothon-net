@@ -1,19 +1,15 @@
 extends /base.jade
 block body
-  div &nbsp;
-  #root
-    br
-    br
-    h1.text-center Not Found.
-    .text-center.grayed
-      | " http 404 
+  +nbr(3)
+  .text-center
+    h1 找不到頁面
+    p.gray
       if msg
-        | : #{msg}
-      | "
-    br
-    br
-    br
-    p.text-center Can't find what you want? #[br]#[br] #[a(href="/") back to home]
-    br
-    script.
-      if(!window.location.search) { window.location.search = "?nexturl=/" }
+        span #{msg} 
+      else
+        span 先不要問為什麼沒有這個頁面 #[br] 因為我就是沒有頁
+    +nbr(1)
+    small.gray HTTP 404
+    +nbr(3)
+    a(href="/") 回首頁  #[small /  Back to Home]
+  +nbr(4)

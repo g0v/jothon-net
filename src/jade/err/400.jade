@@ -1,19 +1,15 @@
 extends /base.jade
 block body
-  div &nbsp;
-  #root
-    br
-    br
-    h1.text-center Bad Request.
-    .text-center.grayed
-      | " http 400 
+  +nbr(3)
+  .text-center
+    h1 Bad Request
+    p.gray
       if msg
-        | : #{msg}
-      | "
-    br
-    br
-    br
-    p.text-center Can't find what you want? #[br]#[br] #[a(href="/") back to home]
-    br
-    script.
-      if(!window.location.search) { window.location.search = "?nexturl=/" }
+        span #{msg} 
+      else
+        span 你要求我做壞壞的事情 #[br] 我不能接受
+    +nbr(1)
+    small.gray HTTP 400
+    +nbr(3)
+    a(href="/") 回首頁  #[small /  Back to Home]
+  +nbr(4)

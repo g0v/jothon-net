@@ -2,14 +2,14 @@ extends /base.jade
 block body
   +nbr(3)
   .text-center
-    h1 後端錯誤
+    h1 未經授權
     p.gray
       if msg
         span #{msg} 
       else
-        span 在這個世界上，有些錯誤... #[br] 沒有人會去修
+        span 雖然這很不去中心化 #[br] 反正我們其實是多中心化
     +nbr(1)
-    small.gray HTTP 500
+    small.gray HTTP 401
     +nbr(3)
     a(href="/") 回首頁  #[small /  Back to Home]
   +nbr(4)
