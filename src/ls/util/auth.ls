@@ -44,7 +44,9 @@ auth
         .done ~>
           @parent.fire 'authpanel.off'
           @parent.fire 'signin', it
-          @running false
+          if /\/openid\/i/.exec(window.location.pathname) =>
+            window.location.href = "#{window.location.pathname}/login"
+          else @running false
         .fail ~>
           if it.status == 403 =>
             if is-signup => @error \email, "已經註冊過了"

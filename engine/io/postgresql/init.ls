@@ -2,6 +2,20 @@ require! <[../../../secret ../postgresql pg bluebird]>
 
 queries = []
 
+queries.push init-oidcmodel-table = """create table if not exists oidcmodel (
+  key serial primary key,
+  id text not null unique,
+  payload jsonb,
+  expire int,
+  consumed timestamp
+)"""
+
+queries.push init-oidcgrant-table = """create table if not exists oidcgrant (
+  key serial primary key,
+  id text not null unique,
+  token text[]
+)"""
+
 queries.push init-users-table = """create table if not exists users (
   key serial primary key,
   username text not null unique constraint nlen check (char_length(username) <= 100),

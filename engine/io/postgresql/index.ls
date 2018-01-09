@@ -3,6 +3,13 @@ require! <[pg bluebird crypto bcrypt colors ./aux]>
 ret = (config) ->
   @config = config
   @authio = authio = do
+    oidc: do
+      find-by-id:  (id) ~>
+        @query "select * from users where key = $1", [id]
+          .then (r={}) ->
+            if !r.rows or r.rows.length == 0 => return bluebird.reject!
+            return r.rows.0
+      adapter: (name) -> @ <<< {name}
     user: do
       # store whole object ( no serialization )
       serialize: (user={}) -> bluebird.resolve( user or {} )
@@ -86,6 +93,45 @@ ret = (config) ->
             return null
           .catch -> [console.error("session.destroy",it),cb!]
         return null
+  io = @
+  @authio.oidc.adapter.prototype <<< do
+    upsert: (id, payload, expire) ->
+      grantid = payload.grantId
+      io.query(
+      "insert into oidcmodel (id,payload,expire) values ($1, $2, $3) on conflict (id) do update set payload = $2"
+      [id, payload, expire])
+        .then ->
+          if grantid => io.query "select token from oidcgrant where id = $1", [grantid]
+          else bluebird.resolve!
+        .then (r={}) ->
+          if grantid => io.query(
+            "insert into oidcgrant (id, token) values ($1, $2) on conflict (id) do update set token = $2"
+            [grantid, (r.rows.0 or {token: []}).token.push id])
+          else bluebird.resolve!
+        .catch -> return null
+    find: (id) ->
+      io.query "select * from oidcmodel where id = $1", [id]
+        .then (r = {}) -> return r.[]rows.0.payload
+        .catch -> return null
+    consume: (id) ->
+      io.query "update oidcmodel set consumed = now() where id = $1", [id]
+        .then -> return null
+        .catch -> return null
+    destroy: (id) ->
+      local = {}
+      io.query "select payload from oidcmodel where id = $1", [id]
+        .then (r={}) ->
+          if !r.rows or !r.rows.length => return bluebird.reject!
+          local.grantid = r.rows.0.{}payload.grantId
+          io.query(
+          """delete from oidcmodel as m using oidcgrant as g where g.key = $1 and m.key in ANY(g.list)""",
+          [local.grantid])
+        .then (r={}) ->
+          io.query "delete from oidcgrant where key = $1", [local.grantid]
+        .then -> return null
+        .catch -> return null
+
+    connect: (provider) ->
   @
 
 ret.prototype = do

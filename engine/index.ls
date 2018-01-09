@@ -26,11 +26,14 @@ backend = do
   init: (config, authio, extapi) -> new bluebird (res, rej) ~>
     @config = config
     console.log config.domain
-    oidc = new oidc-provider config.domain, { features: devInteractions: false }
+    oidc = new oidc-provider config.domain, do
+      features: devInteractions: false
+      findById: -> authio.oidc.find-by-id
+      interactionUrl: -> "/openid/i/#{it.oidc.uuid}"
     <~ oidc.initialize({
       keystore: openid-keystore
-      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://localhost/cb]>}]
-      #adapter: openid-adapter
+      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://localhost:9000/cb]>}]
+      adapter: authio.oidc.adapter
     }).then _
     oidc.app.proxy = true
     if @config.debug => # for weinre debug
@@ -248,9 +251,17 @@ backend = do
         successRedirect: \/
         failureRedirect: \/auth/failed/
 
-    app.get \/interaction/:grant, (req, res) ->
+    app.get \/openid/i/:grant, (req, res) ->
       oidc.interactionDetails(req).then (details) ->
-        res.send \ok
+        if !req.user => return res.render \auth/index
+        ret = do
+          login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+        oidc.interactionFinished(req, res, ret)
+    app.get \/openid/i/:grant/login, (req, res) ->
+      ret = do
+        login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+      oidc.interactionFinished(req, res, ret)
+
     app.use \/openid/, oidc.callback
 
     postman = nodemailer.createTransport nodemailer-smtp-transport config.mail
