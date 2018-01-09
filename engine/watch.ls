@@ -122,6 +122,7 @@ ftype = ->
 
 filecache = {}
 base = do
+  jade-extapi: jade-extapi
   ignore-list: [/^(.+\/)*?\.[^/]+$/]
   ignore-func: (f) -> @ignore-list.filter(-> it.exec f.replace(cwd-re, "")replace(/^\.\/+/, ""))length
   start: (config) ->

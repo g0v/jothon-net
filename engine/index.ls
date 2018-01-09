@@ -1,12 +1,14 @@
-require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment]>
+require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment jade]>
 require! <[express body-parser express-session connect-multiparty oidc-provider]>
 require! <[passport passport-local passport-facebook passport-google-oauth2]>
-require! <[nodemailer nodemailer-smtp-transport csurf]>
+require! <[nodemailer nodemailer-smtp-transport csurf require-reload]>
 require! <[../config/keys/openid-keystore.json ./io/postgresql/openid-adapter]>
 require! <[./aux ./watch]>
 require! 'uglify-js': uglify-js, LiveScript: lsc
+reload = require-reload require
 colors = require \colors/safe
 
+cwd = path.resolve process.cwd!
 content-security-policy = []
 
 get-ip = (default-ifname = "en0") ->
@@ -30,6 +32,7 @@ backend = do
       clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://localhost/cb]>}]
       #adapter: openid-adapter
     }).then _
+    oidc.app.proxy = true
     if @config.debug => # for weinre debug
       ip = get-ip!0 or "127.0.0.1"
       (list) <- content-security-policy.map
@@ -55,6 +58,18 @@ backend = do
       next!
     app.use body-parser.json limit: config.limit
     app.use body-parser.urlencoded extended: true, limit: config.limit
+    app.engine \jade, (file-path, options, cb) ~>
+      if !/\.jade$/.exec(file-path) => file-path = "#{file-path}.jade"
+      fs.read-file file-path, (e, content) ~>
+        if e => return cb e
+        data = reload "../config/site/#{@config.config}.ls"
+        try
+          ret = jade.render(content,
+            {filename: file-path, basedir: path.join(cwd,\src/jade/)} <<< {config: data} <<< watch.jade-extapi
+          )
+          return cb(null, ret)
+        catch e
+          return cb e
 
     app.set 'view engine', 'jade'
     app.engine \ls, (path, options, callback) ->
@@ -236,7 +251,7 @@ backend = do
     app.get \/interaction/:grant, (req, res) ->
       oidc.interactionDetails(req).then (details) ->
         res.send \ok
-    app.use oidc.callback
+    app.use \/openid/, oidc.callback
 
     postman = nodemailer.createTransport nodemailer-smtp-transport config.mail
 
