@@ -4,11 +4,11 @@ ret = (config) ->
   @config = config
   @authio = authio = do
     oidc: do
-      find-by-id:  (id) ~>
+      find-by-id:  (ctx, id) ~>
         @query "select * from users where key = $1", [id]
           .then (r={}) ->
             if !r.rows or r.rows.length == 0 => return bluebird.reject!
-            return r.rows.0
+            return {accountId: id, claims: -> bluebird.resolve({sub: id} <<< r.rows.0) }
       adapter: (name) -> @ <<< {name}
     user: do
       # store whole object ( no serialization )
