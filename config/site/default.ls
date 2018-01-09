@@ -2,7 +2,7 @@
   config = do
     name: \servlet
     debug: false
-    domain: \https://hack.g0v.tw
+    domain: \http://localhost:9000
     is-production: true
     facebook:
       clientID: \<your-facebook-clientid-here>
