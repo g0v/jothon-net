@@ -25,7 +25,6 @@ backend = do
   #session-store: (backend) -> @ <<< backend.dd.session-store!
   init: (config, authio, extapi) -> new bluebird (res, rej) ~>
     @config = config
-    console.log config.domain
     oidc = new oidc-provider config.domain, do
       features: devInteractions: false
       findById: -> authio.oidc.find-by-id
