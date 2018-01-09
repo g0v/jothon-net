@@ -2,7 +2,11 @@ require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment jade]>
 require! <[express body-parser express-session connect-multiparty oidc-provider]>
 require! <[passport passport-local passport-facebook passport-google-oauth2]>
 require! <[nodemailer nodemailer-smtp-transport csurf require-reload]>
-require! <[../config/keys/openid-keystore.json]>
+require! <[openid-client]>
+try
+  require! <[../config/keys/openid-keystore.json]>
+catch e
+
 require! <[./aux ./watch]>
 require! 'uglify-js': uglify-js, LiveScript: lsc
 reload = require-reload require
@@ -25,20 +29,20 @@ backend = do
   #session-store: (backend) -> @ <<< backend.dd.session-store!
   init: (config, authio, extapi) -> new bluebird (res, rej) ~>
     @config = config
-    oidc = new oidc-provider config.domain, do
-      features: devInteractions: false, clientCredentials: true, discovery: true
-      findById: authio.oidc.find-by-id
-      interactionUrl: -> "/openid/i/#{it.oidc.uuid}"
-      scopes: <[openid offline_access email profile]>
-      claims: do
-        email: <[username]>
-        profile: <[displayname description]>
-    <~ oidc.initialize({
-      keystore: openid-keystore
-      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://local.host:8999/u/auth/g0v/cb]>}]
-      adapter: authio.oidc.adapter
-    }).then _
-    oidc.app.proxy = true
+    oidc = null
+    promise = if config.openid-provider.enable =>
+      oidc = new oidc-provider config.domain, do
+        features: devInteractions: false
+        findById: -> authio.oidc.find-by-id
+        interactionUrl: -> "/openid/i/#{it.oidc.uuid}"
+      oidc.initialize({
+        keystore: openid-keystore
+        clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://localhost:9000/cb]>}]
+        adapter: authio.oidc.adapter
+      })
+    else bluebird.resolve!
+    <~ promise.then _
+    if oidc => oidc.app.proxy = true
     if @config.debug => # for weinre debug
       ip = get-ip!0 or "127.0.0.1"
       (list) <- content-security-policy.map
@@ -62,7 +66,8 @@ backend = do
       res.setHeader \Content-Security-Policy, content-security-policy
       res.setHeader \X-Content-Security-Policy, content-security-policy
       next!
-
+    app.use body-parser.json limit: config.limit
+    app.use body-parser.urlencoded extended: true, limit: config.limit
     app.engine \jade, (file-path, options, cb) ~>
       if !/\.jade$/.exec(file-path) => file-path = "#{file-path}.jade"
       fs.read-file file-path, (e, content) ~>
@@ -108,6 +113,22 @@ backend = do
     },(u,p,done) ~>
       get-user u, p, true, null, false, done
 
+    /* [ g0v login code */
+    params = do
+      redirect_uri: \http://local.host:8999/u/auth/g0v/cb
+      scope: 'openid email'
+    issuer = new openid-client.Issuer do
+      issuer: \http://localhost:9000
+      authorization_endpoint: \http://localhost:9000/openid/auth
+      token_endpoint: \http://localhost:9000/openid/token
+      userinfo_endpoint: \http://localhost:9000/openid/me
+      jwks_uri: \http://localhost:9000/openid/certs
+    client = new issuer.Client do
+      client_id: \foo
+      client_secret: \bar
+    passport.use \oidc, new openid-client.Strategy { client: client, params }, (u, p, done) ~>
+      get-user p.username, null, false, p, true, done
+    /* g0v login code ] */
 
     passport.use new passport-google-oauth2.Strategy(
       do
@@ -149,7 +170,7 @@ backend = do
           path: \/
           httpOnly: true
           maxAge: 86400000 * 30 * 12 #  1 year
-          domain: \localhost
+          domain: @config.domain
       app.use passport.initialize!
       app.use passport.session!
 
@@ -163,22 +184,6 @@ backend = do
         done null, u or {}
         return null
       return null
-
-    app.get \/openid/i/:grant, (req, res) ->
-      oidc.interactionDetails(req).then (details) ->
-        if !req.user => return res.render \auth/index
-        ret = do
-          login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
-        oidc.interactionFinished(req, res, ret)
-    app.get \/openid/i/:grant/login, (req, res) ->
-      if !req.user => return res.render \auth/index
-      ret = do
-        login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
-      oidc.interactionFinished(req, res, ret)
-    app.use \/openid/, oidc.callback
-
-    app.use body-parser.json limit: config.limit
-    app.use body-parser.urlencoded extended: true, limit: config.limit
 
     router = do
       user: express.Router!
@@ -201,10 +206,10 @@ backend = do
         successRedirect: \/u/200
         failureRedirect: \/u/403
 
-    app.use "/e", extapi!
     if config.usedb =>
       backend.csrfProtection = csurf!
       app.use backend.csrfProtection
+    app.use "/e", extapi!
 
     app.get \/js/global.js, (backend.csrfProtection or (req,res,next)->next!), (req, res) ->
       res.setHeader \content-type, \application/javascript
@@ -268,6 +273,25 @@ backend = do
       ..get \/auth/facebook/callback, passport.authenticate \facebook, do
         successRedirect: \/
         failureRedirect: \/auth/failed/
+    /* [ g0v login sample */
+      ..get \/auth/g0v, passport.authenticate \oidc
+      ..get \/auth/g0v/cb, passport.authenticate \oidc, do
+        successRedirect: \/
+        failureRedirect: \/auth/failed/
+    /* g0v login sample ] */
+
+    if oidc =>
+      app.get \/openid/i/:grant, (req, res) ->
+        oidc.interactionDetails(req).then (details) ->
+          if !req.user => return res.render \auth/index
+          ret = do
+            login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+          oidc.interactionFinished(req, res, ret)
+      app.get \/openid/i/:grant/login, (req, res) ->
+        ret = do
+          login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+        oidc.interactionFinished(req, res, ret)
+      app.use \/openid/, oidc.callback
 
     postman = nodemailer.createTransport nodemailer-smtp-transport config.mail
 
