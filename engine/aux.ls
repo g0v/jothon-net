@@ -6,6 +6,7 @@ base = do
     (str) -> str.replace(/&<>'"]/g, (-> map[it]))
   )!
 
+  ip: (req) -> req.headers['X-Real-IP'] or req.connection.remoteAddress
   log: (req, msg, head = "") ->
     date = moment(new Date!).tz("Asia/Taipei").format("MM-DD HH:mm")
     console.log "[#date|#head#{if head and req => ' ' else ''}#{if req => req.user.key else ''}] #msg"
