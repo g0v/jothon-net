@@ -39,7 +39,7 @@ p {
 .navbar .avatar {
   width: 24px;
   height: 24px;
-  background: #ccc;
+  background: url("/assets/img/default-avatar.svg") #ccc center center no-repeat;
   display: inline-block;
   vertical-align: top;
   margin-right: 10px;
