@@ -1,5 +1,6 @@
 extends /base.jade
 block vars
+  - var title = "過往活動 / 零時政府揪松網"
   - var events = yamls("data/events");
   - events.sort(function(a,b) { return b.id - a.id; });
 block head
