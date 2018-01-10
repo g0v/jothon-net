@@ -22,6 +22,18 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
       //- coming soon
         li.nav-item: a.nav-link(href="/faq/") 常見問題 #[small / FAQ]
       li.nav-item: a.nav-link(href="/about/") 關於揪松 #[small / About]
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle#navbar-dropdown-participate(
+        href="#",role="button",data-toggle="dropdown") 線上參與 #[small / Participate]
+        .dropdown-menu
+          a.dropdown-item(href="http://join.g0v.today",target="_blank") 加入 Slack #[small / Join Slack]
+          a.dropdown-item("https://www.facebook.com/groups/g0v.general/",target="_blank") 臉書社團 #[small / FB Group]
+          a.dropdown-item(href="/irc/") 線上聊天室 #[small / Chatroom]
+          a.dropdown-item(href="/irc/log/") 對話紀錄 #[small / Chat Log]
+          a.dropdown-item(href="https://groups.google.com/forum/#!forum/g0v-general",target="_blank") 線上論壇 #[small / Forum]
+          a.dropdown-item(href="http://g0v.hackpad.tw/",target="_blank") 線上共筆 #[small / Collaborative Notes]
+          .dropdown-divider
+          a.dropdown-item(href="https://github.com/g0v/",target="_blank") 源碼庫 #[small / Github]
       li.nav-item: a.nav-link(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18",
       target="_blank") 認養大松 #[small / Donate]
     ul.navbar-nav.ml-auto
