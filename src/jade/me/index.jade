@@ -1,0 +1,80 @@
+extends /base.jade
+block vars
+  - var title = "個人檔案 / 零時政府揪松網"
+  - var description = "g0v 揪松團是 g0v.tw 社群籌辦雙月黑客松的工作小組，除了籌畫每雙月的百人黑客松 ( 大松 ) 外，2016 年起亦積極推動社群基礎建設，並於 2016 年底推出公民科技創新獎助金計畫 。"
+block head
+block body
+  +nbr(1)
+  .content.user-profile
+    .media
+      .media-left.mr-3
+        .avatar.mb-2
+        .text-center
+      .media-body
+        h3.mb-0 Display Name
+        .links.mb-2: small
+          a.mr-3.text-primary(href="#") #[i.fa.fa-globe] website
+          span.mr-3.text-primary #[i.fa.fa-envelope] display@name.g0v
+        .sep.huge-gap.light
+        .desc
+          p This is some description about my self.
+          p It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse elsewhere yet her sir extensive defective unwilling get. Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors. Written address greatly get attacks inhabit pursuit our but. Lasted hunted enough an up seeing in lively letter. Had judgment out opinions property the supplied. 
+        div
+          each tag in ["g0v","hackathon","democracy","education","photography","moedict"]
+            .badge.badge-light.mr-1= tag
+
+  .content(style="background:#111;width:100%;max-width:100%;"): .content.text-light
+    h1 編輯 #[small  / Editing]
+    +nbr(2)
+    .card.mb-3.bg-dark
+      .card-body
+        h4 個人資訊 #[small.light  / Public Information]
+        .sep.huge-gap
+        .form-group
+          label 顯示名稱 #[small.light  / Display Name]
+          input.form-control(type="text",placeholder="例如, Agent Smith")
+        .form-group
+          label 個人網頁 #[small.light  / Personal Web Page]
+          input.form-control(type="text",placeholder="URL to your website")
+        .form-group
+          label 個人簡介 #[small.light  / Profile]
+          textarea.form-control(rows="4",placeholder="lets' talk about yourself")
+        .form-group
+          .pull-right.light(style="vertical-align:bottom"): small 以逗點分隔不同標籤 / Comma Separated
+          label 標籤 #[small.light  / Tags]
+          input.form-control(type="text")
+        .text-right: .btn.btn-primary 更新 #[small  / Update]
+    .card.mb-3.bg-dark
+      .card-body
+        h4 變更密碼 #[small.light  / Change Password]
+        .sep.huge-gap
+        .form-group
+          label 目前密碼 #[small.light  / Current Password]
+          input.form-control(type="password")
+        .form-group
+          label 新的密碼 #[small.light  / New Password]
+          input.form-control(type="password")
+        .form-group
+          label 新的密碼 ( 再打一次 ) #[small.light  / New Password (again)]
+          input.form-control(type="password")
+        .text-right: .btn.btn-primary 更新 #[small  / Update]
+    .card.mb-3.bg-dark
+      .card-body
+        h4 Jothon App #[small.light  / Login your user with Jothon App]
+        .sep.huge-gap
+        .text-center #[+nbr(2)]你目前沒有任何 Jothon App。 #[+nbr(2)] #[a(href="#") 來建立 App ...] #[+nbr(2)]
+    .card.mb-3.bg-dark
+      .card-body
+        h4.mb-0 Create Jothon App
+        small.light 透過 Jothon App 讓使用者可以透過揪松網登入你的服務
+        .sep.huge-gap
+        .form-group
+          label Jothon App Name
+          input.form-control(type="text", placeholder="name for identify your jothon app, such as 'My Service'")
+        .form-group
+          label Callback URL
+          input.form-control(type="text", placeholder="e.g., https://myservice.info/auth/g0v/callback")
+        .form-group
+          label Avatar URL #[small  will be shown to users when they login]
+          input.form-control(type="text", placeholder="e.g., https://myservice.info/img/jothon-app-avatar.png")
+        .text-right: .btn.btn-primary 建立 #[small  / Create]

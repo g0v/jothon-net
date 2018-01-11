@@ -7006,6 +7006,15 @@ h6.tag {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.user-profile .avatar {
+  width: 128px;
+  height: 128px;
+  background: url("/assets/img/default-avatar.svg") #ccc center center no-repeat;
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
 body.auth {
   background: url("/assets/img/matrix.svg");
 }
