@@ -23,50 +23,51 @@ block body
           each tag in ["g0v","hackathon","democracy","education","photography","moedict"]
             .badge.badge-light.mr-1= tag
 
-  .content(style="background:#111;width:100%;max-width:100%;"): .content.text-light
+  .content(style="background:#333;width:100%;max-width:100%;"): .content.text-light
     h1 編輯 #[small  / Editing]
     +nbr(2)
-    .card.mb-3.bg-dark
+    .card.mb-3.bg-light.text-dark
       .card-body
-        h4 個人資訊 #[small.light  / Public Information]
+        h4 個人資訊 #[small.gray  / Public Information]
         .sep.huge-gap
         .form-group
-          label 顯示名稱 #[small.light  / Display Name]
+          label 顯示名稱 #[small.gray  / Display Name]
           input.form-control(type="text",placeholder="例如, Agent Smith")
         .form-group
-          label 個人網頁 #[small.light  / Personal Web Page]
+          label 個人網頁 #[small.gray  / Personal Web Page]
           input.form-control(type="text",placeholder="URL to your website")
         .form-group
-          label 個人簡介 #[small.light  / Profile]
+          label 個人簡介 #[small.gray  / Profile]
           textarea.form-control(rows="4",placeholder="lets' talk about yourself")
         .form-group
-          .pull-right.light(style="vertical-align:bottom"): small 以逗點分隔不同標籤 / Comma Separated
-          label 標籤 #[small.light  / Tags]
+          .pull-right.gray(style="vertical-align:bottom"): small 以逗點分隔不同標籤 / Comma Separated
+          label 標籤 #[small.gray  / Tags]
           input.form-control(type="text")
         .text-right: .btn.btn-primary 更新 #[small  / Update]
-    .card.mb-3.bg-dark
+    .card.mb-3.bg-light.text-dark
       .card-body
-        h4 變更密碼 #[small.light  / Change Password]
+        h4 變更密碼 #[small.gray  / Change Password]
         .sep.huge-gap
         .form-group
-          label 目前密碼 #[small.light  / Current Password]
+          label 目前密碼 #[small.gray  / Current Password]
           input.form-control(type="password")
         .form-group
-          label 新的密碼 #[small.light  / New Password]
+          label 新的密碼 #[small.gray  / New Password]
           input.form-control(type="password")
         .form-group
-          label 新的密碼 ( 再打一次 ) #[small.light  / New Password (again)]
+          label 新的密碼 ( 再打一次 ) #[small.gray  / New Password (again)]
           input.form-control(type="password")
         .text-right: .btn.btn-primary 更新 #[small  / Update]
-    .card.mb-3.bg-dark
+    .card.mb-3.bg-light.text-dark
       .card-body
-        h4 Jothon App #[small.light  / Login your user with Jothon App]
+        small.pull-right.mt-2: a(href="/signin/") #[i.fa.fa-question-circle] 如何使用 / How to Use Jothon App?
+        h4 Jothon App #[small.gray  / Login your user with Jothon App]
         .sep.huge-gap
         .text-center #[+nbr(2)]你目前沒有任何 Jothon App。 #[+nbr(2)] #[a(href="#") 來建立 App ...] #[+nbr(2)]
-    .card.mb-3.bg-dark
+    .card.mb-3.bg-light.text-dark
       .card-body
-        h4.mb-0 Create Jothon App
-        small.light 透過 Jothon App 讓使用者可以透過揪松網登入你的服務
+        h4.mb-0 建立 Jothon App #[small.gray  / Create App]
+        small.gray 透過 Jothon App 讓使用者可以透過揪松網登入你的服務
         .sep.huge-gap
         .form-group
           label Jothon App Name
@@ -78,3 +79,7 @@ block body
           label Avatar URL #[small  will be shown to users when they login]
           input.form-control(type="text", placeholder="e.g., https://myservice.info/img/jothon-app-avatar.png")
         .text-right: .btn.btn-primary 建立 #[small  / Create]
+    .text-center
+       img(src="/assets/img/misc/blackhole.svg",style="width:256px")
+       br
+       span 那麼、準備好跳坑了嗎？
