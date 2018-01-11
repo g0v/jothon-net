@@ -2,7 +2,7 @@
   config = do
     name: \servlet
     debug: false
-    domain: \http://localhost:9000
+    domain: \https://jothon.d3b.info/
     is-production: true
     facebook:
       clientID: \<your-facebook-clientid-here>
