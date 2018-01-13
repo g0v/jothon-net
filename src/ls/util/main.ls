@@ -1,6 +1,10 @@
 <- $(document).ready
+$.ajaxSetup headers: {"X-CSRF-Token": csrfToken}
 
 main = do
+  monitor-list: {}
+  monitor: (name, cb) -> @monitor-list[][name].push cb
+  broadcast: (name, value) -> for func in @monitor-list[name] => func value
   fire: (name, value) ->
     switch name
     | 'authpanel.on' 'authpanel.off'
@@ -8,12 +12,14 @@ main = do
       helper.remove-class node, 'active'
       helper.remove-class node, 'inactive'
       helper.add-class node, (if name == 'authpanel.on' => 'active' else 'inactive')
-    | 'signin' => navbar.fire 'user', value
+    | 'signin' =>
+      @broadcast 'user', value
+      window <<< {user: value, userkey: value.key}
     | 'signout' =>
       @fire 'loading.on'
-      authpanel.fire 'signout'
+      @broadcast 'signout'
     | 'signout.done' =>
-      navbar.fire 'user', null
+      @broadcast 'user', null
       window <<< {user: null, userkey: null}
       @fire 'loading.off'
     | 'loading.on' => helper.add-class document.body, 'running'
@@ -22,6 +28,9 @@ main = do
 navbar = controller.register(nav, main) .0
 authpanel = controller.register(auth, main) .0
 controller.register(modal, main)
+profile-page = controller.register(profile, main) .0
 
-navbar.fire 'user', null
-if window.user => navbar.fire 'user', window.user
+main.broadcast 'user', null
+
+if window.user => main.broadcast 'user', window.user
+

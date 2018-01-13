@@ -4,7 +4,7 @@ auth = (dom, data, parent) ->
   dom["tab.login"].addEventListener \click, ~> @tab 'login'
   dom["action"].addEventListener \click, ~> @signin @mode == 0
   dom["closebtn"].addEventListener \click, ~> parent.fire 'authpanel.off'
-  @listen 'signout', ~> @signout!
+  parent.monitor 'signout', ~> @signout!
 
 auth
   ..controller = 'auth'

@@ -3,12 +3,15 @@ controller = do
     name = node.getAttribute('data-model')
     dom.model[name] = node
     data[name] = null
-    if node.nodeName.toLowerCase! == \input =>
-      switch node.getAttribute("type")
-        | \checkbox
-          node.addEventListener \change, -> data[name] = @checked
-        | otherwise
-          node.addEventListener \input, -> data[name] = @value
+    switch node.nodeName.toLowerCase!
+      | \input
+        switch node.getAttribute("type")
+          | \checkbox
+            node.addEventListener \change, -> data[name] = @checked
+          | otherwise
+            node.addEventListener \input, -> data[name] = @value
+      | \textarea
+        node.addEventListener \input, -> data[name] = @value
 
   root-wrap: (cls, root, parent) ->
     [dom,data] = [{root, model: {}, text: {}},{}]

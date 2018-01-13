@@ -356,6 +356,11 @@ a.anchor {
 .g0v.tw:after {
   content: "g0v.tw";
 }
+.badge.dashed {
+  border: 1px dashed #ccc;
+  opacity: 0.8;
+  color: #aaa;
+}
  {
   width: 100%;
 }
@@ -2593,6 +2598,14 @@ h6.tag {
   border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   border: 1px solid #ccc;
+}
+.jothon-app .avatar {
+  border: 1px solid #ccc;
+  width: 64px;
+  height: 64px;
+  border-radius: 3px;
+  background: url("/assets/img/default-avatar.svg") center center no-repeat #ccc;
+  background-size: cover;
 }
 body.auth {
   background: url("/assets/img/matrix.svg");
