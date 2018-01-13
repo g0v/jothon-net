@@ -33,7 +33,7 @@ block body
               small #{featuring.location.zh}
       script.
         var start = new Date(featuring.publish_date).getTime();
-        var end = new Date(featuring.date).getTime();
+        var end = new Date(featuring.date).getTime() + 86400000;
         var now = new Date().getTime();
         if(now < start || now > end) {
           $(".jumbotron .text-center > div:nth-child(1)").show();
