@@ -2,6 +2,17 @@ require! <[../../../secret ../postgresql pg bluebird]>
 
 queries = []
 
+queries.push init-app-table = """create table if not exists app (
+  key serial primary key,
+  name text,
+  callback text,
+  avatar text,
+  app_id text,
+  app_secret text,
+  owner int references users(key),
+  createdtime timestamp default now()
+)"""
+
 queries.push init-oidcmodel-table = """create table if not exists oidcmodel (
   key serial primary key,
   id text not null unique,
