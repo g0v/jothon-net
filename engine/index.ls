@@ -214,7 +214,7 @@ backend = do
       })
       if req.user => delete req.user.{}payment.strip
       res.send """(function() { var req = #payload;
-      if(req.user && req.user.key) { window.userkey = req.user.key; window.user = req.user; }
+      if(req.user && req.user.key) { window.userkey = req.user.key; window.user = req.user; window.csrfToken = req.csrfToken; }
       if(typeof(angular) != "undefined" && angular) {
       if(window._backend_) { angular.module("backend").factory("global",["context",function(context){
         var own={}.hasOwnProperty,key;
