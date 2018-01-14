@@ -48,13 +48,37 @@ api.put \/me/su/:id, (req, res) ->
       return null
     .catch aux.error-handler res
 
+api.delete \/me/jothon-app/:key, (req, res) ->
+  if !req.user or !req.user.key or !req.body => return aux.r400 res
+  if !req.params.key => return aux.r400 res
+  io.query "update app set (deleted) = (true) where key = $1", [+req.params.key]
+    .then -> io.query "select app_id from app where key = $1", [+req.params.key]
+    .then (r={}) ->
+      if !r.rows or !r.rows.0 => return null
+      io.query "delete from oidcmodel where id = $1", [+req.params.key]
+    .then -> res.send!
+    .catch aux.error-handler res
+
+update-app = (req, res, app) ->
+  io.query "select key from oidcmodel where id = $1", [app.app_id]
+    .then (r={}) ->
+      if !r.rows or !r.rows.length =>
+        io.query "insert into oidcmodel (id,payload) values ($1, $2)", [app.client_id, app]
+      else => io.query "update oidcmodel set payload = $2 where id = $1", [app.client_id, app]
+    .then -> res.send!
+    .catch aux.error-handler res
+
 api.put \/me/jothon-app/:key, (req, res) ->
   if !req.user or !req.user.key or !req.body => return aux.r400 res
   if !req.params.key => return aux.r400 res
   {name, callback, avatar} = req.body{name, callback, avatar}
-  console.log avatar
   io.query("update app set (name, callback, avatar) = ($1, $2, $3) where key = $4",
   [name, callback, avatar, +req.params.key])
+    .then -> io.query "select app_id, app_secret, callback from app where key = $4", [+req.params.key]
+    .then (r={}) ->
+      if !r.rows or !r.rows.length => return aux.reject 404
+      item = r.rows.0
+      update-app req, res, {client_id: item.app_id, client_secret: app_secret, redirect_uris: [callback]}
     .then -> res.send!
     .catch aux.error-handler res
 
@@ -70,10 +94,11 @@ api.post \/me/jothon-app/, (req, res) ->
   io.query(
   "insert into app (name,callback,avatar,app_id,app_secret,owner) values ($1, $2, $3, $4, $5, $6)"
   [name, callback, avatar, app_id, app_secret, req.user.key])
+    .then -> update-app req, res, {client_id: app_id, client_secret: app_secret, redirect_uris: [callback]}
     .then -> res.send!
     .catch aux.error-handler res
 
 api.get \/me/jothon-app/, (req, res) ->
   if !req.user or !req.user.key => return aux.r403 res
-  io.query("select * from app where owner = $1", [req.user.key])
+  io.query("select * from app where owner = $1 and deleted is not true", [req.user.key])
     .then -> res.send it.[]rows
