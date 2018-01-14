@@ -35,7 +35,8 @@ backend = do
         profile: <[displayname description]>
     <~ oidc.initialize({
       keystore: openid-keystore
-      clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://local.host:8999/u/auth/g0v/cb]>}]
+      #clients: [{client_id: 'foo', client_secret: 'bar', redirect_uris: <[http://local.host:8999/u/auth/g0v/cb]>}]
+      # 只要在 oidcmodel 裡插入 id = client_id, payload = 上面那一串即可.
       adapter: authio.oidc.adapter
     }).then _
     oidc.app.proxy = true
