@@ -67,18 +67,30 @@ profile
         alert \failed
         @running \jothon-app.create, false
 
+    app-delete: (node, key) ->
+      if !@user => return alert "not logined"
+      $.ajax url: "/d/me/jothon-app/#{key}", method: \DELETE
+      .done ~>
+        alert \ok
+        @app-dom-update node, null, true
+        helper.toggle-class @dom["jothon-app.none"], 'd-none', (
+          if @dom.root.querySelectorAll \.jothon-app .length => false else true
+        )
+
+      .fail ~> alert \failed
     app-update: (item, node) ->
       if !@user => return alert "not logined"
       if !item["name"] or !item["callback"] => return alert "information incomplete"
       data = item{name, callback, avatar}
       $.ajax url: "/d/me/jothon-app/#{item.key}", method: \PUT, data: data
       .done ~>
+        alert \ok
         @app-dom-update node, item
-
       .fail ~>
         alert \failed
 
-    app-dom-update: (node, item) ->
+    app-dom-update: (node, item, remove) ->
+      if remove => return node.parentNode.removeChild node
       helper.toggle-class node, 'd-none', false
       node.querySelector \h3 .innerText = item.name
       inputs = Array.from(node.querySelectorAll \input)
@@ -86,7 +98,11 @@ profile
       if item.avatar => node.querySelector \.avatar .style.backgroundImage = "url(#{item.avatar})"
       if node.parentNode == @dom["jothon-app.list"] => return
       @dom["jothon-app.list"].appendChild(node)
-      btn = node.querySelector \.btn 
-      btn.addEventListener \click, ~>
+      node.querySelector \.jothon-app-update .addEventListener \click, ~>
         <[name callback avatar]>.map (d,i) -> item[d] = inputs[i].value
         @app-update item, node
+      node.querySelector \.jothon-app-delete .addEventListener \click, ~> @app-delete node, item.key
+      node.querySelector \.jothon-secret-show .addEventListener \click, ->
+        @show = !!!@show
+        node.querySelector \.secret .setAttribute \type, if @show => \text else \password
+        @innerText = if @show => \hide else \show

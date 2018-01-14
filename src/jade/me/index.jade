@@ -60,12 +60,12 @@ block body
             label 新的密碼 ( 再打一次 ) #[small.gray  / New Password (again)]
             input.form-control(data-model="password.again", type="password")
           .text-right: .btn.btn-primary(data-dom="update.passwd") 更新 #[small  / Update]
-      .jothon-app.card.mb-3.bg-light.text-dark
+      .jothon-apps.card.mb-3.bg-light.text-dark
         .card-body
           small.pull-right.mt-2: a(href="/signin/") #[i.fa.fa-question-circle] 如何使用 / How to Use Jothon App?
           h4 Jothon App #[small.gray  / Login your user with Jothon App]
           .sep.huge-gap
-          .card.d-none(data-dom="jothon-app.template"): .card-body
+          .card.d-none.jothon-app(data-dom="jothon-app.template"): .card-body
             .media
               .avatar.mr-3
               .media-body
@@ -91,12 +91,12 @@ block body
                       input.form-control(value="blahblahblah",disabled)
                   .col
                     .form-group
-                      .pull-right hide
+                      a.pull-right.jothon-secret-show.clickable show
                       label.mb-1 App Secret
-                      input.form-control(value="blahblahblah",disabled)
+                      input.form-control.secret(type="password", value="...",disabled)
                 .text-right
-                  .btn.btn-primary.mr-2(data-dom="jothon-app.create") 修改 #[small  / Update]
-                  .btn.btn-outline.light.disabled 刪除
+                  .btn.btn-primary.mr-2.jothon-app-update 修改 #[small  / Update]
+                  .btn.btn-outline.light.jothon-app-delete 刪除
           div(data-dom="jothon-app.list")
           .text-center(data-dom="jothon-app.none")
             +nbr(2)
