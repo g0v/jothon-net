@@ -1,5 +1,5 @@
 <- $(document).ready
-$.ajaxSetup headers: {"X-CSRF-Token": csrfToken}
+if csrfToken? => $.ajaxSetup headers: {"X-CSRF-Token": csrfToken}
 
 main = do
   monitor-list: {}
