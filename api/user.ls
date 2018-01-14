@@ -60,7 +60,7 @@ api.delete \/me/jothon-app/:key, (req, res) ->
     .catch aux.error-handler res
 
 update-app = (req, res, app) ->
-  io.query "select key from oidcmodel where id = $1", [app.app_id]
+  io.query "select key from oidcmodel where id = $1", [app.client_id]
     .then (r={}) ->
       if !r.rows or !r.rows.length =>
         io.query "insert into oidcmodel (id,payload) values ($1, $2)", [app.client_id, app]
@@ -74,11 +74,13 @@ api.put \/me/jothon-app/:key, (req, res) ->
   {name, callback, avatar} = req.body{name, callback, avatar}
   io.query("update app set (name, callback, avatar) = ($1, $2, $3) where key = $4",
   [name, callback, avatar, +req.params.key])
-    .then -> io.query "select app_id, app_secret, callback from app where key = $4", [+req.params.key]
+    .then -> io.query "select app_id, app_secret, callback from app where key = $1", [+req.params.key]
     .then (r={}) ->
       if !r.rows or !r.rows.length => return aux.reject 404
       item = r.rows.0
-      update-app req, res, {client_id: item.app_id, client_secret: app_secret, redirect_uris: [callback]}
+      update-app req, res, do
+        name: name, avatar: avatar, redirect_uris: [callback]
+        client_id: item.app_id, client_secret: item.app_secret
     .then -> res.send!
     .catch aux.error-handler res
 
