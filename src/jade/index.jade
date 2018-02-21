@@ -15,7 +15,8 @@ block head
     var featuring = !{escjson(featuring)};
 block body
   .jumbotron: .inner
-    .background(style="background-image:url(/assets/img/events/" + featuring.id + ".jpg)")
+    - var jumbobk = (featuring.background ? featuring.background : ("/assets/img/events/" + featuring.id + ".jpg"))
+    .background(style="background-image:url(" + jumbobk + ")")
     .text-center
       div
         div Let's Hack!
