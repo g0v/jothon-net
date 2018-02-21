@@ -1,12 +1,7 @@
-show: true
 name: 台灣零時政府第貳拾玖次開放資料黑客松
-shortname: 開放資料黑客松
+subtitle: 與全世界 128 個活動共同響應「世界開放資料日」
 id: 29
 date: 2018/03/03
-publish_date: 2018/02/21
-location:
-  en: IIS, Academia Sinica
-  zh: 中央研究院資訊所
 description: |
   台灣零時政府 g0v.tw 雙月大黑客松 — 不只寫程式改造社會
 
@@ -15,7 +10,3 @@ description: |
   本次 g0v 大黑客松將於 3/3 日，與全世界 128 個活動共同響應「世界開放資料日」
 
   http://opendataday.org/
-
-
-register:
-  project: http://beta.hackfoldr.org/g0v-hackath29n/http%253A%252F%252Fbit.ly%252F2BNQg7g
