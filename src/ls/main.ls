@@ -73,7 +73,7 @@ window.search = ->
     keyword = decodeURIComponent(keyword)
     document.querySelector(\#search-hint).innerText = "搜尋「#{keyword}」的搜尋結果"
   payload = {"query":{"query_string":{"query":keyword}},"from":0,"highlight":{"fields":{"content":{}}},"aggs":{"source_count":{"terms":{"field":"source"}}},"sort":[{"updated_at":"desc"}]}
-  url = ("http://api.search.g0v.io/query.php?query=#{encodeURIComponent(JSON.stringify(payload))}")
+  url = ("https://api.search.g0v.io/query.php?query=#{encodeURIComponent(JSON.stringify(payload))}")
 
   req = new XMLHttpRequest!
   req.addEventListener \load, ->
