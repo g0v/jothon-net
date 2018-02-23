@@ -36,6 +36,9 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
           a.dropdown-item(href="https://github.com/g0v/",target="_blank") 源碼庫 #[small / Github]
       li.nav-item: a.nav-link(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18",
       target="_blank") 認養大松 #[small / Donate]
+      li.nav-item: form.form-inline
+        input.form-control.mr-sm-2.form-control-sm#search-input(type="search",placeholder="Search")
+        .btn.btn-sm.btn-outline-light.clickable(onclick="search()") 搜尋
     ul.navbar-nav.ml-auto
       li.nav-item.dropdown(data-dom="profile")
         a.nav-link.dropdown-toggle#navbar-profile(href="#",role="button",data-toggle="dropdown")
@@ -45,3 +48,4 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
           a.dropdown-item(href="/me/") 個人檔案 #[small  / Profile]
           a.dropdown-item(href="#",data-dom="signout") 登出 #[small  / Logout]
       li.nav-item: a.nav-link(href="#",data-dom="signin") 登入 #[small  / Sign In]
+

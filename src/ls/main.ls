@@ -61,3 +61,32 @@ easeInOutQuad = (t,b,c,d) ->
   if t < 1 => return c * 0.5 * t * t + b
   t = t - 1
   return -c * 0.5 * ( t * (t - 2) - 1 ) + b
+
+window.search = ->
+  document.body.setAttribute \class, document.body.getAttribute("class") + " running"
+  keyword = (document.getElementById(\search-input) or {}).value or ''
+  if !keyword =>
+    ret = /q=(.+)/.exec(window.location.search)
+    if ret => keyword = ret.1
+  if keyword and !/search/.exec(window.location.href) => window.location.href = "/search/?q=#keyword"
+  if keyword =>
+    keyword = decodeURIComponent(keyword)
+    document.querySelector(\#search-hint).innerText = "搜尋「#{keyword}」的搜尋結果"
+  payload = {"query":{"query_string":{"query":keyword}},"from":0,"highlight":{"fields":{"content":{}}},"aggs":{"source_count":{"terms":{"field":"source"}}},"sort":[{"updated_at":"desc"}]}
+  url = ("http://api.search.g0v.io/query.php?query=#{encodeURIComponent(JSON.stringify(payload))}")
+
+  req = new XMLHttpRequest!
+  req.addEventListener \load, ->
+    payload = JSON.parse req.responseText
+    ret = payload.hits.hits.map ->
+      {title, url, content, source} = it._source{title, url, content, source}
+      if content.length > 100 => content = content.substring(0, 100) + '...'
+      [title, url, content] = [title, url, content].map -> it.replace /[<>\&]/gim, -> "&\##{it.charCodeAt(0)};"
+      content = content.replace new RegExp("#keyword", "g"), -> "<b>#keyword</b>"
+      """<div class="search-result"><a href="#url">#{title}</a><div class='url'>#{url}</div><div class='desc'>#content</div><div class='type'>#source</div></div>"""
+    container = document.querySelector('.search-results')
+    if !container => return
+    container.innerHTML = ret.join('')
+    document.body.setAttribute \class, document.body.getAttribute("class").replace("running","")
+  req.open \GET, url
+  req.send!

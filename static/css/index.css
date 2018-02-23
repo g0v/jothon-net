@@ -2607,6 +2607,44 @@ h6.tag {
   background: url("/assets/img/default-avatar.svg") center center no-repeat #ccc;
   background-size: cover;
 }
+.search-results {
+  margin: 0;
+  font-family: roboto;
+}
+.search-result {
+  margin: 0 0 35px;
+}
+.search-result a {
+  font-size: 1.3em;
+  line-height: 1em;
+  margin: 0;
+}
+.search-result .desc {
+  font-size: 0.8em;
+  line-height: 1.2em;
+  font-weight: 200;
+  color: #555;
+}
+.search-result .desc b {
+  color: #222;
+  font-weight: 900;
+}
+.search-result .url {
+  font-size: 0.7em;
+  color: #484;
+  margin: 0 0 2px;
+}
+.search-result .type {
+  font-size: 0.6em;
+  background: #ccc;
+  color: #fff;
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 5px;
+  vertical-align: top;
+  margin-top: 3px;
+  line-height: 1.2em;
+}
 body.auth {
   background: url("/assets/img/matrix.svg");
 }
