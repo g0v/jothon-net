@@ -30,7 +30,7 @@ block body
             div(style="font-size:0.5em") g0v hackath#{featuring.id}n / 零時政府第 #{featuring.id} 次
             .heavy(style="font-weight:900;font-size:1.5em;margin:10px 0 10px") #{featuring.shortname}
             div(style="font-size:0.65em")
-              span #{featuring.date} @ #{featuring.location.en} / 
+              span #{featuring.date} @ #{featuring.location.en} /
               small #{featuring.location.zh}
       script.
         var start = new Date(featuring.publish_date).getTime();
@@ -73,9 +73,9 @@ block body
         each item,index in testimonies
           +carousel-testimony(item.title, item.name, item.quote, index == 0)
       a.carousel-control-prev(href="#carousel-testimony",role="button",data-slide="prev")
-        span.carousel-control-prev-icon 
+        span.carousel-control-prev-icon
       a.carousel-control-next(href="#carousel-testimony",role="button",data-slide="next")
-        span.carousel-control-next-icon 
+        span.carousel-control-next-icon
     +nbr(3)
     h1 什麼是零時政府黑客松？#[small / about g0v hackathon]
     .photo.lg: .inner.reveal.lightbox(data-lg-src="/assets/img/photo/lg/1.jpg")
@@ -208,15 +208,15 @@ block body
           each video,index in videos
             +carousel-video(video.title, video.name, video.desc, video.url, index == 0)
         a.carousel-control-prev(href="#carousel-video",role="button",data-slide="prev")
-          span.carousel-control-prev-icon 
+          span.carousel-control-prev-icon
         a.carousel-control-next(href="#carousel-video",role="button",data-slide="next")
-          span.carousel-control-next-icon 
+          span.carousel-control-next-icon
 
     +nbr(2)
     small.gray 滿腔熱血無處去
     h4 沒有想法，我也可以貢獻嗎？ / Contribute by Join Others
     p
-      | 可以！只要帶上你的腦袋與雙手，直接到活動現場找尋志同道合的提案吧！或者你也可以成為黑客松小幫手，先加入 
+      | 可以！只要帶上你的腦袋與雙手，直接到活動現場找尋志同道合的提案吧！或者你也可以成為黑客松小幫手，先加入
       a(href="http://join.g0v.today/") g0v slack
       |  線上聊天室的 #jothon 群組自我介紹，再到每次黑客松共筆的資訊列表看看是否還缺少什麼人力喔！
     +nbr(2)
@@ -252,9 +252,9 @@ block body
         a.btn.btn-primary.mr-2.btn-lg(href="https://g0v-jothon.kktix.cc/events/g0v-hackath" + featuring.id + "n",target="_blank") #[small Register Now]#[br]立刻報名
       a.btn.btn-primary.btn-lg.mr-2(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=18") #[small Donate by Subscribing] #[br] 定期定額贊助
       a.btn.btn-primary.btn-lg(href="http://beta.hackfoldr.org/g0v-hackath" + featuring.id + "n") #[small Collaborative Note]#[br]當期共筆
-      //- 等完稿再釋出
+      //- 完稿再釋出
         +nbr(2)
-        span 或 
+        span 或
         +nbr(2)
         a(href="#",data-toggle="modal",
         data-target="#sorting-hat") 不清楚自己該去哪嗎？試試揪松網分類帽吧！#[img(src="/assets/img/magic.svg")]
@@ -263,7 +263,6 @@ block body
     .sep.huge-gap
     a#subscribe-newsletter.anchor
     +nbr(1)
-    h4 訂閱電子報 / Subscribe Newsletter   
+    h4 訂閱電子報 / Subscribe Newsletter
     p 想要定期收到關於零時政府黑客松的最新資訊嗎？現在就訂閱揪松團電子報吧！
     iframe(src="//g0v.us13.list-manage.com/subscribe?u=688c0f30e2af41c2fa09114f2&id=24c8450e9a",style="width:100%;height:500px;border:1px solid #aaa;border-radius:5px")
-
