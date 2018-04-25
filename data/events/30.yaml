@@ -1,12 +1,7 @@
-show: true
 name: 台灣零時政府第參拾次佛系黑客松
-shortname: 佛系黑客松
+subtitle: 沒有人寫扣 沒有人測試 沒有人部署 沒有人營運 食物到了 自然會運作
 id: 30
 date: 2018/05/05
-publish_date: 2018/04/20
-location:
-  en: IIS, Academia Sinica
-  zh: 中央研究院資訊所
 description: |
   台灣零時政府 g0v.tw 雙月大黑客松 — 不只寫程式改造社會
 
@@ -17,7 +12,3 @@ description: |
   沒有人寫扣 沒有人測試 沒有人部署 沒有人營運
 
   食物到了 自然會運作
-
-register:
-  project: http://beta.hackfoldr.org/g0v-hackath30n/
-background: /assets/img/events/landing/29.png
