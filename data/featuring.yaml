@@ -1,9 +1,9 @@
 show: true
-name: 台灣零時政府第參拾次佛系黑客松
-shortname: 佛系黑客松
-id: 30
-date: 2018/05/05
-publish_date: 2018/04/20
+name: 台灣零時政府第參拾壹次香蕉吃到飽松
+shortname: 香蕉吃到飽松
+id: 31
+date: 2018/07/07
+publish_date: 2018/06/22
 location:
   en: IIS, Academia Sinica
   zh: 中央研究院資訊所
@@ -12,12 +12,10 @@ description: |
 
   不要問為什麼沒有人做這個，先承認你就是沒有人！
 
-  本次 g0v 大黑客松將於 5/5 舉辦，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。
+  本次 g0v 大黑客松將於 7/7 舉辦，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。
 
-  沒有人寫扣 沒有人測試 沒有人部署 沒有人營運
-
-  食物到了 自然會運作
+  「第參拾壹次香蕉吃到飽松」將有好多好多好多香蕉，你知道怎麼用各國語言唸「香蕉」嗎？來參加大黑客松，「阿美語萌典」先教你用阿美語唸......
 
 register:
-  project: http://beta.hackfoldr.org/g0v-hackath30n/
-background: /assets/img/events/landing/30.jpg
+  project: http://beta.hackfoldr.org/g0v-hackath31n/
+background: /assets/img/events/landing/31.jpg
