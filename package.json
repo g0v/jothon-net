@@ -9,8 +9,8 @@
     "url": "https://github.com/g0v/jothon-net"
   },
   "engines": {
-    "node": "=9.2.1",
-    "npm": "=3.9.5"
+    "node": "=9.5.0",
+    "npm": "=5.6.0"
   },
   "scripts": {
     "start": "node_modules/.bin/lsc server.ls",
