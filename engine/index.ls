@@ -30,6 +30,7 @@ backend = do
       findById: authio.oidc.find-by-id
       interactionUrl: -> "/openid/i/#{it.oidc.uuid}"
       scopes: <[openid offline_access email profile]>
+      cookies: {keys: config.cookie.keys or <[7644537!9772819]>, long: {sign: true}}
       claims: do
         email: <[username]>
         profile: <[displayname description]>
