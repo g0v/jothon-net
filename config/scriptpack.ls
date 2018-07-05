@@ -18,6 +18,7 @@
       /js/util/helper.js
       /js/util/modal.js
       /js/util/auth.js
+      /js/util/consent.js
       /js/util/nav.js
       /js/util/profile.js
       /js/util/main.js

@@ -29,6 +29,7 @@ backend = do
       features: devInteractions: false, clientCredentials: true, discovery: true
       findById: authio.oidc.find-by-id
       interactionUrl: -> "/openid/i/#{it.oidc.uuid}"
+      interactionCheck: (ctx) -> return false
       scopes: <[openid offline_access email profile]>
       cookies: {keys: config.cookie.keys or <[7644537!9772819]>, long: {sign: true}}
       claims: do
@@ -53,6 +54,7 @@ backend = do
     app = express!
     app.disable \x-powered-by
     app.set 'trust proxy', '127.0.0.1'
+    app.set \config, config
     app.use (req, res, next) ->
       res.header "Access-Control-Allow-Origin", "#{config.urlschema}#{config.domainIO}"
       res.header "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
@@ -72,7 +74,10 @@ backend = do
         data = reload "../config/site/#{@config.config}.ls"
         try
           ret = jade.render(content,
-            {filename: file-path, basedir: path.join(cwd,\src/jade/)} <<< {config: data} <<< watch.jade-extapi
+            {filename: file-path, basedir: path.join(cwd,\src/jade/)}
+              <<< (options or {})
+              <<< {config: data}
+              <<< watch.jade-extapi
           )
           return cb(null, ret)
         catch e
@@ -168,15 +173,21 @@ backend = do
 
     app.get \/openid/i/:grant, (req, res) ->
       oidc.interactionDetails(req).then (details) ->
-        if !req.user => return res.render \auth/index
+        if !req.user => return res.render \auth/index.jade
+        if !req.session.{}oidc.consent => return res.render \auth/consent/index.jade, {details}
         ret = do
           login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
+          consent: scope: req.session.{}oidc.consent or 'openid'
         oidc.interactionFinished(req, res, ret)
+
     app.get \/openid/i/:grant/login, (req, res) ->
       if !req.user => return res.render \auth/index
-      ret = do
-        login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
-      oidc.interactionFinished(req, res, ret)
+      res.redirect "/openid/i/#{req.params.grant}"
+
+    app.post \/openid/i/:grant/consent, (req, res) ->
+      req.session.{}oidc.consent = req.{}body.consent or 'openid'
+      res.send!
+
     app.use \/openid/, oidc.callback
 
     app.use body-parser.json limit: config.limit

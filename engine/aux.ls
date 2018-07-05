@@ -1,4 +1,4 @@
-require! <[bluebird moment moment-timezone]>
+require! <[bluebird moment moment-timezone request]>
 
 base = do
   eschtml: (->
@@ -9,7 +9,7 @@ base = do
   ip: (req) -> req.headers['X-Real-IP'] or req.connection.remoteAddress
   log: (req, msg, head = "") ->
     date = moment(new Date!).tz("Asia/Taipei").format("MM-DD HH:mm")
-    console.log "[#date|#head#{if head and req => ' ' else ''}#{if req => req.user.key else ''}] #msg"
+    console.log "[#date|#head#{if head and req => ' ' else ''}#{if req and req.user => req.user.key else ''}] #msg"
   pad: (str="", len=2,char=' ') ->
     [str,char] = ["#str","#char"]
     "#char" * (len - str.length) + "#str"
@@ -81,6 +81,33 @@ base = do
   needlogin: (cb) -> (req, res) ->
     if not (req.user) => return res.status(403).render('403', {url: req.originalUrl})
     cb req, res
+
+  need-token: (req, res, next) ->
+    config = req.app.get \config
+    token = if req.headers and req.headers.authorization => req.headers.authorization.split(' ').1
+    else if req.{}query.access_token => that
+    if !token and !(req.user and req.user.key) => return aux.r403 res
+    promise = if token =>
+      new Promise (res, rej) ->
+        (e,r,b) <- request {
+          url: "#{config.domain}/openid/me"
+          method: \POST
+          headers:
+            'authorization': "Bearer #{token}"
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }, _
+        if e => return rej new Error(e)
+        try
+          data = JSON.parse(b)
+        catch e
+          return rej new Error(e)
+        if !data.sub => return rej!
+        return res {key: data.sub}
+    else bluebird.resolve {key: req.user.key}
+    promise.then ({key}) ->
+      req.auth = { token, key }
+      next!
+
 
   merge-config: (a,b) ->
     for k,v of b =>

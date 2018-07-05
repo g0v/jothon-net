@@ -100,7 +100,9 @@ api.post \/me/jothon-app/, (req, res) ->
     .then -> res.send!
     .catch aux.error-handler res
 
-api.get \/me/jothon-app/, (req, res) ->
-  if !req.user or !req.user.key => return aux.r403 res
-  io.query("select * from app where owner = $1 and deleted is not true", [req.user.key])
+api.get \/me/jothon-app/, aux.need-token, (req, res) ->
+  key = req.{}auth.key or req.{}user.key
+  if !key => return aux.r403 res
+  io.query("select * from app where owner = $1 and deleted is not true", [key])
     .then -> res.send it.[]rows
+    .catch aux.error-handler res

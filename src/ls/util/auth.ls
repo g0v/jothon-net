@@ -45,7 +45,7 @@ auth
           @parent.fire 'authpanel.off'
           @parent.fire 'signin', it
           if /\/openid\/i/.exec(window.location.pathname) =>
-            window.location.href = "#{window.location.pathname}/login"
+            window.location.href = "#{window.location.pathname}"
           else @running false
         .fail ~>
           if it.status == 403 =>
