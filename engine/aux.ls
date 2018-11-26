@@ -86,7 +86,7 @@ base = do
     config = req.app.get \config
     token = if req.headers and req.headers.authorization => req.headers.authorization.split(' ').1
     else if req.{}query.access_token => that
-    if !token and !(req.user and req.user.key) => return aux.r403 res
+    if !token and !(req.user and req.user.key) => return base.r403 res
     promise = if token =>
       new Promise (res, rej) ->
         (e,r,b) <- request {
