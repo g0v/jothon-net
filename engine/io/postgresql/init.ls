@@ -2,6 +2,25 @@ require! <[../../../secret ../postgresql pg bluebird]>
 
 queries = []
 
+
+queries.push init-users-table = """create table if not exists users (
+  key serial primary key,
+  username text not null unique constraint nlen check (char_length(username) <= 100),
+  password text constraint pwlen check (char_length(password) <= 100),
+  usepasswd boolean,
+  displayname text, constraint displaynamelength check (char_length(displayname) <= 100),
+  description text,
+  datasize int,
+  createdtime timestamp,
+  lastactive timestamp,
+  public_email boolean,
+  avatar text,
+  detail jsonb,
+  payment jsonb,
+  config jsonb,
+  deleted boolean
+)"""
+
 queries.push init-app-table = """create table if not exists app (
   key serial primary key,
   name text,
@@ -22,28 +41,11 @@ queries.push init-oidcmodel-table = """create table if not exists oidcmodel (
   consumed timestamp
 )"""
 
+
 queries.push init-oidcgrant-table = """create table if not exists oidcgrant (
   key serial primary key,
   id text not null unique,
   token text[]
-)"""
-
-queries.push init-users-table = """create table if not exists users (
-  key serial primary key,
-  username text not null unique constraint nlen check (char_length(username) <= 100),
-  password text constraint pwlen check (char_length(password) <= 100),
-  usepasswd boolean,
-  displayname text, constraint displaynamelength check (char_length(displayname) <= 100),
-  description text,
-  datasize int,
-  createdtime timestamp,
-  lastactive timestamp,
-  public_email boolean,
-  avatar text,
-  detail jsonb,
-  payment jsonb,
-  config jsonb,
-  deleted boolean
 )"""
 
 queries.push init-pwresettoken-table = """create table if not exists pwresettoken (
