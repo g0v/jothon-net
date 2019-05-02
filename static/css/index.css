@@ -361,9 +361,6 @@ a.anchor {
   opacity: 0.8;
   color: #aaa;
 }
- {
-  width: 100%;
-}
 .spc1 {
   height: 0;
 }
@@ -681,7 +678,7 @@ h6.tag {
   color: #fff;
   padding: 5px 10px;
   text-align: center;
-  z-index: 2;
+  z-index: ;
   font-size: 13px;
 }
 .hover-tip a {
@@ -793,7 +790,7 @@ h6.tag {
   margin: 10px 10px 0 0;
   cursor: pointer;
   color: #444;
-  z-index: 13;
+  z-index: ;
 }
 .closebtn:after {
   content: "\0000d7";
@@ -867,12 +864,6 @@ h6.tag {
 .green {
   color: #15b73e;
 }
- {
-  width: 100%;
-  width: 100%;
-  width: 100%;
-  width: 100%;
-}
 .panel .hint-img {
   width: 100%;
   height: 200px;
@@ -890,7 +881,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -902,7 +893,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -914,7 +905,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -926,7 +917,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -938,7 +929,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -950,7 +941,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -962,7 +953,7 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
@@ -974,14 +965,14 @@ h6.tag {
   }
   100% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
 }
 @-webkit-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -993,7 +984,7 @@ h6.tag {
 @-webkit-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1005,7 +996,7 @@ h6.tag {
 @-moz-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1017,7 +1008,7 @@ h6.tag {
 @-ms-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1029,7 +1020,7 @@ h6.tag {
 @-moz-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1041,7 +1032,7 @@ h6.tag {
 @-webkit-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1053,7 +1044,7 @@ h6.tag {
 @-o-keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1065,7 +1056,7 @@ h6.tag {
 @keyframes modal-out {
   0% {
     opacity: 1;
-    z-index: 10;
+    z-index: ;
     top: 0;
   }
   100% {
@@ -1359,7 +1350,7 @@ h6.tag {
   -webkit-animation: modal-in 0.3s ease-out 1 forwards;
   -o-animation: modal-in 0.3s ease-out 1 forwards;
   animation: modal-in 0.3s ease-out 1 forwards;
-  z-index: 10;
+  z-index: ;
   opacity: 1;
   top: 0;
   pointer-events: all;
@@ -1385,13 +1376,13 @@ h6.tag {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.7);
-  z-index: 8;
+  z-index: ;
 }
 .cover-modal-inner {
   position: relative;
   width: 640px;
   margin: 100px auto;
-  z-index: 9;
+  z-index: ;
 }
 .cover-modal-inner > .panel.panel-default {
   box-shadow: 0 3px 6px rgba(0,0,0,0.6);
@@ -1466,9 +1457,6 @@ h6.tag {
 .cover-modal.ng-hide-animate.ng-hide {
   opacity: 0;
   z-index: -1;
-}
- {
-  width: 100%;
 }
 @-webkit-keyframes bk-drift {
   0%, 50%, 100% {
@@ -1677,15 +1665,11 @@ h6.tag {
 .authpanel.cover-modal-wrapper .cover-modal-inner > .text-center a {
   color: #549ad7;
 }
- {
-  width: 100%;
-  width: 100%;
-}
 #notifications {
   position: fixed;
   top: 100px;
   right: 100px;
-  z-index: 14;
+  z-index: ;
 }
 @-webkit-keyframes fadeout {
   0% {
