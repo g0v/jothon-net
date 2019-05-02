@@ -1,0 +1,15 @@
+extends /base.pug
+block body
+  +nbr(3)
+  .text-center
+    h1 需要付錢
+    p.gray
+      if msg
+        span #{msg} 
+      else
+        span 可是沒有地方可以付錢 #[br] 先做了再說
+    +nbr(1)
+    small.gray HTTP 402
+    +nbr(3)
+    a(href="/") 回首頁  #[small /  Back to Home]
+  +nbr(4)

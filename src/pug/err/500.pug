@@ -1,0 +1,15 @@
+extends /base.pug
+block body
+  +nbr(3)
+  .text-center
+    h1 後端錯誤
+    p.gray
+      if msg
+        span #{msg} 
+      else
+        span 在這個世界上，有些錯誤... #[br] 沒有人會去修
+    +nbr(1)
+    small.gray HTTP 500
+    +nbr(3)
+    a(href="/") 回首頁  #[small /  Back to Home]
+  +nbr(4)

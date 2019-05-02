@@ -1,4 +1,4 @@
-require! <[fs fs-extra path chokidar child_process jade stylus js-yaml]>
+require! <[fs fs-extra path chokidar child_process pug stylus js-yaml]>
 require! <[colors require-reload markdown jsdom bluebird node-minify]>
 require! 'uglify-js': uglify-js, LiveScript: lsc, 'uglifycss': uglify-css
 require! <[../config/scriptpack]>
@@ -12,7 +12,7 @@ cwd = path.resolve process.cwd!
 cwd-re = new RegExp RegExp.escape "#cwd#{if cwd[* - 1]=='/' => "" else \/}"
 log = (error, stdout, stderr) -> if "#{stdout}\n#{stderr}".trim! => console.log that
 
-jade-extapi = do
+pug-extapi = do
   md: -> markdown.toHTML it
   yaml: -> js-yaml.safe-load fs.read-file-sync it
   yamls: (dir) ->
@@ -96,11 +96,11 @@ src-tree = (matcher, morpher) ->
       ret
   ret <<< {matcher, morpher}
 
-jade-tree = src-tree(
+pug-tree = src-tree(
   (-> if /^ *include (.+)| *extends (.+)/.exec(it) => (that.1 or that.2) else null),
   ((it, dir) ->
     if /^\//.exec it =>
-      rpath = dir.split(/src\/jade\/?/)[* - 1]
+      rpath = dir.split(/src\/pug\/?/)[* - 1]
       if rpath => it = path.join(("../" * rpath.split(\/).length), it)
       it
     it
@@ -116,13 +116,13 @@ ftype = ->
   switch
   | /\.ls$/.exec it => "ls"
   | /\.styl/.exec it => "styl"
-  | /\.jade$/.exec it => "jade"
+  | /\.pug$/.exec it => "pug"
   | /\.md/.exec it => "md"
   | otherwise => "other"
 
 filecache = {}
 base = do
-  jade-extapi: jade-extapi
+  pug-extapi: pug-extapi
   ignore-list: [/^(.+\/)*?\.[^/]+$/]
   ignore-func: (f) -> @ignore-list.filter(-> it.exec f.replace(cwd-re, "")replace(/^\.\/+/, ""))length
   start: (config) ->
@@ -196,7 +196,7 @@ base = do
         if @handle => clearTimeout(@handle)
         @handle = setTimeout((~> @handler!), 500)
   watch-handler: (d, trigger-only = false) ->
-    if /^src\/jade\/static/.exec(d) => trigger-only = true
+    if /^src\/pug\/static/.exec(d) => trigger-only = true
     setTimeout (~> @_watch-handler d, trigger-only), 500
   _watch-handler: (it, trigger-only = false) ->
     if !it or /node_modules|\.swp$/.exec(it)=> return
@@ -211,7 +211,7 @@ base = do
         markdown = affix-anchor(fs.read-file-sync src .toString!)
         affix markdown .then (affix-code) ~>
           content = ([
-            """extends /doc.jade
+            """extends /doc.pug
             block markdown
               :markdown
             """,
@@ -219,27 +219,27 @@ base = do
           content ++= ["block affix"]
           content ++= affix-code
           content = content.join(\\n)
-          @jade src, des, content
+          @pug src, des, content
           console.log "[BUILD]   #src --> #des"
 
       catch
         console.log "[BUILD]   #src failed: "
         console.log e.message
 
-    # other - for triggering jade rebuilding
-    if type == \jade or type == \other =>
-      if /^src\/jade\/view\//.exec(src) => return
+    # other - for triggering pug rebuilding
+    if type == \pug or type == \other =>
+      if /^src\/pug\/view\//.exec(src) => return
       try
-        if type == \jade => jade-tree.parse src
-        srcs = jade-tree.find-root src
+        if type == \pug => pug-tree.parse src
+        srcs = pug-tree.find-root src
       catch
         console.log "[BUILD] #src failed: "
         console.log e.message
       _src = src
-      if srcs.indexOf(_src) < 0 and type == \jade => srcs ++= _src
+      if srcs.indexOf(_src) < 0 and type == \pug => srcs ++= _src
       if type == \other => srcs = srcs.filter(->it != _src)
       logs = []
-      (srcs or []).filter(-> /src\/jade/.exec(src)).map ~> @jade src, null, null, logs, _src
+      (srcs or []).filter(-> /src\/pug/.exec(src)).map ~> @pug src, null, null, logs, _src
       if logs.length =>
         logs = ["[BUILD] recursive from #_src:"] ++ logs
         console.log logs.join(\\n)
@@ -310,19 +310,19 @@ base = do
   # _src: optional dependency for checking timestamp
   # force: regardless of timestamp
   # return 0 for success, 1 for error
-  jade: (src, des = null, code = null, logs = [], _src, force) ->
+  pug: (src, des = null, code = null, logs = [], _src, force) ->
     data = reload "../config/site/#{@config.config}.ls"
     try
       if !code => code = fs.read-file-sync src .toString!
       if /^\/\/- ?(module|view) ?/.exec(code) => return
-      if !des => des = src.replace(/src\/jade/, "static").replace(/\.jade/, ".html")
+      if !des => des = src.replace(/src\/pug/, "static").replace(/\.pug/, ".html")
       if newer(des, (_src or src)) and !force => return
       desdir = path.dirname(des)
       if !fs.exists-sync(desdir) or !fs.stat-sync(desdir).is-directory! => mkdir-recurse desdir
       try
-        fs.write-file-sync(des, jade.render(
+        fs.write-file-sync(des, pug.render(
           code,
-          {filename: src, basedir: path.join(cwd,\src/jade/)} <<< {config: data} <<< jade-extapi
+          {filename: src, basedir: path.join(cwd,\src/pug/)} <<< {config: data} <<< pug-extapi
         ))
         logs.push "[BUILD]   #src --> #des"
         return 0

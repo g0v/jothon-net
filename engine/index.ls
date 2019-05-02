@@ -1,6 +1,6 @@
-require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment jade]>
+require! <[os fs fs-extra path bluebird crypto LiveScript chokidar moment pug]>
 require! <[express body-parser express-session connect-multiparty oidc-provider]>
-require! <[passport passport-local passport-facebook passport-google-oauth2]>
+require! <[passport passport-local passport-facebook passport-google-oauth20]>
 require! <[nodemailer nodemailer-smtp-transport csurf require-reload]>
 require! <[../config/keys/openid-keystore.json]>
 require! <[./aux ./watch]>
@@ -67,23 +67,23 @@ backend = do
       res.setHeader \X-Content-Security-Policy, content-security-policy
       next!
 
-    app.engine \jade, (file-path, options, cb) ~>
-      if !/\.jade$/.exec(file-path) => file-path = "#{file-path}.jade"
+    app.engine \pug, (file-path, options, cb) ~>
+      if !/\.pug/.exec(file-path) => file-path = "#{file-path}.pug"
       fs.read-file file-path, (e, content) ~>
         if e => return cb e
         data = reload "../config/site/#{@config.config}.ls"
         try
-          ret = jade.render(content,
-            {filename: file-path, basedir: path.join(cwd,\src/jade/)}
+          ret = pug.render(content,
+            {filename: file-path, basedir: path.join(cwd,\src/pug/)}
               <<< (options or {})
               <<< {config: data}
-              <<< watch.jade-extapi
+              <<< watch.pug-extapi
           )
           return cb(null, ret)
         catch e
           return cb e
 
-    app.set 'view engine', 'jade'
+    app.set 'view engine', 'pug'
     app.engine \ls, (path, options, callback) ->
       opt = {} <<< options
       delete opt.settings
@@ -95,7 +95,7 @@ backend = do
       catch e
         [err,ret] = [e,""]
       callback err, ret
-    app.set 'views', path.join(__dirname, '../src/jade/')
+    app.set 'views', path.join(__dirname, '../src/pug/')
     app.locals.basedir = app.get \views
 
     get-user = (u, p, usep, detail, doCreate = false, done) ->
@@ -115,13 +115,13 @@ backend = do
     },(u,p,done) ~>
       get-user u, p, true, null, false, done
 
-
-    passport.use new passport-google-oauth2.Strategy(
+    passport.use new passport-google-oauth20.Strategy(
       do
         clientID: config.google.clientID
         clientSecret: config.google.clientSecret
         callbackURL: "/u/auth/google/callback"
         passReqToCallback: true
+        userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
         profileFields: ['id', 'displayName', 'link', 'emails']
       , (request, access-token, refresh-token, profile, done) ~>
         if !profile.emails =>
@@ -173,8 +173,8 @@ backend = do
 
     app.get \/openid/i/:grant, (req, res) ->
       oidc.interactionDetails(req).then (details) ->
-        if !req.user => return res.render \auth/index.jade
-        if !req.session.{}oidc.consent => return res.render \auth/consent/index.jade, {details}
+        if !req.user => return res.render \auth/index.pug
+        if !req.session.{}oidc.consent => return res.render \auth/consent/index.pug, {details}
         ret = do
           login: account: req.user.key, acr: '1', remember: true, ts: Math.floor(new Date!getTime! * 0.001)
           consent: scope: req.session.{}oidc.consent or 'openid'
@@ -242,13 +242,13 @@ backend = do
     app.use \/, (req, res, next) ->
       path = req.path.replace(/^\/?/,'/').replace(/\/?$/,'/')
       file = [
-        ["static#{path}index.html", "src/jade#{path}index.jade"]
-        ["static#{path}", "src/jade#{path}".replace(/\.html$/, '.jade')]
+        ["static#{path}index.html", "src/pug#{path}index.pug"]
+        ["static#{path}", "src/pug#{path}".replace(/\.html$/, '.pug')]
       ].filter(-> fs.exists-sync(it.1)).0
       if !file => return next!
       logs = []
       res.header "Content-Type", "text/html"
-      if watch.jade(file.1, file.0, null, logs, null, true) => return res.send logs.join('<br>')
+      if watch.pug(file.1, file.0, null, logs, null, true) => return res.send logs.join('<br>')
       console.log "[BUILD] On Demand: #{file.1} --> #{file.0}"
       res.send fs.read-file-sync file.0
 
@@ -268,7 +268,7 @@ backend = do
         )
       ..get \/200, (req,res) -> res.json(req.user)
       ..get \/403, (req,res) -> res.status(403)send!
-      ..get \/login, (req, res) -> res.render \auth/index.jade
+      ..get \/login, (req, res) -> res.render \auth/index.pug
 
       ..get \/logout, (req, res) ->
         req.logout!

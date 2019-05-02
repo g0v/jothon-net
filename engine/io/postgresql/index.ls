@@ -1,14 +1,16 @@
-require! <[pg bluebird crypto bcrypt colors ./aux]>
+require! <[pg bluebird crypto bcrypt ./aux]>
+
 
 ret = (config) ->
   @config = config
+  @pool = new pg.Pool(connectionString: config.io-pg.uri)
   @authio = authio = do
     oidc: do
-      find-by-id:  (ctx, id) ~>
+      find-by-id:  (id) ~>
         @query "select * from users where key = $1", [id]
           .then (r={}) ->
             if !r.rows or r.rows.length == 0 => return bluebird.reject!
-            return {accountId: id, claims: -> bluebird.resolve({sub: id} <<< r.rows.0) }
+            return r.rows.0
       adapter: (name) -> @ <<< {name}
     user: do
       # store whole object ( no serialization )
@@ -144,7 +146,7 @@ ret.prototype = do
       return res r
     if client => return _query client, q, params
     (res, rej) <~ new bluebird _
-    (err, client, done) <~ pg.connect @config.io-pg.uri, _
+    (err, client, done) <~ @pool.connect _
     if err => return rej err
     _query client, q, params
       .then (r) -> [done!, res r]

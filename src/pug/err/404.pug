@@ -1,0 +1,15 @@
+extends /base.pug
+block body
+  +nbr(3)
+  .text-center
+    h1 找不到頁面
+    p.gray
+      if msg
+        span #{msg} 
+      else
+        span 先不要問為什麼沒有這個頁面 #[br] 因為我就是沒有頁
+    +nbr(1)
+    small.gray HTTP 404
+    +nbr(3)
+    a(href="/") 回首頁  #[small /  Back to Home]
+  +nbr(4)

@@ -1,0 +1,5 @@
+//- module
+include /mixins/index.pug
+#auth-panel(ng-if="!staticMode")
+  +cover-modal("auth", 'authpanel')
+    include static.pug

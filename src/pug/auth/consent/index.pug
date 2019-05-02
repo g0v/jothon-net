@@ -1,0 +1,15 @@
+//- module
+extends /base.pug
+block vars
+  - var rootclass = "auth"
+block head
+block body
+  +nbr(1)
+
+  div(data-controller="consent"): div(style="max-width:480px;margin:auto")
+    span hello
+    h1 Consent
+    p Do you agree the #{details.params.client_id} app accesses your #{details.params.scope} ?
+    .btn.btn-primary.mr-4(data-dom="consent") Yes
+    .btn.btn-primary No
+  +nbr(2)

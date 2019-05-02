@@ -1,0 +1,27 @@
+extends ../../base.pug
+block vars
+block head
+block body
+  .spc1
+  #root.narrow
+    +nbr(2)
+    .text-center
+      .gray Reset Password
+      h1 忘記密碼了嗎?
+      p
+        div 在此輸入你的電子郵件信箱，讓我們寄送密碼重設信件給你
+        small.gray enter your email below and we will send a password reset email to you
+    #authpanel(ng-controller="resetpassword")
+      form.modal-dialog(method="POST",action="/d/me/passwd/reset"): .modal-content
+        .modal-body
+          input#_csrf(type="hidden",name="_csrf")
+          input.form-control.input-lg(type="email",name="email",placeholder="e.g., nobody@g0v.tw")
+        .modal-footer
+          input.btn.btn-success.btn-lg.btn-block(type="submit",value="發送密碼重設信 / Submit")
+      script.
+        angular.module("backend").controller("resetpassword",["$scope","global",function($scope,global) {
+         document.getElementById("_csrf").value = global.csrfToken;
+        }]);
+    p.text-center
+      a(href="/") 回首頁  #[small /  Back to Home]
+    +nbr(3)

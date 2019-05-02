@@ -1,0 +1,22 @@
+extends /base.pug
+block vars
+  - var rootclass = "auth";
+block body
+  .spc1
+  style
+  #root.narrow
+    +nbr(2)
+    .text-center
+      .gray Reset Link Sent.
+      h1 密碼重設信已寄出
+      p
+        div 稍後你應該就會收到信件了，請檢查你的郵件信箱吧。
+        small.gray check your email inbox for the password reset email.
+      i.fa.fa-check.text-success(style="display:block;font-size:80px")
+      p 
+        div 沒有收到？
+        a(href="/auth/reset/") 再寄一次吧 #[small  / send again]
+      +nbr(2)
+      p: a(href="/") 回首頁  #[small /  Back to Home]
+    +nbr(3)
+

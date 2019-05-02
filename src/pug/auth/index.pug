@@ -1,0 +1,9 @@
+extends /base.pug
+block vars
+  - var rootclass = "auth"
+block head
+block body
+  +nbr(1)
+  div: div(style="max-width:480px;margin:auto")
+      include static.pug
+  +nbr(2)

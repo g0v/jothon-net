@@ -1,0 +1,86 @@
+extends /base.pug
+block vars
+  - var title = "關於揪松團 / 零時政府揪松網"
+  - var description = "g0v 揪松團是 g0v.tw 社群籌辦雙月黑客松的工作小組，除了籌畫每雙月的百人黑客松 ( 大松 ) 外，2016 年起亦積極推動社群基礎建設，並於 2016 年底推出公民科技創新獎助金計畫 。"
+  - var thumbnail = "http://hack.g0v.tw/assets/img/about/members.jpg";
+  - var members = yamls("data/members");
+  - members.sort(function(a,b) { return (a.since > b.since ? 1 : a.since < b.since ? -1 : 0); });
+block head
+block body
+  div(style="background:linear-gradient(180deg,#fff,#fff,#f2f5f8,#ddd)")
+    +nbr(2)
+    .row(style="max-width:1024px;margin:auto")
+      .col-md
+        br
+        .text-center(style="position:relative;z-index:1;margin-top:0px")
+          small About g0v Jothon
+          h1 關於揪松團
+          img.ld.ld-heartbeat(src="/assets/img/jothon-bg-light.svg",style="width:100px")
+        br
+      .col-md
+        img(src="/assets/img/about/members.jpg", style="width:600px;max-width:100%;margin:auto;box-shadow:0 2px 5px rgba(0,0,0,.2);margin:auto;display:block")
+    +nbr(2)
+  +nbr(1)
+
+  .content
+    h1.mb-0.mt-0 尋找公民科技的續航力
+    small.gray 零時政府揪松團自 2015 年 4 月起 / g0v Jothon, Since April, 2015
+    hr
+
+    p
+      | 自 2012 年底開始，每兩個月一次的台灣零時政府百人黑客松 ( 大松 ) 帶起了
+      a(href="http://g0v.tw") #[span.g0v.tw]
+      |  社群的蓬勃發展，並陸續分支出各種中小型黑客松，在 #[a(href="https://moe.kktix.cc/",target="_blank") 萌典松] 後有亦有各專案的主題黑客松，也有針對不同專業的前端松、法律松、設計松持續上場。
+
+    p 除了越來越多的專案與系列活動外，也開始有許多來自不同領域的團體希望合辦活動，為了維持去中心化的基本原則以及持續進化的動能，#[span.g0v] 揪松團便於 #[a(href="https://groups.google.com/forum/#!topic/g0v-jothon-staff/JWRJG0pl31k",target="_blank") 2015 年成立]。
+
+    p
+      | 「#[span.g0v] 揪松團」是 #[span.g0v.tw] 社群籌辦雙月黑客松的工作小組，除了籌畫每雙月的百人黑客松 ( 大松 ) 外，2016 年起亦積極推動社群基礎建設，並於 2016 年底推出
+      a(href="https://grants.g0v.tw/") #[span.g0v] 公民科技創新獎助金計畫
+      |  。
+
+    +nbr(1)
+    h4 公民科技創新獎助金計劃
+
+    p 自 2012 年以來，上千位參與者透過一場場黑客松，打造出多項以開放資料、開放政府為精神的資訊平台，以縮短數位落差為初衷，降低公民參與門檻，使得議題審議可立基在具體事實，提升理性討論公共事務的意識。
+
+    p 六年多來三十餘次的黑客松孵化出了數百個專案，其中不乏發展成真正具有社會影響力的成品；然而，這些專案的開發、經營，甚至社群本身，大多仰賴志願者的熱情投入。我們認為好的創意與設計還需要投入持續開發、長期營運維護的人力與心力，才能真正成為足以產生改變、激發更多創意與發展的成果。
+
+    p 為鼓勵更多優秀人才投入公民科技領域、加速孵化更多成果，我們向國內外各大具社會影響力之媒體、科技產業、非政府組織募集「公民科技創新獎助金」，並設計一套參與、評選機制，來獎助具潛力且有助公共利益的專案，投入原型開發或維護營運。
+    +nbr(1)
+    .row.text-center
+      each name in [["agrinote","阿龜誌"],["linebot","真的假的"],["treasure","國家寶藏"],["vote-guide","投票指南"]]
+        .col
+          .grantee-badge(style="background-image:url(/assets/img/about/grantee/" + name[0] + ".png)")
+          label= name[1]
+    .text-center: small.gray
+      | 公民科技創新獎助金歷屆得獎提案 ( 部份摘錄 )。
+      a(href="https://grants.g0v.tw/power",target="_blank") 全部得獎專案 #[i.fa.fa-link]
+
+    +nbr(2)
+    h4 參與揪松團
+    p #[span.g0v] 揪松團本身亦為一個 #[span.g0v] 專案，若你有興趣參與揪松團的計劃，可以透過以下管道了解更多：
+    ul
+      li: a(href="https://g0v-jothon.kktix.cc/") 揪松團活動報名頁面
+      li #[a(href="http://join.g0v.tw") g0v slack] 中的 #jothon 聊天室
+      li: a(href="https://groups.google.com/forum/#!forum/g0v-jothon-staff") 揪松團 Google Group
+      li: a(href="https://g0v.hackpad.tw/g0v--Hdt7zQDV2pS") 揪松團工作計畫共筆
+
+    +nbr(2)
+    h3 揪松團夥伴 #[small.en / g0v Jothon Staff]
+    hr
+    .members
+      each member in members
+        if member.status == 'active'
+          .member.media.mb-3(style="min-height:180px")
+            img.mr-3(src="/assets/img/about/avatar/" + member.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
+            .media-body
+              h5.mt-0.mb-0 #{member.name} / #{member.nick}
+              if member.grant
+                .mb-2: small.gray 公民科技創新獎助金：#{member.grant}
+              p !{md(member.description.trim())}
+
+    +nbr(2)
+    h3 合作窗口 / Contact
+    hr
+    p 合作、訪問或其他相關的問題，亦可透過 #[a(href="mailto:g0v-jothon@googlegroups.com") g0v-jothon&#64;googlegroups.com] 郵件群組與我們聯繫。若你願意幫忙大松籌辦，則歡迎直接到 #[a(href="http://join.g0v.tw/") g0v slack 聊天室] 的 jothon 群組聊聊。

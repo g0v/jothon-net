@@ -1,0 +1,28 @@
+extends /base.pug
+block vars
+  - var rootclass = "auth";
+block body
+  .spc1
+  #root.narrow
+    +nbr(2)
+    .text-center
+      small.gray Password Reset Done.
+      h1 密碼重設完成
+      p
+        div 那麼就來試試用新密碼登入吧！
+        small.gray Now let's try if you can login with your brand new password
+      i.fa.fa-check.text-success(style="display:block;font-size:80px")
+    script(type="text/javascript").
+      $(document).ready(function() {
+        setTimeout(function() {
+          var auth = angular.element("#root").scope().auth;
+          auth.isSignIn = true;
+          auth.ctrl.toggle();
+        }, 1000);
+      });
+    +nbr(1)
+    p.text-center
+      a(href="/") 回首頁  #[small /  Back to Home]
+    +nbr(2)
+    script.
+      if(!window.location.search) { window.location.search = "?nexturl=/" }
