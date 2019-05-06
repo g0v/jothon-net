@@ -1,18 +1,18 @@
 show: true
-name: 台灣零時政府第參拾參次不顧北京反對———黑客松
-shortname: 不顧北京反對黑客松
-id: 33
-date: 2019/03/09
-publish_date: 2019/02/26
+name: 台灣零時政府第參拾肆次再開放空總黑客松
+shortname: 再開放空總黑客松
+id: 34
+date: 2019/05/25
+publish_date: 2019/05/06
 location:
-  en: IIS, Academia Sinica
-  zh: 中央研究院資訊所
+  en: Taiwan Contemporary Culture Lab
+  zh: 空總臺灣當代文化實驗場
 description: |
 
-  如果吃滷肉飯不需要任何人同意，為什麼結婚需要全民同意？想吃滷肉飯就吃、想結婚就結、想撿槍就撿，就算北京反對，黑客松還是要辦！
+  ～睽違兩年，g0v 在空總再開大松～與其靠託夢，不如來放空，五月二十五，空總黑客松。
 
-  本次 g0v 大黑客松將於 12/8 (Sat.) 舉辦，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。參加者需同意遵守活動守則。
+  本次 g0v 大黑客松將於 5/25 (Sat.) 舉辦，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。參加者需同意遵守活動守則。
 
 register:
-  project: http://beta.hackfoldr.org/g0v-hackath33n/
-background: /assets/img/events/landing/33.png
+  project: http://beta.hackfoldr.org/g0v-hackath34n/
+background: /assets/img/events/landing/34.jpg
