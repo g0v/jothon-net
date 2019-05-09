@@ -25,7 +25,7 @@ main = do
     | 'loading.on' => helper.add-class document.body, 'running'
     | 'loading.off' => helper.remove-class document.body, 'running'
 
-navbar = controller.register(nav, main) .0
+if nav => navbar = controller.register(nav, main) .0
 authpanel = controller.register(auth, main) .0
 consentpage = controller.register(consent, main) .0
 controller.register(modal, main)

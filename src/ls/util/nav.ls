@@ -1,4 +1,5 @@
 nav = (dom, data, parent) ->
+  if !dom["signin"] => return
   dom["signin"].addEventListener \click, ~> parent.fire \authpanel.on
   dom["signout"].addEventListener \click, ~> parent.fire \signout
   parent.monitor 'user', ~>
