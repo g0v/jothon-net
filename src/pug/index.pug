@@ -14,6 +14,12 @@ block head
   script.
     var featuring = !{escjson(featuring)};
 block body
+  div(style="position:absolute;top:80px;right:10px;z-index:1")
+    .alert.alert-warning.py-1.px-2(style="box-shadow:0 2px 4px rgba(0,0,0,.2)")
+      a(href="/notice/",style="color:currentColor"): small
+        strong 06/03
+        span.ml-1 ． 網站維護公告 - 揪松網將於 ...
+      button.close.ml-2(type="button",data-dismiss="alert"): span &times;
   .jumbotron: .inner
     - var jumbobk = (featuring.background ? featuring.background : ("/assets/img/events/" + featuring.id + ".jpg"))
     .background(style="background-image:url(" + jumbobk + ")")

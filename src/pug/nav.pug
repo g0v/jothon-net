@@ -40,6 +40,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
       li.nav-item: form.form-inline(method="GET",action="/search/")
         input.form-control.mr-sm-2.form-control-sm#search-input(name="q",type="search",placeholder="Search")
         .btn.btn-sm.btn-outline-light.clickable(onclick="search()") 搜尋
+        a.btn.btn-sm.btn-outline-light.clickable.ml-4(href="/notice/") 公告事項
     //-ul.navbar-nav.ml-auto
       li.nav-item.dropdown(data-dom="profile")
         a.nav-link.dropdown-toggle#navbar-profile(href="#",role="button",data-toggle="dropdown")
