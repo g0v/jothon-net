@@ -61,7 +61,6 @@ Usage
 
 update file
 ```
-	jothon-net/static/latest/project/registration/index.html
 	jothon-net/data/featuring.yaml
 	#修改成第N次黑客松資料
 ```
@@ -79,6 +78,7 @@ rebuild
 ```
 	$touch jothon-net/src/pug/index.pug
 	$touch jothon-net/src/pug/events/index.pug
+	$touch jothon-net/src/pug/last/project/registration/index.pug
 ```
 
 commit & deploy
