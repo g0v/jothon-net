@@ -1,6 +1,7 @@
 {
   "author": "zbryikt",
   "name": "jothon-net",
+  "license": "MIT",
   "description": "jothon-net reconstruction project",
   "version": "0.0.1",
   "homepage": "https://github.com/g0v/jothon-net",
