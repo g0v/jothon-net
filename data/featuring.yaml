@@ -1,16 +1,15 @@
 show: true
-name: 台灣零時政府第參拾伍次最旁邊黑客松
-shortname: 最旁邊黑客松
-id: 35
-date: 2019/07/20
-publish_date: 2019/07/08
+name: 台灣零時政府第參拾陸次開放台北議會黑客松
+shortname: 開放台北市議會黑客松
+id: 36
+date: 2019/09/07
+publish_date: 2019/08/16
 location:
-  en: Institute of Information Science Academia Sinica
-  zh: 中研院資訊所
+  en: Taipei City Council
+  zh: 台北市議會
 description: |
 
-  本次 g0v 黑客松將於 7/20 (Sat.) 在台北市最旁邊的南港區舉辦，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。參加者需有禮貌，同意遵守活動守則。
-
+  9 月 7 日，六位台北市議員邀請 g0v 社群進入台北市議會，由 g0v 揪松團共同主辦 g0v 黑客松，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。參加者需同意遵守活動守則。
 register:
-  project: http://beta.hackfoldr.org/g0v-hackath35n/
-background: /assets/img/events/landing/35.jpg
+  project: http://beta.hackfoldr.org/g0v-hackath36n/
+background: /assets/img/events/landing/36.jpg
