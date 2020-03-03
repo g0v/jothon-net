@@ -1,16 +1,15 @@
 show: true
-name: 台灣零時政府第參拾柒次全臺首學黑客松
-shortname: 全臺首學黑客松
-id: 37
-date: 2019/12/21
-publish_date: 2019/11/20
+name: 台灣零時政府第參拾捌次在家黑客松
+shortname: 在家黑客松
+id: 38
+date: 2020/03/14
+publish_date: 2020/3/2
 location:
-  en: Former Tainan Assembly Hall
-  zh: 吳園（原台南公會堂）
+  en: Online
+  zh: 線上
 description: |
 
-  g0v 雙月大黑客松在台北市持續舉辦七年後，終於來到古都台南！本次 g0v 黑客松將於 12/21（週六）舉辦，g0v 揪松團（g0v jothon）與台南的社群朋友共同促成首次在「台灣最早首都」的 g0v 雙月大黑客松，無獨有偶的，g0v 國際交流小組（g0v intl）的「面海松」也將在同個週末舉辦，一連三天，成為今年最大的一場 g0v 雙月大黑客松。
-
+  想念 g0v 黑客松的披薩和炸雞嗎？你這次可以自己點一桶，然後在 3/14（六）一起上線參加「g0v 第參拾捌次在家黑客松 Hack from Home Hackath38n」！為了避免百人實體活動的接觸風險，主辦團隊含淚捨棄面對面的 Hacking、網友相見歡一起吃炸雞的歡樂時光，改為「線上直播」的形式。這將是 g0v 黑客松首次的線上大松，究竟公民科技社群要如何運用現有科技，達成「百人在線討論」呢？ 先給個秘訣 ：報名、讀文件、時間到就上線！
 register:
-  project: http://beta.hackfoldr.org/g0v-hackath37n/
-background: /assets/img/events/landing/37.jpg
+  project: https://g0v.hackmd.io/@jothon/g0vHackath38n
+background: /assets/img/events/landing/38.jpg
