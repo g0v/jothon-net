@@ -1,15 +1,16 @@
 show: true
-name: 台灣零時政府第參拾捌次在家黑客松
-shortname: 在家黑客松
-id: 38
-date: 2020/03/14
-publish_date: 2020/3/2
+name: 台灣零時政府第參拾伍次最旁邊黑客松
+shortname: 最旁邊黑客松
+id: 35
+date: 2019/07/20
+publish_date: 2019/07/08
 location:
-  en: Online
-  zh: 線上
+  en: Institute of Information Science Academia Sinica
+  zh: 中研院資訊所
 description: |
 
-  想念 g0v 黑客松的披薩和炸雞嗎？你這次可以自己點一桶，然後在 3/14（六）一起上線參加「g0v 第參拾捌次在家黑客松 Hack from Home Hackath38n」！為了避免百人實體活動的接觸風險，主辦團隊含淚捨棄面對面的 Hacking、網友相見歡一起吃炸雞的歡樂時光，改為「線上直播」的形式。這將是 g0v 黑客松首次的線上大松，究竟公民科技社群要如何運用現有科技，達成「百人在線討論」呢？ 先給個秘訣 ：報名、讀文件、時間到就上線！
+  本次 g0v 黑客松將於 7/20 (Sat.) 在台北市最旁邊的南港區舉辦，歡迎公民、鄉民、憤青、開發者、設計者、社會運動工作者、公務員、法律專家、文字工作者、插畫家與媒體工作者等諸眾，帶著熱血來盡一己之力，開源協作參與社會。參加者需有禮貌，同意遵守活動守則。
+
 register:
-  project: https://g0v.hackmd.io/@jothon/g0v-hackath38n
-background: /assets/img/events/landing/38.jpg
+  project: http://beta.hackfoldr.org/g0v-hackath35n/
+background: /assets/img/events/landing/35.jpg

@@ -29,7 +29,7 @@ html(lang="en")
     include /auth/panel.pug
     // For now we don't need this, since it's a static site
     //-#notifications
-    //.notify(ng-repeat="n in notifications",ng-class="'notify-'+n.type",ng-cloak) {{n.message}}
+      .notify(ng-repeat="n in notifications",ng-class="'notify-'+n.type",ng-cloak) {{n.message}}
     block body
     if !debug
       include /module/facebook.pug

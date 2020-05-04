@@ -1,7 +1,7 @@
 jothon-net
 ===========
 
-揪松網 2.0。 https://jothon.g0v.tw/
+揪松網 2.0。 https://hack.g0v.tw/
 
 改進部份
 -----------
@@ -47,45 +47,7 @@ Usage
     ./node_modules/.bin/lsc server.ls
 ```
 
-以上為舊版,目前將登入與驗證暫時移除,僅留下靜態網頁部份
-```
-	npm i
-	npm start
-```
-
-然後使用瀏覽器開啟 [http://localhost:3000/](http://localhost:3000/).
-
-
-如何更新揪松網大松訊息
-------------
-
-update file
-```
-	jothon-net/data/featuring.yaml
-	#修改成第N次黑客松資料
-```
-
-add file
-```
-	jothon-net/data/events/OO.yaml
-	#第N次黑客松資料
-	jothon-net/static/assets/img/events/landing/OO.jpg
-	jothon-net/static/assets/img/events/OO.jpg
-	#上傳第N次黑客松主圖 (size 1200 x 628 px
-```
-
-rebuild
-```
-	$touch jothon-net/src/pug/index.pug
-	$touch jothon-net/src/pug/events/index.pug
-	$touch jothon-net/src/pug/last/project/registration/index.pug
-```
-
-commit & deploy
-```
-	git add & commit
-	$./deploy
-```
+然後使用瀏覽器開啟 [http://localhost:9000/](http://localhost:9000/).
 
 
 Configuration for Production
