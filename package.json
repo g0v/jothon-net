@@ -1,6 +1,7 @@
 {
   "author": "zbryikt",
   "name": "jothon-net",
+  "license": "MIT",
   "description": "jothon-net reconstruction project",
   "version": "0.0.1",
   "homepage": "https://github.com/g0v/jothon-net",
@@ -13,7 +14,8 @@
     "npm": "=6.1.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/lsc node_modules/template/server.ls"
+    "start": "node_modules/.bin/lsc node_modules/template/server.ls",
+    "build": "find . | grep \\.pug | xargs touch"
   },
   "dependencies": {
     "LiveScript": "^1.3.1",
