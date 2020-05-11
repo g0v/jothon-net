@@ -58,7 +58,10 @@ block body
         else
           a.btn.btn-primary.btn-lg.mr-1(href="#",onclick="scrollto('#subscribe-newsletter',2000)") #[small Subscribe Newsletter] #[br] 訂閱電子報
         a.btn.btn-primary.btn-lg.mr-1(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",target="_blank") #[small Donate by Subscribing] #[br] 認養大松
-        a.btn.btn-primary.btn-lg(href="http://beta.hackfoldr.org/g0v-hackath" + featuring.id + "n") #[small Note for Latest Event] #[br] 本期共筆
+        if featuring.id > 37
+            a.btn.btn-primary.btn-lg(href="https://g0v.hackmd.io/@jothon/g0v-hackath" + featuring.id + "n") #[small Note for Latest Event] #[br] 本期共筆
+        else
+            a.btn.btn-primary.btn-lg(href="http://beta.hackfoldr.org/g0v-hackath" + featuring.id + "n") #[small Note for Latest Event] #[br] 本期共筆
       br
       #learn-more(onclick="scrollto('#content')")
         small.en Learn More #[br]
