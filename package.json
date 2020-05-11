@@ -26,7 +26,6 @@
     "js-yaml": "^3.13.1",
     "jsdom": "^15.0.0",
     "markdown": "^0.5.0",
-    "node-minify": "^3.6.0",
     "pug": "^2.0.3",
     "require-reload": "^0.2.2",
     "stylus": "^0.54.5",
