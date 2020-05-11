@@ -1,1 +1,727 @@
-function import$(e,t){var n={}.hasOwnProperty;for(var r in t)n.call(t,r)&&(e[r]=t[r]);return e}var x$,slice$=[].slice;x$=angular.module("ldBase"),x$.filter("prettyColorHex",function(){return function(e){var t,n;return/rgba?/.exec(e)?(t=/rgba?\(([^,]+),([^,]+),([^,]+)(?:,([^,]+))?\)/.exec(e),n="#"+[t[1],t[2],t[3],t[4]].map(function(e,t){var n;return e?(n=+e,~e.indexOf("%")?n=Math.round(2.55*+e.replace("%","")).toString(16):1>+e&&(n=.01*Math.round(100*+e)+""),n.length<2&&(n="0"+n),n.length>4&&(n=n.substring(0,4)),3===t&&(n=" / "+n),n):e}).join("")):e}}),x$.filter("nicedate",function(){return function(e){var t;return t=new Date(e),t.getYear()+1900+"/"+(t.getMonth()+1)+"/"+t.getDate()}}),x$.filter("nicedatetime",function(){return function(e){var t,n,r,i,o,a,l,u;return t=function(e){return(10>e?"0":"")+""+e},n=new Date(e),r=n.getYear()+1900,i=t(n.getMonth()+1),o=t(n.getDate()),a=t(n.getHours()),l=t(n.getMinutes()),u=t(n.getSeconds()),r+"/"+i+"/"+o+" "+a+":"+l+":"+u}}),x$.service("gautil",["$rootScope"].concat(function(){return{track:function(e,t,n,r){return"undefined"!=typeof ga&&null!==ga?ga("send","event",e,t,n,r):void 0}}})),x$.service("initWrap",["$rootScope"].concat(function(){var e;return e=function(){var e;return e=function(t){return(e.list||(e.list=[])).push(t),import$(t,{promise:{},failed:function(e){var t,n;return null==e&&(e="default"),t=slice$.call(arguments,1),this.promise[e]?(n=this.promise[e].rej,this.promise[e]=null,n.apply(null,t)):void 0},finish:function(e){var t,n;return null==e&&(e="default"),t=slice$.call(arguments,1),this.promise[e]?(n=this.promise[e].res,this.promise[e]=null,n.apply(null,t)):void 0},block:function(e){var t=this;return null==e&&(e="default"),new Promise(function(n,r){return t.promise[e]={res:n,rej:r}})}})},e.run=function(){return(this.list||(this.list=[])).map(function(e){return e.init()})},e}})),x$.directive("ngModal",["$compile","$timeout"].concat(function(e,t){return{restrict:"A",scope:{model:"=ngModel",config:"=config"},link:function(e,n){var r,i;return r=e.config||{},e.model.ctrl=i={promise:null,focus:function(){return t(function(){var e;return e=n.find("input[tabindex='1']"),e.length?e.focus():void 0},0)},toggle:function(t,n,r){return null==r&&(r="done"),n&&(this.value=n),null!=t&&!!this.toggled==!!t||(this.toggled=null!=t?t:!this.toggled,this.toggled&&this.focus(),this.toggled||!i.promise)?void 0:e.model.action(r)},toggled:null,value:null,reset:function(){return this.value=""},init:function(){return this.reset(),n.on("keydown",function(t){var i,o,a;return i=t.keyCode||t.which,13===i?(o=+t.target.getAttribute("tabindex")+1,a=n.find("input[tabindex='"+o+"']"),a&&a.length?a[0].focus():(r.dismissOnEnter&&e.$apply(function(){return e.model.action("done")}),null!=r.finish?r.finish():void 0)):void 0})}},e.model.action=function(t){return"done"===t&&(e.model.value=i.value),i.toggle(!1,null,t),i.promise?("done"===t?i.promise.res(i.value):i.promise.rej(t),i.promise=null):void 0},e.model.prompt=function(e){return i.toggle(!0,e),new Promise(function(e,t){return i.promise={res:e,rej:t}})},e.model.ctrl.init()}}})),x$.directive("ngIonSlider",["$compile"].concat(function(){return{restrict:"A",scope:{model:"=ngValue",config:"=config","switch":"=ngSwitch"},link:function(e,t,n){var r;return t[0].addEventListener("keyup",function(){return t[0].value!==e.model?e.$apply(function(){return e.model=t[0].value||0}):void 0}),t[0].addEventListener("change",function(){return t[0].value!==e.model?e.$apply(function(){return e.model=t[0].value||0}):void 0}),null!=n.ngSwitch&&null==e["switch"]&&(e["switch"]=null!=n.defaultSwitch?n.defaultSwitch===!0:!0),e.$watch("model",function(e){return t[0].value=e||0}),r=!1,e.$watch("switch",function(i){var o,a,l;return n.ngSwitch||(i=null!=n.defaultSwitch?"true"===n.defaultSwitch:!0),i&&!r&&(r=!0,o=e.config||{},a="double"===o.type,a&&!Array.isArray(e.model)&&(e.model=[0,100]),e.$watch("config",function(e){return l.update(e)}),e.$watch("model",function(e){return a?(l.result.from!==e[0]&&l.update({from:e[0]}),l.result.to!==e[1]&&l.update({to:e[1]})):l.result.from!==+e&&l.update({from:e}),t.removeAttr("readonly")}),$(t).ionRangeSlider(import$(import$({},o),{onChange:function(t){return e.$apply(function(){if(a){if(e.model[0]!==t.from&&(e.model[0]=t.from),e.model[1]!==t.to)return e.model[1]=t.to}else if(e.model!==t.from)return e.model=t.from})}})),l=$(t).data("ionRangeSlider")),i?(t.addClass("irs-hidden-input"),t.attr("readonly",!0),t.parent().removeClass("input")):(t.removeClass("irs-hidden-input"),t.removeAttr("readonly"),t.parent().addClass("input"))})}}})),x$.directive("readby",["$compile"].concat(function(){return{scope:{readby:"&readby",encoding:"@encoding",askencoding:"&askencoding",multiple:"@multiple"},link:function(e,t,n){var r,i;return r=e.readby(),i=e.askencoding(),t.bind("change",function(o){var a;return a=function(){var i,a,l,u;return i=o.target.files,i.length?n.multiple?(a=function(t){return new Promise(function(r){var i;return i=new FileReader,i.onload=function(){return r({result:i.result,file:t})},n.asdataurl?i.readAsDataURL(t):e.encoding?i.readAsText(t,e.encoding):i.readAsBinaryString(t)})},l=Array.from(i).map(function(e){return a(e)}),Promise.all(l).then(function(n){return e.$apply(function(){return r(n)}),t.val("")})):(u=new FileReader,u.onload=function(){return e.$apply(function(){return r(u.result,i[0])}),t.val("")},null!=n.asdataurl?u.readAsDataURL(i[0]):null!=n.asarraybuffer?u.readAsArrayBuffer(i[0]):e.encoding?u.readAsText(i[0],e.encoding):u.readAsBinaryString(i[0])):void 0},e.$apply(function(){return i?i(a):a()})})}}})),x$.directive("ngGradient",["$compile"].concat(function(){return{restrict:"A",scope:{model:"=ngValue",config:"=config"},link:function(e,t){var n,r,i,o,a,l;return e.idx=null,n=t[0].querySelector(".ldColorPicker"),r=new ldColorPicker(null,{"class":"text-input no-palette flat"}),n=r.node,n.style.display="none",i=!1,o=!1,a=!0,l=function(){return e.model?(e.gradient=["linear-gradient(90deg,",e.model.colors.map(function(e){return e.value+" "+100*e.pos+"%"}).join(","),")"].join(""),t[0].querySelector(".gradient-inner").style.background=e.gradient):void 0},e.$watch("model",function(){return l()}),r.on("change",function(t){return e.$apply(function(){return null!=e.idx&&e.model?(e.model.colors[e.idx].value=t,l()):void 0})}),t[0].addEventListener("mouseup",function(l){return e.$apply(function(){var u,d,c;return a=!0,o&&!i&&null!=e.idx?(u=l.target.getBoundingClientRect(),d=t[0].getBoundingClientRect(),(c=e.lastidx!==e.idx||"block"!==n.style.display)&&setTimeout(function(){return r.toggle(c)},0),n.style.top=u.bottom+15+document.body.scrollTop+"px",n.style.left=u.left-15+document.body.scrollLeft+"px",l.stopPropagation(),l.preventDefault()):void 0})}),t[0].addEventListener("click",function(n){return e.$apply(function(){var o,a;if(!(i||n.target!==t[0]&&n.target!==t[0].querySelector(".gradient-inner")))return o=t[0].getBoundingClientRect(),a=(n.clientX-o.left)/o.width,1>=a||(a=1),a>=0||(a=0),e.model?(e.model.colors.push({value:"#000000",pos:a}),e.model.colors.sort(function(e,t){return e.pos-t.pos}),l(),r.toggle(!1)):void 0})}),window.addEventListener("mousedown",function(n){return e.$apply(function(){return i=!1,o=!1,n.target.parentNode===t[0]?(a=!1,e.lastidx=e.idx,e.idx=Array.from(n.target.parentNode.childNodes).filter(function(e){return e.getAttribute&&/tick/.exec(e.getAttribute("class"))}).indexOf(n.target),e.idx<0?e.idx=null:(o=!0,n.preventDefault(),n.stopPropagation())):void 0})}),window.addEventListener("mousemove",function(n){return e.$apply(function(){var o,u,d,c;if(i=!0,o=t[0].getBoundingClientRect(),u=(n.clientX-o.left)/o.width,1>=u||(u=1),u>=0||(u=0),d=Math.abs(n.clientY-(o.top+o.height/2)),c=n.buttons||n.button,!a&&c&&null!=e.idx){if(r.toggle(!1),d>o.height/2+60)return e.model&&e.model.colors.splice(e.idx,1),e.idx=null,l();if(e.model)return e.idx>0&&e.model.colors[e.idx-1].pos>u&&(u=e.model.colors[e.idx-1].pos),e.idx<e.model.colors.length-1&&e.model.colors[e.idx+1].pos<u&&(u=e.model.colors[e.idx+1].pos),e.model.colors[e.idx].pos=u,l()}})}),l()}}})),x$.directive("ngClipboard",["$compile"].concat(function(){return{restrict:"A",scope:{},link:function(e,t,n){var r,i;return r=new Clipboard(t[0],{target:function(){return document.querySelector(n.target)}}),i=document.createElement("div"),i.setAttribute("class","hover-tip "+(n.dir||"top")),t[0].appendChild(i),r.on("success",function(){return t.addClass("copied"),i.innerText="copied",setTimeout(function(){return t.removeClass("copied")},1e3)}),r.on("error",function(){return t.addClass("copied"),i.innerText="Press Ctrl+C to Copy",setTimeout(function(){return t.removeClass("copied")},1e3)})}}})),x$.directive("ngDrop",["$compile"].concat(function(){return{restrict:"A",scope:{swap:"&swap"},link:function(e,t,n){var r,i;return n.swap&&(r=e.swap()),i=function(e){return e.getAttribute("draggable")?e:e.parentNode},t[0].addEventListener("dragenter",function(e){return e.preventDefault()}),t[0].addEventListener("dragover",function(e){return e.preventDefault(),e.dataTransfer.dropEffect="move"}),t[0].addEventListener("dragstart",function(e){var t,n;return t=i(e.target),n=Array.from(t.parentNode.querySelectorAll("*[draggable=true]")).indexOf(t),e.dataTransfer.setData("text/plain",n)}),t[0].addEventListener("drop",function(e){var t,n,o;return t=i(e.target),n=+e.dataTransfer.getData("text"),o=Array.from(t.parentNode.querySelectorAll("*[draggable=true]")).indexOf(t),n>=0&&o>=0&&r?r(n,o):void 0})}}})),x$.directive("ngPaypal",["$compile","global","$timeout","gautil"].concat(function(e,t,n,r){return{restrict:"A",scope:{model:"=ngModel",trackid:"@trackid",type:"@type",id:"@itemid",price:"@price",format:"@format"},link:function(e,i){var o,a,l;return o=document.createElement("div"),o.id="paypal-btn-"+Math.random().toString().substring(2),o.setAttribute("class","paypal-btn-inner"),a=document.createElement("div"),a.id="paypal-btn-"+Math.random().toString().substring(2)+"-loader",a.setAttribute("class","ld ld-ball ld-flip"),i[0].appendChild(o),i[0].appendChild(a),i.addClass("ld ld-over-inverse running"),e.paid=!1,e.$watch("model.list",function(t,n){var r;if(t!==n&&t&&t.length)return r=t.filter(function(t){return t.type===e.type&&t.item===e.id}).length,r?i.addClass("paid"):i.removeClass("paid"),e.paid=r?!0:!1},!0),i.on("click",function(){return e.paid?e.model.paid({trackid:e.trackid,id:e.id,type:e.type,price:e.price,format:e.format}):void 0}),l={init:function(){return this.inited?void 0:"undefined"==typeof paypal||null===paypal?n(function(){return l.init()},1e3):(this.inited=!0,paypal.Button.render({env:t.production?"production":"sandbox",style:{size:"responsive"},payment:function(n,i){return r.track(e.trackid,"pay-button","click"),paypal.request.post("/d/create-payment/",{type:e.type,id:e.id},{headers:{"X-CSRF-Token":t.csrfToken}}).then(function(e){return n(e.paymentID)})["catch"](function(e){return i(e)})},onAuthorize:function(n){var i;return paypal.request.post("/d/execute-payment/",(i={paymentID:n.paymentID,payerID:n.payerID},i.type=e.type,i.id=e.id,i),{headers:{"X-CSRF-Token":t.csrfToken}}).then(function(){return e.$apply(function(){return null!=e.model.paid?e.model.paid({trackid:e.trackid,id:e.id,type:e.type,price:e.price,format:e.format}):void 0}),r.track(e.trackid,"paid",e.format||"",1.99),null})["catch"](function(e){return console.log(e),alert("Something wrong in the payment process. please try again.")})}},o.id).then(function(){return i.removeClass("running")}))}},l.init()}}}));
+// Generated by LiveScript 1.3.1
+var x$, slice$ = [].slice;
+x$ = angular.module('ldBase');
+x$.filter('prettyColorHex', function(){
+  return function(it){
+    var ret, hex;
+    if (!/rgba?/.exec(it)) {
+      return it;
+    }
+    ret = /rgba?\(([^,]+),([^,]+),([^,]+)(?:,([^,]+))?\)/.exec(it);
+    hex = '#' + [ret[1], ret[2], ret[3], ret[4]].map(function(d, i){
+      var v;
+      if (!d) {
+        return d;
+      }
+      v = +d;
+      if (~d.indexOf('%')) {
+        v = Math.round(+d.replace('%', '') * 2.55).toString(16);
+      } else if (+d < 1) {
+        v = Math.round(+d * 100) * 0.01 + "";
+      }
+      if (v.length < 2) {
+        v = "0" + v;
+      }
+      if (v.length > 4) {
+        v = v.substring(0, 4);
+      }
+      if (i === 3) {
+        v = " / " + v;
+      }
+      return v;
+    }).join("");
+    return hex;
+  };
+});
+x$.filter('nicedate', function(){
+  return function(it){
+    var date;
+    date = new Date(it);
+    return (date.getYear() + 1900) + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+  };
+});
+x$.filter('nicedatetime', function(){
+  return function(it){
+    var pad, date, Y, M, D, h, m, s;
+    pad = function(it){
+      return (it < 10 ? '0' : '') + "" + it;
+    };
+    date = new Date(it);
+    Y = date.getYear() + 1900;
+    M = pad(date.getMonth() + 1);
+    D = pad(date.getDate());
+    h = pad(date.getHours());
+    m = pad(date.getMinutes());
+    s = pad(date.getSeconds());
+    return Y + "/" + M + "/" + D + " " + h + ":" + m + ":" + s;
+  };
+});
+x$.service('gautil', ['$rootScope'].concat(function($rootScope){
+  return {
+    track: function(cat, act, label, value){
+      if (typeof ga != 'undefined' && ga !== null) {
+        return ga('send', 'event', cat, act, label, value);
+      }
+    }
+  };
+}));
+x$.service('initWrap', ['$rootScope'].concat(function($rootScope){
+  var _;
+  return _ = function(){
+    var init;
+    init = function(it){
+      (init.list || (init.list = [])).push(it);
+      return import$(it, {
+        promise: {},
+        failed: function(name){
+          var payload, rej;
+          name == null && (name = 'default');
+          payload = slice$.call(arguments, 1);
+          if (!this.promise[name]) {
+            return;
+          }
+          rej = this.promise[name].rej;
+          this.promise[name] = null;
+          return rej.apply(null, payload);
+        },
+        finish: function(name){
+          var payload, res;
+          name == null && (name = 'default');
+          payload = slice$.call(arguments, 1);
+          if (!this.promise[name]) {
+            return;
+          }
+          res = this.promise[name].res;
+          this.promise[name] = null;
+          return res.apply(null, payload);
+        },
+        block: function(name){
+          var this$ = this;
+          name == null && (name = 'default');
+          return new Promise(function(res, rej){
+            return this$.promise[name] = {
+              res: res,
+              rej: rej
+            };
+          });
+        }
+      });
+    };
+    return init.run = function(){
+      return (this.list || (this.list = [])).map(function(it){
+        return it.init();
+      });
+    }, init;
+  };
+}));
+x$.directive('ngModal', ['$compile', '$timeout'].concat(function($compile, $timeout){
+  return {
+    restrict: 'A',
+    scope: {
+      model: '=ngModel',
+      config: '=config'
+    },
+    link: function(s, e, a, c){
+      var config, ctrl;
+      config = s.config || {};
+      s.model.ctrl = ctrl = {
+        promise: null,
+        focus: function(){
+          return $timeout(function(){
+            var n;
+            n = e.find("input[tabindex='1']");
+            if (n.length) {
+              return n.focus();
+            }
+          }, 0);
+        },
+        toggle: function(t, v, a){
+          a == null && (a = 'done');
+          if (v) {
+            this.value = v;
+          }
+          if (t == null || !!this.toggled !== !!t) {
+            this.toggled = t != null
+              ? t
+              : !this.toggled;
+            if (this.toggled) {
+              this.focus();
+            }
+            if (!this.toggled && ctrl.promise) {
+              return s.model.action(a);
+            }
+          }
+        },
+        toggled: null,
+        value: null,
+        reset: function(){
+          return this.value = '';
+        },
+        init: function(){
+          this.reset();
+          return e.on('keydown', function(event){
+            var key, tabindex, n;
+            key = event.keyCode || event.which;
+            if (key !== 13) {
+              return;
+            }
+            tabindex = +event.target.getAttribute("tabindex") + 1;
+            n = e.find("input[tabindex='" + tabindex + "']");
+            if (n && n.length) {
+              return n[0].focus();
+            }
+            if (config.dismissOnEnter) {
+              s.$apply(function(){
+                return s.model.action('done');
+              });
+            }
+            if (config.finish != null) {
+              return config.finish();
+            }
+          });
+        }
+      };
+      s.model.action = function(a){
+        if (a === 'done') {
+          s.model.value = ctrl.value;
+        }
+        ctrl.toggle(false, null, a);
+        if (ctrl.promise) {
+          if (a === 'done') {
+            ctrl.promise.res(ctrl.value);
+          } else {
+            ctrl.promise.rej(a);
+          }
+          return ctrl.promise = null;
+        }
+      };
+      s.model.prompt = function(v){
+        var this$ = this;
+        ctrl.toggle(true, v);
+        return new Promise(function(res, rej){
+          return ctrl.promise = {
+            res: res,
+            rej: rej
+          };
+        });
+      };
+      return s.model.ctrl.init();
+    }
+  };
+}));
+x$.directive('ngIonSlider', ['$compile'].concat(function($compile){
+  return {
+    restrict: 'A',
+    scope: {
+      model: '=ngValue',
+      config: '=config',
+      'switch': '=ngSwitch'
+    },
+    link: function(s, e, a, c){
+      var inited;
+      e[0].addEventListener('keyup', function(){
+        if (e[0].value !== s.model) {
+          return s.$apply(function(){
+            return s.model = e[0].value || 0;
+          });
+        }
+      });
+      e[0].addEventListener('change', function(){
+        if (e[0].value !== s.model) {
+          return s.$apply(function(){
+            return s.model = e[0].value || 0;
+          });
+        }
+      });
+      if (a.ngSwitch != null && s['switch'] == null) {
+        s['switch'] = a.defaultSwitch != null ? a.defaultSwitch === true : true;
+      }
+      s.$watch('model', function(it){
+        return e[0].value = it || 0;
+      });
+      inited = false;
+      return s.$watch('switch', function(n, o){
+        var config, isDouble, slider;
+        if (!a.ngSwitch) {
+          n = a.defaultSwitch != null ? a.defaultSwitch === 'true' : true;
+        }
+        if (n && !inited) {
+          inited = true;
+          config = s.config || {};
+          isDouble = config.type === 'double';
+          if (isDouble && !Array.isArray(s.model)) {
+            s.model = [0, 100];
+          }
+          s.$watch('config', function(config){
+            return slider.update(config);
+          });
+          s.$watch('model', function(it){
+            if (isDouble) {
+              if (slider.result.from !== it[0]) {
+                slider.update({
+                  from: it[0]
+                });
+              }
+              if (slider.result.to !== it[1]) {
+                slider.update({
+                  to: it[1]
+                });
+              }
+            } else {
+              if (slider.result.from !== +it) {
+                slider.update({
+                  from: it
+                });
+              }
+            }
+            return e.removeAttr('readonly');
+          });
+          $(e).ionRangeSlider(import$(import$({}, config), {
+            onChange: function(v){
+              return s.$apply(function(){
+                if (isDouble) {
+                  if (s.model[0] !== v.from) {
+                    s.model[0] = v.from;
+                  }
+                  if (s.model[1] !== v.to) {
+                    return s.model[1] = v.to;
+                  }
+                } else if (s.model !== v.from) {
+                  return s.model = v.from;
+                }
+              });
+            }
+          }));
+          slider = $(e).data('ionRangeSlider');
+        }
+        if (!n) {
+          e.removeClass('irs-hidden-input');
+          e.removeAttr('readonly');
+          return e.parent().addClass('input');
+        } else {
+          e.addClass('irs-hidden-input');
+          e.attr('readonly', true);
+          return e.parent().removeClass('input');
+        }
+      });
+    }
+  };
+}));
+x$.directive('readby', ['$compile'].concat(function($compile){
+  return {
+    scope: {
+      readby: '&readby',
+      encoding: '@encoding',
+      askencoding: '&askencoding',
+      multiple: '@multiple'
+    },
+    link: function(s, e, a, c){
+      var handler, askencoding;
+      handler = s.readby();
+      askencoding = s.askencoding();
+      return e.bind('change', function(event){
+        var reader;
+        reader = function(){
+          var files, loadfile, promises, fr;
+          files = event.target.files;
+          if (!files.length) {
+            return;
+          }
+          if (a.multiple) {
+            loadfile = function(f){
+              return new Promise(function(res, rej){
+                var fr;
+                fr = new FileReader();
+                fr.onload = function(){
+                  return res({
+                    result: fr.result,
+                    file: f
+                  });
+                };
+                if (a.asdataurl) {
+                  return fr.readAsDataURL(f);
+                } else if (s.encoding) {
+                  return fr.readAsText(f, s.encoding);
+                } else {
+                  return fr.readAsBinaryString(f);
+                }
+              });
+            };
+            promises = Array.from(files).map(function(it){
+              return loadfile(it);
+            });
+            return Promise.all(promises).then(function(ret){
+              s.$apply(function(){
+                return handler(ret);
+              });
+              return e.val("");
+            });
+          } else {
+            fr = new FileReader();
+            fr.onload = function(){
+              s.$apply(function(){
+                return handler(fr.result, files[0]);
+              });
+              return e.val("");
+            };
+            if (a.asdataurl != null) {
+              return fr.readAsDataURL(files[0]);
+            } else if (a.asarraybuffer != null) {
+              return fr.readAsArrayBuffer(files[0]);
+            } else if (s.encoding) {
+              return fr.readAsText(files[0], s.encoding);
+            } else {
+              return fr.readAsBinaryString(files[0]);
+            }
+          }
+        };
+        return s.$apply(function(){
+          if (askencoding) {
+            return askencoding(reader);
+          } else {
+            return reader();
+          }
+        });
+      });
+    }
+  };
+}));
+x$.directive('ngGradient', ['$compile'].concat(function($compile){
+  return {
+    restrict: 'A',
+    scope: {
+      model: '=ngValue',
+      config: '=config'
+    },
+    link: function(s, e, a, c){
+      var cp, ldcp, isMove, isTick, isBreak, makeGradient;
+      s.idx = null;
+      cp = e[0].querySelector('.ldColorPicker');
+      ldcp = new ldColorPicker(null, {
+        'class': 'text-input no-palette flat'
+      });
+      cp = ldcp.node;
+      cp.style.display = 'none';
+      isMove = false;
+      isTick = false;
+      isBreak = true;
+      makeGradient = function(){
+        if (!s.model) {
+          return;
+        }
+        s.gradient = [
+          "linear-gradient(90deg,", s.model.colors.map(function(it){
+            return it.value + " " + it.pos * 100 + "%";
+          }).join(","), ")"
+        ].join("");
+        return e[0].querySelector(".gradient-inner").style.background = s.gradient;
+      };
+      s.$watch('model', function(){
+        return makeGradient();
+      });
+      ldcp.on('change', function(c){
+        return s.$apply(function(){
+          if (s.idx != null && s.model) {
+            s.model.colors[s.idx].value = c;
+            return makeGradient();
+          }
+        });
+      });
+      e[0].addEventListener('mouseup', function(evt){
+        return s.$apply(function(){
+          var tick, node, that;
+          isBreak = true;
+          if (!isTick || isMove || s.idx == null) {
+            return;
+          }
+          tick = evt.target.getBoundingClientRect();
+          node = e[0].getBoundingClientRect();
+          if (that = s.lastidx !== s.idx || cp.style.display !== 'block') {
+            setTimeout(function(){
+              return ldcp.toggle(that);
+            }, 0);
+          }
+          cp.style.top = (tick.bottom + 15 + document.body.scrollTop) + "px";
+          cp.style.left = (tick.left - 15 + document.body.scrollLeft) + "px";
+          evt.stopPropagation();
+          return evt.preventDefault();
+        });
+      });
+      e[0].addEventListener('click', function(evt){
+        return s.$apply(function(){
+          var rect, left;
+          if (isMove || (evt.target !== e[0] && evt.target !== e[0].querySelector(".gradient-inner"))) {
+            return;
+          }
+          rect = e[0].getBoundingClientRect();
+          left = (evt.clientX - rect.left) / rect.width;
+          left <= 1 || (left = 1);
+          left >= 0 || (left = 0);
+          if (s.model) {
+            s.model.colors.push({
+              value: '#000000',
+              pos: left
+            });
+            s.model.colors.sort(function(a, b){
+              return a.pos - b.pos;
+            });
+            makeGradient();
+            return ldcp.toggle(false);
+          }
+        });
+      });
+      window.addEventListener('mousedown', function(evt){
+        return s.$apply(function(){
+          isMove = false;
+          isTick = false;
+          if (evt.target.parentNode !== e[0]) {
+            return;
+          }
+          isBreak = false;
+          s.lastidx = s.idx;
+          s.idx = Array.from(evt.target.parentNode.childNodes).filter(function(it){
+            return it.getAttribute && /tick/.exec(it.getAttribute("class"));
+          }).indexOf(evt.target);
+          if (s.idx < 0) {
+            return s.idx = null;
+          }
+          isTick = true;
+          evt.preventDefault();
+          return evt.stopPropagation();
+        });
+      });
+      window.addEventListener('mousemove', function(evt){
+        return s.$apply(function(){
+          var rect, left, yOffset, btn;
+          isMove = true;
+          rect = e[0].getBoundingClientRect();
+          left = (evt.clientX - rect.left) / rect.width;
+          left <= 1 || (left = 1);
+          left >= 0 || (left = 0);
+          yOffset = Math.abs(evt.clientY - (rect.top + rect.height / 2));
+          btn = evt.buttons || evt.button;
+          if (!isBreak && btn && s.idx != null) {
+            ldcp.toggle(false);
+            if (yOffset > rect.height / 2 + 60) {
+              if (s.model) {
+                s.model.colors.splice(s.idx, 1);
+              }
+              s.idx = null;
+              return makeGradient();
+            } else if (s.model) {
+              if (s.idx > 0) {
+                if (s.model.colors[s.idx - 1].pos > left) {
+                  left = s.model.colors[s.idx - 1].pos;
+                }
+              }
+              if (s.idx < s.model.colors.length - 1) {
+                if (s.model.colors[s.idx + 1].pos < left) {
+                  left = s.model.colors[s.idx + 1].pos;
+                }
+              }
+              s.model.colors[s.idx].pos = left;
+              return makeGradient();
+            }
+          }
+        });
+      });
+      return makeGradient();
+    }
+  };
+}));
+x$.directive('ngClipboard', ['$compile'].concat(function($compile){
+  return {
+    restrict: 'A',
+    scope: {},
+    link: function(s, e, a, c){
+      var clipboard, tip;
+      clipboard = new Clipboard(e[0], {
+        target: function(){
+          return document.querySelector(a.target);
+        }
+      });
+      tip = document.createElement('div');
+      tip.setAttribute('class', "hover-tip " + (a.dir || 'top'));
+      e[0].appendChild(tip);
+      clipboard.on('success', function(){
+        e.addClass('copied');
+        tip.innerText = 'copied';
+        return setTimeout(function(){
+          return e.removeClass('copied');
+        }, 1000);
+      });
+      return clipboard.on('error', function(){
+        e.addClass('copied');
+        tip.innerText = 'Press Ctrl+C to Copy';
+        return setTimeout(function(){
+          return e.removeClass('copied');
+        }, 1000);
+      });
+    }
+  };
+}));
+x$.directive('ngDrop', ['$compile'].concat(function($compile){
+  return {
+    restrict: 'A',
+    scope: {
+      swap: '&swap'
+    },
+    link: function(s, e, a, c){
+      var handler, findBlock;
+      if (a.swap) {
+        handler = s.swap();
+      }
+      findBlock = function(node){
+        if (node.getAttribute('draggable')) {
+          return node;
+        } else {
+          return node.parentNode;
+        }
+      };
+      e[0].addEventListener('dragenter', function(evt){
+        return evt.preventDefault();
+      });
+      e[0].addEventListener('dragover', function(evt){
+        evt.preventDefault();
+        return evt.dataTransfer.dropEffect = 'move';
+      });
+      e[0].addEventListener('dragstart', function(evt){
+        var target, idx;
+        target = findBlock(evt.target);
+        idx = Array.from(target.parentNode.querySelectorAll('*[draggable=true]')).indexOf(target);
+        return evt.dataTransfer.setData('text/plain', idx);
+      });
+      return e[0].addEventListener('drop', function(evt){
+        var target, src, des;
+        target = findBlock(evt.target);
+        src = +evt.dataTransfer.getData('text');
+        des = Array.from(target.parentNode.querySelectorAll('*[draggable=true]')).indexOf(target);
+        if (src >= 0 && des >= 0 && handler) {
+          return handler(src, des);
+        }
+      });
+    }
+  };
+}));
+x$.directive('ngPaypal', ['$compile', 'global', '$timeout', 'gautil'].concat(function($compile, global, $timeout, gautil){
+  return {
+    restrict: 'A',
+    scope: {
+      model: '=ngModel',
+      trackid: '@trackid',
+      type: '@type',
+      id: '@itemid',
+      price: '@price',
+      format: '@format'
+    },
+    link: function(s, e, a, c){
+      var container, loader, ctrl;
+      container = document.createElement("div");
+      container.id = "paypal-btn-" + Math.random().toString().substring(2);
+      container.setAttribute('class', "paypal-btn-inner");
+      loader = document.createElement("div");
+      loader.id = "paypal-btn-" + Math.random().toString().substring(2) + "-loader";
+      loader.setAttribute('class', "ld ld-ball ld-flip");
+      e[0].appendChild(container);
+      e[0].appendChild(loader);
+      e.addClass("ld ld-over-inverse running");
+      s.paid = false;
+      s.$watch('model.list', function(n, o){
+        var len;
+        if (n === o || !n || !n.length) {
+          return;
+        }
+        len = n.filter(function(it){
+          return it.type === s.type && it.item === s.id;
+        }).length;
+        if (len) {
+          e.addClass('paid');
+        } else {
+          e.removeClass('paid');
+        }
+        return s.paid = len ? true : false;
+      }, true);
+      e.on('click', function(){
+        if (s.paid) {
+          return s.model.paid({
+            trackid: s.trackid,
+            id: s.id,
+            type: s.type,
+            price: s.price,
+            format: s.format
+          });
+        }
+      });
+      ctrl = {
+        init: function(){
+          if (this.inited) {
+            return;
+          }
+          if (typeof paypal == 'undefined' || paypal === null) {
+            return $timeout(function(){
+              return ctrl.init();
+            }, 1000);
+          }
+          this.inited = true;
+          return paypal.Button.render({
+            env: global.production ? 'production' : 'sandbox',
+            style: {
+              size: 'responsive'
+            },
+            payment: function(res, rej){
+              gautil.track(s.trackid, "pay-button", 'click');
+              return paypal.request.post('/d/create-payment/', {
+                type: s.type,
+                id: s.id
+              }, {
+                headers: {
+                  "X-CSRF-Token": global.csrfToken
+                }
+              }).then(function(data){
+                return res(data.paymentID);
+              })['catch'](function(err){
+                return rej(err);
+              });
+            },
+            onAuthorize: function(data){
+              var ref$;
+              return paypal.request.post('/d/execute-payment/', (ref$ = {
+                paymentID: data.paymentID,
+                payerID: data.payerID
+              }, ref$.type = s.type, ref$.id = s.id, ref$), {
+                headers: {
+                  "X-CSRF-Token": global.csrfToken
+                }
+              }).then(function(data){
+                s.$apply(function(){
+                  if (s.model.paid != null) {
+                    return s.model.paid({
+                      trackid: s.trackid,
+                      id: s.id,
+                      type: s.type,
+                      price: s.price,
+                      format: s.format
+                    });
+                  }
+                });
+                gautil.track(s.trackid, "paid", s.format || '', 1.99);
+                return null;
+              })['catch'](function(err){
+                console.log(err);
+                return alert("Something wrong in the payment process. please try again.");
+              });
+            }
+          }, container.id).then(function(){
+            return e.removeClass('running');
+          });
+        }
+      };
+      return ctrl.init();
+    }
+  };
+}));
+function import$(obj, src){
+  var own = {}.hasOwnProperty;
+  for (var key in src) if (own.call(src, key)) obj[key] = src[key];
+  return obj;
+}
