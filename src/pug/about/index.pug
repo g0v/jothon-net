@@ -73,8 +73,8 @@ block body
             img.mr-3(src="/assets/img/about/avatar/" + member.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
             .media-body
               h5.mt-0.mb-0 #{member.name} / #{member.nick}
-              if member.grant
-                .mb-2: small.gray 公民科技創新獎助金：#{member.grant}
+              if member.title
+                .mb-2: small.gray #{member.title}
               p !{md(member.description.trim())}
 
     +nbr(2)
