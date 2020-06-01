@@ -1,6 +1,9 @@
 name: 台灣零時政府第拾參次無殼蝸牛黑客松
 id: 13
 date: 2015/04/18
+video_pitch: https://www.youtube.com/watch?v=6gZFZTP-bqI&list=PLdwQWxpS513BhZaBy3VdW2MHQZd3ziulN
+video_talk: https://www.youtube.com/watch?v=EyGWG0CZwVo&list=PLdwQWxpS513DU2GxK0M1lYPZxU53wuh5K
+video_demo: https://www.youtube.com/watch?v=3m_YBZLq2Ek&list=PLdwQWxpS513CvqsZcDg2w_1yXQ097nQhe
 description: |
   g0v 的雙月大黑客松從一開始資料爬梳、資訊人為主，到現在已經演化出更多不同的類型：有公部門的參與、與 NGO 深度的協作，當然還有宅宅的投入與開源社群持續耕耘。「開放」不是一時的口號，而是需要長期投入的社會參與。
 

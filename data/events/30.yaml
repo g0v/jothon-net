@@ -2,6 +2,9 @@ name: 台灣零時政府第參拾次佛系黑客松
 subtitle: 沒有人寫扣 沒有人測試 沒有人部署 沒有人營運 食物到了 自然會運作
 id: 30
 date: 2018/05/05
+video_pitch: https://www.youtube.com/watch?v=J8ai3Cpiraw&list=PLdwQWxpS513CjtKiGn_BXngieh7zhjAyL
+video_talk: https://www.youtube.com/watch?v=izpu4jvBjn0&list=PLdwQWxpS513D4kteGvmo4D0ORWADSm4W_
+video_demo: https://www.youtube.com/watch?v=AHHh8jw3L6Y&list=PLdwQWxpS513BbmZJskfn2f0U4YQfnN1AA
 description: |
   台灣零時政府 g0v.tw 雙月大黑客松 — 不只寫程式改造社會
 

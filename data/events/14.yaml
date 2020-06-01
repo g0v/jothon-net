@@ -1,6 +1,9 @@
 name: 台灣零時政府第拾肆次野百合黑客松
 id: 14
 date: 2015/06/13
+video_pitch: https://www.youtube.com/watch?v=CR01BVLlUFU&list=PLdwQWxpS513A5q0y-BIxN3BmWl0TOuoVu
+video_talk: https://www.youtube.com/watch?v=ZWOvQ6w55yo&list=PLdwQWxpS513CAy3h8nmCV1IFsaI8vPGCW
+video_demo: https://www.youtube.com/watch?v=vkN85hlyKug&list=PLdwQWxpS513DbcPyqwKU-MWPsB_xIA8jK
 description: |
   從一開始資料爬梳、資訊人為主，到現在已經演化出更多不同的類型：有公部門的參與、與 NGO 深度的協作，當然還有宅宅的投入與開源社群持續耕耘「開放」不是一時的口號，而是需要長期投入的社會參與。
 
