@@ -26,7 +26,7 @@ block body
             h4.mt-0 #{item.name.replace("台灣零時政府","")} #[.en / g0v hackath#{item.id}n]
             .links
               .btn.btn-sm.btn-primary.mr-1 #{item.date}
-              if item.id > 37
+              if item.usebookmode == true
                 a.btn.btn-sm.btn-light.mr-1(target="_blank" href="https://g0v.hackmd.io/@jothon/g0v-hackath" + item.id + "n") #[i.fa.fa-link.mr-1] 共筆入口 / Note
               else
                 a.btn.btn-sm.btn-light.mr-1(target="_blank" href="http://beta.hackfoldr.org/g0v-hackath" + item.id + "n") #[i.fa.fa-link.mr-1] 共筆入口 / Note

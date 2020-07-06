@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第參拾玖次又在家黑客松
-shortname: 又在家黑客松
-id: 39
-date: 2020/05/23
-publish_date: 2020/05/11
+name: 台灣零時政府第肆拾次集合啦！老地方黑客松
+shortname: 集合啦！老地方黑客松
+id: 40
+date: 2020/07/25
+publish_date: 2020/07/06
 location:
-  zh: 線上
-  en: Online
+  en: Institute of Information Science Academia Sinica
+  zh: 中研院資訊所
 description: |
-  雙月一次的 g0v 黑客松將於 5/23（六） 舉行，在肺炎疫情警報尚未解除之前，g0v 揪松團會持續舉辦線上黑客松，讓大家見面、Hacking 和取暖。本次 g0v 又在家黑客松（Stay Home Hachath39n）將與 FtO 國際夥伴再次同步 Hacking！在跨國協作的過程中，社群參與者有機會參考或學習其他文化的做法與邏輯，讓專案可以在不同想法的交流中持續成長。
-register:
-  project: https://g0v.hackmd.io/@jothon/g0v-hackath39n
-background: /assets/img/events/39.jpg
+  集合啦！g0vers 們！還記得老地方在哪裡嗎？《名偵探柯南》裡的阿笠博士因為忘記老地方在哪裡，而錯過了和初戀情人再續前緣的機會。為了不要錯過與公民科技相知相惜的機會，g0vers 們請將老地方牢記心中阿！
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath40n
+project: https://beta.hackfoldr.org/g0v-hackath40n
+background: /assets/img/events/40.jpg
