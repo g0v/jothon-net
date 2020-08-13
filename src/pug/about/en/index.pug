@@ -1,0 +1,76 @@
+extends /base.pug
+block vars
+  - var title = "About g0v Jothon / 零時政府揪松網"
+  - var description = "g0v 揪松團是 g0v.tw 社群籌辦雙月黑客松的工作小組，除了籌畫每雙月的百人黑客松 ( 大松 ) 外，2016 年起亦積極推動社群基礎建設，並於 2016 年底推出公民科技創新獎助金計畫 。"
+  - var thumbnail = "http://hack.g0v.tw/assets/img/about/members.jpg";
+  - var members = yamls("data/members");
+  - var isEn = true;
+  - members.sort(function(a,b) { return (a.since > b.since ? 1 : a.since < b.since ? -1 : 0); });
+block head
+block body
+  div(style="background:linear-gradient(180deg,#fff,#fff,#f2f5f8,#ddd)")
+    +nbr(2)
+    .row(style="max-width:1024px;margin:auto")
+      .col-md
+        br
+        .text-center(style="position:relative;z-index:1;margin-top:0px")
+          h1 About g0v Jothon
+          img.ld.ld-heartbeat(src="/assets/img/jothon-bg-light.svg",style="width:100px")
+        br
+      .col-md
+        img(src="/assets/img/about/members.jpg", style="width:600px;max-width:100%;margin:auto;box-shadow:0 2px 5px rgba(0,0,0,.2);margin:auto;display:block")
+    +nbr(2)
+  +nbr(1)
+
+  .content
+    h1.mb-0.mt-0 Looking For the Endurance of the Civic Tech
+    small.gray g0v Jothon, Since April, 2015
+    hr
+
+    p #[span.g0v] jothon is the task force of g0v.tw bi-monthly hackathon, there are currently six volunteers and three staffers. The “jothon” organizers started organizing the g0v hackathon since 2012, and officially formed the “jothon” team in 2014. In 2016, the “infrathon” was launched for infrastructural projects of g0v community, and “Civic Tech Prototype Grant” encourages g0v projects to continue its development, long-term maintenance, and operation. In 2020, educational project “Sch001” was launched to rethink the role of the school from zero. g0v jothon was also a sponsor of g0v Summit 2018.
+    
+    h4 g0v Hackathon
+    p 
+      img(src="/assets/img/about/thon.jpg", style="max-width: 40%; float: right; padding: 0 1rem 0 1rem;")
+      | The g0v Hackathon has, since 2012, been a bimonthly event, where community members gather for good food and beverages while developing projects. g0v Hackathon is a cross-disciplinary platform for members to exchange ideas that celebrate openness, open source and open action. Hackathon attendees employ a tripartite method, applying their expertise, IT knowledge and crowd collaboration to explore the possibilities of a new solution to a challenge. g0v projects are all open source. Source codes and documents are released under open source licenses. Over the course of the past 8 years, g0v jothon has held 39 large-scale Hackathons, each with at least 100 participants, amassing an accumulated total of over 7000 participants and hundreds of new projects.
+    p: b Projects of g0v Hackathon
+    ul
+      li
+        a(href="https://campaign-finance.g0v.ctiml.tw/" target="_blank") Campaign Finance Crowdsourcing
+        |  by ronnywang
+      li 
+        a(href="https://www.moedict.tw/" target="_blank") Moedict 
+        |  by au
+      li 
+        a(href="https://amis.moedict.tw/" target="_blank") Amis Moedict
+        |  by wildjcrt
+    
+    h4 Jothon Online
+    p 
+      img(src="/assets/img/about/ph2020_1.jpg", style="max-width: 40%; float: right; padding: 0 1rem 0 1rem;")
+      | Since 2020, for a better online collaboration during COVID-19 epidemic outbreak, g0v jothon’s “
+      a(href="https://g0v.hackmd.io/@jothon/jothonline/" target="_blank") Jothon Online
+      | ” team developed collaboration system “Jothon Online” to support online co-work of online community.
+    p: b Video of Hackathon
+    ul
+      li: a(href="https://www.youtube.com/watch?v=dgptx4lnR8A" target="_blank") Hack from Home Hackath38n
+      li: a(href="https://www.youtube.com/watch?v=Ub9B1MidV3k" target="_blank") Stay Home Hackath39n  
+        
+    h4 g0v Civic Tech Prototype Grant
+    p 
+      | In order to encourage more talented individuals and teams to join the civic tech community and to accelerate the incubation phase of projects, g0v has raised funds from influential media groups, IT firms, and NGOs to create the “
+      a(href="https://grants.g0v.tw/power/" target="_blank") g0v Civic Tech Prototype Grant.
+      | ” Based on a participation and public appraisal system, g0v’s Hackathon Organizer Team awards the grant to projects that have great potential and communal benefit. We hope that through civic tech hackathons, we can compel more projects to produce influence, create a butterfly effect, and extend out more possibilities.    
+    ul
+      li: a(href="https://cofacts.g0v.tw/" target="_blank") Cofacts
+      li: a(href="https://www.nationaltreasure.tw/" target="_blank") National Treasures
+      li: a(href="https://www.uswatch.tw/" target="_blank") US Taiwan Watch
+    
+    h4 Sch001
+    p     
+      img(src="/assets/img/about/sch001.jpg", style="max-width: 40%; float: right; padding: 0 1rem 0 1rem;")
+      | “
+      a(href="https://sch001.g0v.tw/" target="_blank") Sch001
+      | ” project is a g0v project focusing on education. It puts 0 and 1 representing the digital native generation into the “School” representing education, rethinks the role of school from zero. This project is the connection and collaboration between education and the digital community.
+          
+  +nbr(2)
