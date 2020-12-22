@@ -14,12 +14,6 @@ block head
   script.
     var featuring = !{escjson(featuring)};
 block body
-  div(style="position:absolute;top:80px;right:10px;z-index:0")
-    .alert.alert-warning.py-1.px-2(style="box-shadow:0 2px 4px rgba(0,0,0,.2)")
-      a(href="/notice/",style="color:currentColor"): small
-        strong 06/10
-        span.ml-1 ． 揪松團公告 - g0v 零時政府揪松團員工終止聘僱聲明  ...
-      button.close.ml-2(type="button",data-dismiss="alert"): span &times;
   .jumbotron: .inner
     - var jumbobk = (featuring.background ? featuring.background : ("/assets/img/events/" + featuring.id + ".jpg"))
     .background(style="background-image:url(" + jumbobk + ")")
@@ -56,16 +50,16 @@ block body
         if event
           a.btn.btn-primary.btn-lg.mr-1(href=featuring.register,target="_blank") #[small Register Now] #[br] 立刻報名
         else
-          a.btn.btn-primary.btn-lg.mr-1(href="#",onclick="scrollto('#subscribe-newsletter',2000)") #[small Subscribe Newsletter] #[br] 訂閱電子報
-        a.btn.btn-primary.btn-lg.mr-1(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",target="_blank") #[small Donate by Subscribing] #[br] 認養大松
-        a.btn.btn-primary.btn-lg(target="_blank" href=featuring.project) #[small Note for Latest Event] #[br] 本期共筆
+          a.btn.btn-primary.btn-lg.mr-1.mt-1(href="#",onclick="scrollto('#subscribe-newsletter',2000)") #[small Subscribe Newsletter] #[br] 訂閱電子報
+        a.btn.btn-primary.btn-lg.mr-1.mt-1(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",target="_blank") #[small Donate by Subscribing] #[br] 認養大松
+        a.btn.btn-primary.btn-lg.mt-1(target="_blank" href=featuring.project) #[small Note for Latest Event] #[br] 本期共筆
       br
       #learn-more(onclick="scrollto('#content')")
         small.en Learn More #[br]
         big.zh 了解更多
         br
         img(src="/assets/img/down.gif")
-  #content.content
+  #content.container
     mixin carousel-testimony(title, name, quote, active)
       .carousel-item(class=(active ? "active" : ""))
         blockquote
@@ -148,7 +142,7 @@ block body
       li #[b.red 動民主] — 以德國流動民主為概念，試圖打造線上決議的工具型專案。
       li #[b.red 新聞小幫手] — 回報問題新聞並即時提醒讀者的實用瀏覽器擴充。
 
-    img.hidden-md.hidden-sm.hidden-xs(src="/assets/img/flow.png",style="width:1024px;margin:auto;display:block")
+    img.hidden-md.hidden-sm.hidden-xs(src="/assets/img/flow.png",style="width:100%;margin:auto;display:block")
     +nbr(2)
     small.gray 提案成功的秘訣
     h4 要怎麼「讓事情發生」？ / #[big.red How] to "Let's Hack?"?

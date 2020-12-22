@@ -10,8 +10,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
     ul.navbar-nav.mr-auto
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdown(
-        href="#",role="button",data-toggle="dropdown") 過往活動 #[small / Events]
-        .dropdown-menu
+        href="#",role="button",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") 過往活動 #[small / Events]
+        .dropdown-menu(aria-labelledby="navbarDropdown")
           each event in navEvents
             a.dropdown-item(href="/events/#hackath" + event.id + "n") #{ordinal(event.id)} - #{event.name.replace(/^.+次/,'')}
           a.dropdown-item(href="/events/") ... 更多 #[small / More]
@@ -21,7 +21,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
           a.dropdown-item(href="http://us13.campaign-archive1.com/home/?u=688c0f30e2af41c2fa09114f2&id=24c8450e9a",target="_blank") 過往電子報 #[small / Newsletters]
       //- coming soon
         li.nav-item: a.nav-link(href="/faq/") 常見問題 #[small / FAQ]
-      li.nav-item: a.nav-link(href="/about/") 關於揪松 #[small / About]
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle#navbar-dropdown-about(
+        href="#",role="button",data-toggle="dropdown") 關於揪松 #[small / About]
+        .dropdown-menu(aria-labelledby="#navbar-dropdown-about")
+          a.dropdown-item(href="/about/") 關於我們 #[small / About Us]
+          a.dropdown-item(href="/transaction/") 收支明細 #[small / Spending]
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbar-dropdown-participate(
         href="#",role="button",data-toggle="dropdown") 線上參與 #[small / Participate]

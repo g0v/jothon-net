@@ -1,6 +1,6 @@
 //- module
 - var timeline = yaml("data/timeline.yaml");
-.content
+.container
   - var style = ["red", "orange", "green", "blue"]
   each section,index in timeline
     .timeline(class="timeline-" + (style[index % style.length]))
