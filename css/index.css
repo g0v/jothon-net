@@ -64,7 +64,8 @@ iframe {
   color: #fff;
   display: block;
 }
-.footer .fa {
+.footer .fa,
+.footer .fab {
   width: 20px;
   margin-right: 5px;
   text-align: center;
@@ -120,12 +121,15 @@ iframe {
   font-size: 1.5em;
 }
 .jumbotron .btn {
-  width: 200px;
+  width: 190px;
   font-size: 1.1em;
   padding-bottom: 15px;
 }
 .btn {
   font-size: 1.15em;
+}
+.container {
+  padding-top: 1.5em;
 }
 .content {
   max-width: 1024px;
@@ -167,14 +171,6 @@ iframe {
 #carousel-testimony .carousel-item {
   padding-left: 30px;
   padding-right: 30px;
-}
-#carousel-photo .carousel-control-prev,
-#carousel-review .carousel-control-prev {
-  left: -35px;
-}
-#carousel-photo .carousel-control-next,
-#carousel-review .carousel-control-next {
-  right: -35px;
 }
 #carousel-photo .carousel-control-prev,
 #carousel-review .carousel-control-prev,
@@ -2441,7 +2437,7 @@ h6.tag {
 }
 .timeline .date {
   position: absolute;
-  left: -88px;
+  left: -82px;
   margin-top: 2px;
   text-align: right;
   width: 60px;
