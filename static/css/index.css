@@ -130,6 +130,7 @@ iframe {
 }
 .container {
   padding-top: 1.5em;
+  padding-bottom: 1.5em;
 }
 .content {
   max-width: 1024px;
