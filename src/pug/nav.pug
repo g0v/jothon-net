@@ -10,11 +10,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
     ul.navbar-nav.mr-auto
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdown(
-        href="#",role="button",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") 過往活動 #[small / Events]
+        href="#",role="button",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") 活動列表 #[small / Events]
         .dropdown-menu(aria-labelledby="navbarDropdown")
-          each event in navEvents
-            a.dropdown-item(href="/events/#hackath" + event.id + "n") #{ordinal(event.id)} - #{event.name.replace(/^.+次/,'')}
-          a.dropdown-item(href="/events/") ... 更多 #[small / More]
+          a.dropdown-item(href="https://g0v.hackmd.io/@jothon/rJGNXtIgd",target="_blank") 揪松團 2021 活動行事曆 #[small / 2021 Jothon Calendar]
+          a.dropdown-item(href="/events/") 歷屆黑客松共筆 #[small / Past Hackathon Events]
+          a.dropdown-item(href="https://beta.hackfoldr.org/g0v-infras/",target="_blank") 歷屆基礎建設松共筆 #[small / Past Infrathon Events]
+          a.dropdown-item(href="https://g0v-jothon.kktix.cc/",target="_blank") 揪松團 KKTIX #[small / KKTIX]
           .dropdown-divider
           a.dropdown-item(href="https://www.flickr.com/photos/g0v",target="_blank") 活動照片 #[small / Photo Records]
           a.dropdown-item(href="https://www.youtube.com/user/g0vTW/playlists",target="_blank") 簡報影片 #[small / Pitch Videos]
@@ -28,21 +29,25 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
           a.dropdown-item(href="/about/") 關於我們 #[small / About Us]
           a.dropdown-item(href="/transaction/") 收支明細 #[small / Spending]
       li.nav-item.dropdown
+        a.nav-link.dropdown-toggle#navbar-dropdown-about(
+        href="#",role="button",data-toggle="dropdown") 揪松專案 #[small / Projects]
+        .dropdown-menu(aria-labelledby="#navbar-dropdown-about")
+          a.dropdown-item(href="https://sch001.g0v.tw/" target="_blank") 零時小學校 #[small / Sch001]
+          a.dropdown-item(href="https://jothon.online/" target="_blank") 線上揪松 #[small / Jothon Online]
+          a.dropdown-item(href="https://grants.g0v.tw/" target="_blank") 公民科技創新獎助金 #[small / Grants]
+      li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbar-dropdown-participate(
         href="#",role="button",data-toggle="dropdown") 線上參與 #[small / Participate]
         .dropdown-menu
-          a.dropdown-item(href="http://join.g0v.tw",target="_blank") 加入 Slack #[small / Join Slack]
+          a.dropdown-item(href="https://g0v.hackmd.io/@daisuke/ryjkbFyuS",target="_blank") 加入 Slack #[small / Join Slack]
           a.dropdown-item(href="https://www.facebook.com/groups/g0v.general/",target="_blank") 臉書社團 #[small / FB Group]
           a.dropdown-item(href="https://line.me/ti/g2/AXt5jaKXcL1RNBSVd6f2EA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default",target="_blank") 加入 line 群 #[small / LINE Group]
-          a.dropdown-item(href="/irc/") 線上聊天室 #[small / Chatroom]
+          a.dropdown-item(href="/irc/") IRC 聊天室 #[small / IRC Chatroom]
           a.dropdown-item(href="/irc/log/") 對話紀錄 #[small / Chat Log]
-          a.dropdown-item(href="https://groups.google.com/forum/#!forum/g0v-general",target="_blank") 線上論壇 #[small / Forum]
+          .dropdown-divider
           a.dropdown-item(href="http://g0v.hackmd.io/",target="_blank") 線上共筆 (HackMD) #[small / Collaborative Notes]
-          .dropdown-divider
           a.dropdown-item(href="https://github.com/g0v/",target="_blank") 源碼庫 #[small / Github]
-          a.dropdown-item(href="https://docs.google.com/spreadsheets/d/1C9-g1pvkfqBJbfkjPB0gvfBbBxVlWYJj6tTVwaI5_x8/edit#gid=1563040282",target="_blank") 歷次提案 #[small / project hub]
-          .dropdown-divider
-          a.dropdown-item(href="https://meet.jothon.online/",target="_blank") 線上揪松 #[small / Jothon Online]
+          a.dropdown-item(href="https://chunyenhuang.github.io/awesome-g0v-projects/#/",target="_blank") 歷次提案 #[small / project hub]
       li.nav-item: a.nav-link(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",
       target="_blank") 認養大松 #[small / Donate]
     ul.navbar-nav.ml-auto

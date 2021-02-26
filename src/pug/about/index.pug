@@ -4,6 +4,7 @@ block vars
   - var description = "g0v 揪松團是 g0v.tw 社群籌辦雙月黑客松的工作小組，除了籌畫每雙月的百人黑客松 ( 大松 ) 外，2016 年起亦積極推動社群基礎建設，並於 2016 年底推出公民科技創新獎助金計畫 。"
   - var thumbnail = "http://hack.g0v.tw/assets/img/about/members.jpg";
   - var members = yamls("data/members");
+  - var staffs = yamls("data/members/staffs");
   - var hasEn = true;
   - members.sort(function(a,b) { return (a.since > b.since ? 1 : a.since < b.since ? -1 : 0); });
 block head
@@ -74,13 +75,12 @@ block body
     h4 參與揪松團
     p #[span.g0v] 揪松團本身亦為一個 #[span.g0v] 專案，若你有興趣參與揪松團的計劃，可以透過以下管道了解更多：
     ul
-      li: a(href="https://g0v-jothon.kktix.cc/",target="_blank") 揪松團活動報名頁面
       li #[a(href="http://join.g0v.tw",target="_blank") g0v slack] 中的 #jothon 聊天室
       li: a(href="https://groups.google.com/forum/#!forum/g0v-jothon-staff",target="_blank") 揪松團 Google Group
       li: a(href="https://g0v.hackmd.io/@jothon/rksXtoYj8Q",target="_blank") 揪松團工作計畫共筆
 
     +nbr(2)
-    h3 揪松團夥伴 #[small.en / g0v Jothon Staff]
+    h3 揪松團志工 #[small.en / g0v Jothon Volunteer]
     hr
     .members
       each member in members
@@ -92,7 +92,20 @@ block body
               if member.title
                 .mb-2: small.gray #{member.title}
               p !{md(member.description.trim())}
-
+    
+    h3 揪松團職工 #[small.en / g0v Jothon Staff]
+    hr
+    .members
+      each staff in staffs
+        if staff.status == 'active'
+          .member.media.mb-3(style="min-height:180px")
+            img.mr-3(src="/assets/img/about/avatar/" + staff.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
+            .media-body
+              h5.mt-0.mb-0 #{staff.name} / #{staff.nick}
+              if staff.title
+                .mb-2: small.gray #{staff.title}
+              p !{md(staff.description.trim())}
+              
     +nbr(2)
     h3 合作窗口 / Contact
     hr

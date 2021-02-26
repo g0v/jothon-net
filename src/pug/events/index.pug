@@ -1,12 +1,12 @@
 extends /base.pug
 block vars
-  - var title = "過往活動 / 零時政府揪松網"
+  - var title = "歷屆黑客松共筆 / 零時政府揪松網"
   - var events = yamls("data/events");
   - events.sort(function(a,b) { return b.id - a.id; });
 block head
 block body
   .container
-    h1.mb-0 過往活動 / Past Events
+    h1.mb-0 歷屆黑客松共筆 / Past Hackathon Events
     small.gray 自 2012 年 12 月起，歷次提案統整可到 #[a(href="https://docs.google.com/spreadsheets/d/1C9-g1pvkfqBJbfkjPB0gvfBbBxVlWYJj6tTVwaI5_x8/edit#gid=1563040282", target="_blank") g0v DB] 尋找。
     hr
     +nbr(1)
