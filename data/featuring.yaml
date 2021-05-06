@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第肆拾參次源力犇騰黑客松
-shortname: 源力犇騰黑客松
-id: 43
-date: 2021/03/20
-publish_date: 2021/03/07
+name: 台灣零時政府第肆拾肆次世界最危險黑客松
+shortname: 世界最危險黑客松
+id: 44
+date: 2021/05/22
+publish_date: 2021/05/06
 location:
   en: Institute of Information Science Academia Sinica
   zh: 中研院資訊所
 description: |
-  2021 年的第一季居然就要結束了，期待你打起精神來，帶著提案到 g0v 黑客松來交朋友。對，無論是提案還是交友，我們一律建議來大松。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath43n
-project: https://beta.hackfoldr.org/g0v-hackath43n
-background: /assets/img/events/43.jpg
+  世界最危險黑客松，歡迎來自四方的朋友，用輕鬆的態度面對危險，用審慎的思考讓台灣不再危險。
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath44n
+project: https://beta.hackfoldr.org/g0v-hackath44n
+background: /assets/img/events/44.jpg
