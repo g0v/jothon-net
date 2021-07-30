@@ -50,6 +50,7 @@ Usage
 以上為舊版,目前將登入與驗證暫時移除,僅留下靜態網頁部份
 ```
 	npm i
+  npm run build
 	npm start
 ```
 
@@ -69,16 +70,14 @@ add file
 ```
 	jothon-net/data/events/OO.yaml
 	#第N次黑客松資料
-	jothon-net/static/assets/img/events/landing/OO.jpg
 	jothon-net/static/assets/img/events/OO.jpg
 	#上傳第N次黑客松主圖 (size 1200 x 628 px
 ```
 
 rebuild
 ```
-	$touch jothon-net/src/pug/index.pug
-	$touch jothon-net/src/pug/events/index.pug
-	$touch jothon-net/src/pug/last/project/registration/index.pug
+	npm run build
+  npm start
 ```
 
 commit & deploy

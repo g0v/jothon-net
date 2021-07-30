@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第肆拾肆次世界最危險黑客松
-shortname: 世界最危險黑客松
-id: 44
-date: 2021/06/26
-publish_date: 2021/05/06
+name: 台灣零時政府第肆拾伍次原本在台中黑客松
+shortname: 原本在台中黑客松
+id: 45
+date: 2021/08/21
+publish_date: 2021/07/30
 location:
-  en: Institute of Information Science Academia Sinica
-  zh: 中研院資訊所
+  en: Online Meeting Room
+  zh: 線上會議室 Gather Town
 description: |
-  世界最危險黑客松，歡迎來自四方的朋友，用輕鬆的態度面對危險，用審慎的思考讓台灣不再危險。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath44n
-project: https://beta.hackfoldr.org/g0v-hackath44n
-background: /assets/img/events/44.jpg
+  本次黑客松大禮包內容物有：g0v 雙月黑客松（#g0v揪松團）、歷史影像平台定位松（#水土保持局）、維基百科編輯松（#台灣維基媒體協會），走過路過不要錯過。
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath45n
+project: https://beta.hackfoldr.org/g0v-hackath45n
+background: /assets/img/events/45.jpg
