@@ -50,7 +50,7 @@ Usage
 以上為舊版,目前將登入與驗證暫時移除,僅留下靜態網頁部份
 ```
 	npm i
-  npm run build
+  	npm run build
 	npm start
 ```
 
@@ -77,7 +77,7 @@ add file
 rebuild
 ```
 	npm run build
-  npm start
+  	npm start
 ```
 
 commit & deploy
