@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第肆拾伍次原本在台中黑客松
-shortname: 原本在台中黑客松
-id: 45
-date: 2021/08/21
-publish_date: 2021/07/30
+name: 台灣零時政府第肆拾陸次九週年黑客松
+shortname: 九週年黑客松
+id: 46
+date: 2021/10/23
+publish_date: 2021/10/01
 location:
-  en: Online Meeting Room
-  zh: 線上會議室 Gather Town
+  en: GIS MOTC Room 201 
+  zh: 集思交通部國際會議中心 GIS MOTC 201 會議室
 description: |
-  本次黑客松大禮包內容物有：g0v 雙月黑客松（#g0v揪松團）、歷史影像平台定位松（#水土保持局）、維基百科編輯松（#台灣維基媒體協會），走過路過不要錯過。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath45n
-project: https://beta.hackfoldr.org/g0v-hackath45n
-background: /assets/img/events/45.jpg
+  g0v 黑客松即將重返實體現場啦！超過半年沒有在實體現場見面，「沒有人」或許已經很想念一起面對面做專案、吃東西的大松時光。
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath46n
+project: https://beta.hackfoldr.org/g0v-hackath46n
+background: /assets/img/events/46.jpg
