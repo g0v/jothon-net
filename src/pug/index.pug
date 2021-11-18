@@ -29,9 +29,10 @@ block body
           .zh
             div(style="font-size:0.5em") g0v hackath#{featuring.id}n / 零時政府第 #{featuring.id} 次
             .heavy(style="font-weight:900;font-size:1.5em;margin:10px 0 10px") #{featuring.shortname}
-            div(style="font-size:0.65em")
-              span #{featuring.date} @ #{featuring.location.en} /
-              small #{featuring.location.zh}
+            a(href= featuring.location.link, target="_blank")
+              div(style="font-size:0.65em")
+                span #{featuring.date} @ #{featuring.location.en} /
+                small #{featuring.location.zh}
       script.
         var start = new Date(featuring.publish_date).getTime();
         var end = new Date(featuring.date).getTime() + 86400000;
