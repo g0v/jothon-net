@@ -1,15 +1,14 @@
 show: true
-name: 台灣零時政府第肆拾柒次板橋油庫口黑客松
-shortname: 板橋油庫口黑客松
-id: 47
-date: 2021/12/11
-publish_date: 2021/11/18
+name: 台灣零時政府第肆拾捌次虎來俱進黑客松
+shortname: 虎來俱進黑客松
+id: 48
+date: 2022/02/19
+publish_date: 2022/01/12
 location:
-  en: Jasper Banqiao Building A 
-  zh: 新板傑仕堡 A 棟（新光生活廣場） 2 樓 201 會議室
-  link: https://goo.gl/maps/X22bb2ZPEC8mJfjL8
+  en: nizukuriba
+  zh: 1915荷造り場
+  link: https://goo.gl/maps/HBjVefmfGRb2ZxFq9
 description: |
-  g0v 黑客松首次前進新北！ /#油庫口 /#開放資料 /#先別去南港
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath47n
-project: https://beta.hackfoldr.org/g0v-hackath47n
-background: /assets/img/events/47.jpg
+  2022 年首場虎年黑客松，這次 g0v 把黑客松帶進古蹟了！春節過後，2/19 邀請大家來古蹟邊做專案，邊享用美食，認識來自各個領域的工作者，讓參與社群也能好吃又好玩！
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath48n
+project: https://beta.hackfoldr.org/g0v-hackath48n
