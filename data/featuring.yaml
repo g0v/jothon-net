@@ -1,13 +1,14 @@
 show: true
-name: 台灣零時政府第肆拾捌次虎來俱進黑客松
-shortname: 虎來俱進黑客松
-id: 48
-date: 2022/02/19
+name: 台灣零時政府第肆拾玖次全糖去冰黑客松 x 2022 亞太社會創新高峰會
+shortname: 全糖去冰黑客松 x 2022 亞太社會創新高峰會
+id: 49
+date: 2022/04/09
 publish_date: 2022/01/12
 location:
-  en: Gather Town
-  zh: 線上大廳
+  en: C-Hub
+  zh: 成大創意中心
+  link: https://goo.gl/maps/XiPUpiCSv4XLP5Mh7
 description: |
-  2022 年首場虎年黑客松，這次 g0v 把黑客松帶進古蹟了！春節過後，2/19 邀請大家來古蹟邊做專案，邊享用美食，認識來自各個領域的工作者，讓參與社群也能好吃又好玩！
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath48n
-project: https://beta.hackfoldr.org/g0v-hackath48n
+  g0v 黑客松睽違兩年再度前進甜滋滋的台南！本次黑客松同時也是 #2022 亞太社會創新高峰會 的暖身場，邀請大家在後疫情時代，一起重新思索疫情對人與社區衝擊，以及環境永續的創新模式。4/9 邀請大家一起到台南出遊做專案，感受全糖城市的熱情～
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath49n
+project: https://beta.hackfoldr.org/g0v-hackath49n
