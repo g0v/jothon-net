@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第伍拾次來電五十黑客松 x COSCUP Open Source Contributor Workshop
-shortname: 來電五十黑客松 x COSCUP Open Source Contributor Workshop
-id: 50
-date: 2022/06/18
-publish_date: 2022/05/13
+name: 台灣零時政府第伍拾壹次大肚山海豚黑客松 x 水保局
+shortname: 大肚山海豚黑客松 x 水保局
+id: 51
+date: 2022/08/20
+publish_date: 2022/07/17
 location:
-  en: Upgrade Business Center-Sonjiang101
-  zh: 升級會議中心-松江101館
-  link: https://g.page/songjing101?share
+  en: GIS Xinwuri
+  zh: 集思台中新烏日會議中心
+  link: https://goo.gl/maps/XvB1EhVP4yxiXKPR7
 description: |
-  g0v 黑客松睽違兩年再度前進甜滋滋的台南！本次黑客松同時也是 #2022 亞太社會創新高峰會 的暖身場，邀請大家在後疫情時代，一起重新思索疫情對人與社區衝擊，以及環境永續的創新模式。4/9 邀請大家一起到台南出遊做專案，感受全糖城市的熱情～
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath50n
-project: https://beta.hackfoldr.org/g0v-hackath50n
+  真的假的！去年殘念的台中黑客松，時隔一年要以「大肚山海豚」之姿回歸了！g0v 第伍拾次黑客松與農委會水保局共同合辦，邀請大家一起為歷史影像定位，有更多好吃好玩的事情即將在 g0v 社群發生，邀請你 8/20 加入台中大松現場，一起邊玩邊做專案！
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath51n
+project: https://beta.hackfoldr.org/g0v-hackath51n
