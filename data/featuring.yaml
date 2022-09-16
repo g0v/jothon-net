@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第伍拾壹次大肚山海豚黑客松 x 水保局
-shortname: 大肚山海豚黑客松 x 水保局
-id: 51
-date: 2022/08/20
-publish_date: 2022/07/17
+name: 台灣零時政府第伍拾貳次十週年黑客松暨論壇
+shortname: 十週年黑客松暨論壇
+id: 52
+date: 2022/10/22
+publish_date: 2022/09/16
 location:
-  en: GIS Xinwuri
-  zh: 集思台中新烏日會議中心
-  link: https://goo.gl/maps/XvB1EhVP4yxiXKPR7
+  en: Humanities and Social Science Building
+  zh: 中央研究院人文館
+  link: https://goo.gl/maps/2x1KF3iQKs3tDNmQ7
 description: |
-  真的假的！去年殘念的台中黑客松，時隔一年要以「大肚山海豚」之姿回歸了！g0v 第伍拾次黑客松與農委會水保局共同合辦，邀請大家一起為歷史影像定位，有更多好吃好玩的事情即將在 g0v 社群發生，邀請你 8/20 加入台中大松現場，一起邊玩邊做專案！
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath51n
-project: https://beta.hackfoldr.org/g0v-hackath51n
+  十年之前，我不認識你，十年之後，我們是協作夥伴～ 今年在 g0vers 的熱情號召下，除了 10/22「十週年黑客松」之外，10/21-10/23 還有其他豐富的十週年系列活動。歡迎老朋友來敘舊、新朋友來入坑，一起做專案、吃美食，共同慶祝 g0v.tw 的十歲生日！
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath52n
+project: https://beta.hackfoldr.org/g0v-hackath52n
