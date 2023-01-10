@@ -1,14 +1,9 @@
-show: true
 name: 台灣零時政府第伍拾肆次兔兔黑客松 暨 零時小學校專案孵化競賽決選日
-shortname: 兔兔黑客松 暨 零時小學校專案孵化競賽決選日
+subtitle: |
+  兔年第一場黑客松將首度和大家來到國教院臺北院區，黑客松當天下午也同步舉行「零時小學校 2022-23 專案孵化競賽決選」活動，歡迎 g0vers 一起來開 🕳️，讓專案兔飛猛進，並持續以開源連結世界、行動取代兔槽 💪
+
 id: 54
 date: 2023/02/11
-publish_date: 2023/01/10
-location:
-  en: Taipei Branch, National Academy for Educational Research
-  zh: 國家教育研究院臺北院區
-  link: https://goo.gl/maps/wxGwS8KPzcobKbFA8
+usebookmode: false
 description: |
   兔年第一場黑客松將首度和大家來到國教院臺北院區，黑客松當天下午也同步舉行「零時小學校 2022-23 專案孵化競賽決選」活動，歡迎 g0vers 一起來開 🕳️，讓專案兔飛猛進，並持續以開源連結世界、行動取代兔槽 💪
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath54n
-project: https://beta.hackfoldr.org/g0v-hackath54n
