@@ -48,8 +48,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark(data-controller="nav"
           a.dropdown-item(href="http://g0v.hackmd.io/",target="_blank") 線上共筆 (HackMD) #[small / Collaborative Notes]
           a.dropdown-item(href="https://github.com/g0v/",target="_blank") 源碼庫 #[small / Github]
           a.dropdown-item(href="https://chunyenhuang.github.io/awesome-g0v-projects/#/",target="_blank") 歷次提案 #[small / project hub]
-      li.nav-item: a.nav-link(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",
-      target="_blank") 認養大松 #[small / Donate]
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle#navbar-dropdown-participate(
+        href="#",role="button",data-toggle="dropdown") 認養大松 #[small / Donate]
+        .dropdown-menu
+          a.dropdown-item(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",target="_blank") 捐款支持大松 #[small / Regular Donation]
+          a.dropdown-item(href="https://ocf.neticrm.tw/civicrm/event/register?cid=0&reset=1&id=20",target="_blank") 大松贊助周邊 #[small /  g0v hackathon merch ]
     ul.navbar-nav.ml-auto
       li.nav-item: form.form-inline(method="GET",action="/search/")
         input.form-control.mr-sm-2.form-control-sm#search-input(name="q",type="search",placeholder="Search")
