@@ -1,14 +1,8 @@
-show: true
 name: 台灣零時政府第伍拾陸次真的假的黑客松 x 水保局
-shortname: 真的假的黑客松 x 水保局
+subtitle: |
+  本次黑客松將再度來到台中與大家相聚，和 #農委會水保局 共同合辦。除了邀請大家一起來開坑、也想和大家共同來為歷史影像定位，串連同一地點在不同時間軸上所發生的事件，並進一步分析同地區的水土災害原因與規模，盡可能避免同樣的災害再度發生。有些災害是人為引發的事故，也有些天然災害是可以靠人為的努力減少傷害。本次 7/1 大松想邀請你加入，一起分享觀點、一起協作，尋找實務上可能的解方。
 id: 56
 date: 2023/07/01
-publish_date: 2023/05/16
-location:
-  en: GIS Taichung Xinwuri Convention Center
-  zh: 集思台中新烏日會議中心
-  link: https://goo.gl/maps/CvxfoWT8g32W68jF9
+usebookmode: false
 description: |
   本次黑客松將再度來到台中與大家相聚，和 #農委會水保局 共同合辦。除了邀請大家一起來開坑、也想和大家共同來為歷史影像定位，串連同一地點在不同時間軸上所發生的事件，並進一步分析同地區的水土災害原因與規模，盡可能避免同樣的災害再度發生。有些災害是人為引發的事故，也有些天然災害是可以靠人為的努力減少傷害。本次 7/1 大松想邀請你加入，一起分享觀點、一起協作，尋找實務上可能的解方。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath56n
-project: https://beta.hackfoldr.org/g0v-hackath56n
