@@ -1,14 +1,8 @@
-show: true
 name: 台灣零時政府第伍拾柒次開源普渡黑客松
-shortname: 開源普渡黑客松
+subtitle: |
+  「開源普渡」意即用開源解救眾生脫離專有束縛、從煩惱中獲得解脫，不再輪迴於重複造輪子的苦海之中。g0v 社群以「開源協作」的理念，釋出專案協作的過程、文件、原始碼與成果等，向大眾分享，並一同找出問題、提出解方。本次 g0v 黑客松將在中研院資訊所舉辦，歡迎你一起加入，共同以開源度化眾生！
 id: 57
 date: 2023/08/26
-publish_date: 2023/07/17
-location:
-  en: Institute of Information Science
-  zh: 中央研究院資訊科學研究所新館
-  link: https://goo.gl/maps/DZr1kHwf9dAgjJbX8
+usebookmode: false
 description: |
   「開源普渡」意即用開源解救眾生脫離專有束縛、從煩惱中獲得解脫，不再輪迴於重複造輪子的苦海之中。g0v 社群以「開源協作」的理念，釋出專案協作的過程、文件、原始碼與成果等，向大眾分享，並一同找出問題、提出解方。本次 g0v 黑客松將在中研院資訊所舉辦，歡迎你一起加入，共同以開源度化眾生！
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath57n
-project: https://beta.hackfoldr.org/g0v-hackath57n
