@@ -99,9 +99,12 @@ block body
       each staff in staffs
         if staff.status == 'active'
           .member.media.mb-3(style="min-height:180px")
-            img.mr-3(src="/assets/img/about/avatar/" + staff.nick + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
+            img.mr-3(src="/assets/img/about/avatar/" + staff.nick.toLowerCase() + ".jpg",style="width:140px;border-radius:3px;box-shadow:0 2px 2px rgba(0,0,0,0.4)")
             .media-body
-              h5.mt-0.mb-0 #{staff.name} / #{staff.nick}
+              h5.mt-0.mb-0
+                if staff.name
+                  | #{staff.name} / 
+                | #{staff.nick}
               if staff.title
                 .mb-2: small.gray #{staff.title}
               p !{md(staff.description.trim())}
