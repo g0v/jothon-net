@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第伍拾捌次 11 歲生日快樂黑客松
-shortname: 11 歲生日快樂黑客松
-id: 58
-date: 2023/10/15
-publish_date: 2023/09/07
+name: 台灣零時政府第伍拾玖次輪班寫 code 救台灣黑客松
+shortname: 輪班寫 code 救台灣黑客松
+id: 59
+date: 2023/12/09
+publish_date: 2023/10/30
 location:
-  en: Institute of Information Science
-  zh: 中央研究院資訊科學研究所新館
-  link: https://goo.gl/maps/DZr1kHwf9dAgjJbX8
+  en: Chubei City Zhongxing Village Community Center
+  zh: 竹北市中興里集會所
+  link: https://maps.app.goo.gl/v33aWqUDPQzSyZJj8
 description: |
-  g0v.tw 即將在 1024 再長一歲了，邀請大家一起來大松提前慶賀 g0v 生日快樂！生日不僅意味對過去回顧更對未來抱有期許與展望，期待有越來越多熱血公民加入 💪
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath58n
-project: https://beta.hackfoldr.org/g0v-hackath58n
+  11 年來，g0v 社群在 hacking 協作中誕生了許多專案，無數 g0ver 在課餘下班時間自發寫 code，輪班燃肝為台灣社會帶來一點一點的改變，逐步往更好的方向前進。本次黑客松首次來到新竹與大家相聚，無論你會不會寫 code，肝是黑白還是彩色，都歡迎帶著一顆好奇與熱血的心，來到 g0v 黑客松一探究竟！
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath59n
+project: https://beta.hackfoldr.org/g0v-hackath59n
