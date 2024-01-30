@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾次記得投票黑客松
-shortname: 記得投票黑客松
-id: 60
-date: 2024/1/6
-publish_date: 2023/12/13
+name: 台灣零時政府第陸拾壹次龍來 Open Data Day 黑客松 暨 零時小學校 4th 專案孵化競賽決選日
+shortname: 龍來 Open Data Day 黑客松 暨 零時小學校 4th 專案孵化競賽決選日
+id: 61
+date: 2024/3/2
+publish_date: 2024/01/30
 location:
-  en: Institute of Information Science
-  zh: 中央研究院資訊科學研究所新館
-  link: https://goo.gl/maps/DZr1kHwf9dAgjJbX8
+  en: NTU SPACE M
+  zh: 國立臺灣大學學新館二樓 SPACE M 空間
+  link: https://maps.app.goo.gl/PMjczx3MuiMwUE4o8
 description: |
-  4 年一次的總統、副總統與立委選舉投票日即將在 1 月 13 日舉行，本次大松邀請大家在選前一週（1/6 週六）一起 hacking 松一下！參加大松只要保持基本禮貌與尊重，並遵守 g0v 社群守則，不論你是什麼顏色與立場，都歡迎你一起來玩！
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath60n
-project: https://beta.hackfoldr.org/g0v-hackath60n
+  g0v 社群每兩個月舉辦一次黑客松，以資訊透明、開放成果、開放協作為核心，透過公民科技的力量，持續助力往社會共好的方向前進。本次 g0v 黑客松與 Open Data Day 同日開跑，活動地點在鄰近臺大後門的學新館二樓 SPACE M 空間，歡迎各界夥伴龍來黑客松！
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath61n
+project: https://beta.hackfoldr.org/g0v-hackath61n
