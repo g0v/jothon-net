@@ -32,26 +32,27 @@ jothon-net
 Usage
 -----------
 
-網站使用 nodejs 搭配 jade, stylus, livescript 產生靜態頁面，需先安裝 nodejs，並確定 nodejs 的版本至少在 7.6.0 以上。版本檢驗方式：
+網站使用 `nodejs` 搭配 `jade`, `stylus`, `livescript` 產生靜態頁面，需先安裝 `nodejs`，並確定 `nodejs` 的版本至少在 `7.6.0` 以上。版本檢驗方式：
 
-```
-    node --version
+```bash
+$ node --version
 ```
 
 
 接著，請執行：
 
-```
-    npm i
-    cp secret-default.ls secret.ls
-    ./node_modules/.bin/lsc server.ls
+```bash
+$ npm i
+$ cp secret-default.ls secret.ls
+$ ./node_modules/.bin/lsc server.ls
 ```
 
-以上為舊版,目前將登入與驗證暫時移除,僅留下靜態網頁部份
-```
-	npm i
-  	npm run build
-	npm start
+以上為舊版，目前將登入與驗證暫時移除，僅留下靜態網頁部份
+
+```bash
+$ npm i
+$ npm run build
+$ npm start
 ```
 
 然後使用瀏覽器開啟 [http://localhost:3000/](http://localhost:3000/).
@@ -60,32 +61,39 @@ Usage
 如何更新揪松網大松訊息
 ------------
 
-update file
-```
-	jothon-net/data/featuring.yaml
-	#修改成第N次黑客松資料
-```
+### Update Files
 
-add file
-```
-	jothon-net/data/events/OO.yaml
-	#第N次黑客松資料
-	jothon-net/static/assets/img/events/OO.jpg
-	#上傳第N次黑客松主圖 (size 1200 x 628 px
-```
+1. Modify the data for the <code>n<sup>th</sup></code> Hackathon:
 
-rebuild
-```
-	npm run build
-  	npm start
-```
+   ```bash
+   jothon-net/data/featuring.yaml	# 修改成第 N 次黑客松資料
+   ```
 
-commit & deploy
-```
-	git add & commit
-	$./deploy
-```
+2. Add new files:
 
+   ```bash
+   jothon-net/data/events/OO.yaml  # 第 N 次黑客松資料
+   jothon-net/static/assets/img/events/OO.jpg  # 上傳第 N 次黑客松主圖 (size 1200 x 628 px)
+   ```
+
+### Rebuild and Start
+
+1. Rebuild the project:
+
+   ```bash
+   npm run build
+   npm start
+   ```
+
+### Commit and Deploy
+
+1. Commit your changes and deploy:
+
+   ```bash
+   git add .
+   git commit -m "Update nth Hackathon data"
+   ./deploy
+   ```
 
 Configuration for Production
 ------------
