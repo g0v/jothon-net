@@ -147,10 +147,12 @@ Configuration for Production
 
 11. **(Optional) Configure SSL**
     - Prepare a temporary Nginx config and run Certbot:
+
       ```bash
       $ sudo certbot certonly --webroot -w [temp-webroot-dir] -d [domain-name]
       ```
     - Update production Nginx config to use SSL:
+
       ```nginx
       listen 443;
       ssl on;
