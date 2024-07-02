@@ -81,8 +81,8 @@ $ npm start
 1. Rebuild the project:
 
    ```bash
-   npm run build
-   npm start
+   $ npm run build
+   $ npm start
    ```
 
 ### Commit and Deploy
@@ -90,43 +90,73 @@ $ npm start
 1. Commit your changes and deploy:
 
    ```bash
-   git add .
-   git commit -m "Update nth Hackathon data"
-   ./deploy
+   $ git add .
+   $ git commit -m "Update nth Hackathon data"
+   $ ./deploy
    ```
 
 Configuration for Production
 ------------
 
-* install NodeJS ( version >= 9.2.1 )
-* install PostgreSQL ( version >= 9.6.0 )
-* create jothon database ( create database jothon )
-* create jothon user ( create user jothon with superuser )
-* git clone https://github.com/g0v/jothon-net/
-* npm install under repo directory
-* config secret.ls from secret-default.ls
-  - usedb = true
-  - setup io-pg uri
-* config config/site/default.ls
-  - domain = [desired domain]
-* config config/nginx/production.nginx from config/nginx/sample.nginx
-  - change server_name from localhost to your desired host
-  - change project-root to where your repo locates
-* generate keys for openid-connect provider
-  - run ```lsc tools/openid-keygen```
-  - move generated keystore.json to config/keys/openid-keystore.json
-* start server
-  - lsc server
-* (bonus) config ssl: ( example with webroot authentication )
-  - might need prepare a temp nginx config and run it
-  - sudo certbot certonly --webroot -w [temp-webroot-dir] -d [domain-name]
-  - config production nginx to adapt SSL cert and key files. in server block:
+1. **Install NodeJS**
+   - Version >= `9.2.1`
+
+2. **Install PostgreSQL**
+   - Version >= `9.6.0`
+
+3. **Create Database and User**
+   ```sql
+   CREATE DATABASE jothon;
+   CREATE USER jothon WITH SUPERUSER;
+   ```
+
+4. **Clone Repository**
+   ```bash
+   $ git clone https://github.com/g0v/jothon-net/
+   $ cd jothon-net
+   ```
+5. **Install Dependencies**
+   ```bash
+   $ npm install
+   ```
+
+6. **Configure Secrets**
+   - Copy `secret-default.ls` to `secret.ls`
+   - Set `usedb = true`
+   - Setup PostgreSQL URI in `io-pg`
+
+7. **Configure Site**
+   - Edit `config/site/default.ls`
+   - Set `domain` to your desired domain
+
+8. **Configure Nginx**
+   - Copy `config/nginx/sample.nginx` to `config/nginx/production.nginx`
+   - Update `server_name` to your desired host
+   - Set `project-root` to your repo location
+
+9. **Generate OpenID-Connect Keys**
+   ```bash
+   $ lsc tools/openid-keygen
+   $ mv keystore.json config/keys/openid-keystore.json
+   ```
+
+10. **Start Server**
+    ```bash
+    $ lsc server
     ```
-    listen 443;
-    ssl on;
-    ssl_certificate /path/to/your/fullchain.pem;
-    ssl_certificate_key /path/to/your/privatekey.pem;
-    ```
+
+11. **(Optional) Configure SSL**
+    - Prepare a temporary Nginx config and run Certbot:
+      ```bash
+      $ sudo certbot certonly --webroot -w [temp-webroot-dir] -d [domain-name]
+      ```
+    - Update production Nginx config to use SSL:
+      ```nginx
+      listen 443;
+      ssl on;
+      ssl_certificate /path/to/your/fullchain.pem;
+      ssl_certificate_key /path/to/your/privatekey.pem;
+      ```
 
 
 LICENSE
