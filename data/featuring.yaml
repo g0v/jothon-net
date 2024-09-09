@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾貳次帶我去月球黑客松
-shortname: 帶我去月球黑客松
-id: 62
-date: 2024/7/20
-publish_date: 2024/06/17
+name: 台灣零時政府第陸拾參次公民科技園遊會黑客松
+shortname: 公民科技園遊會黑客松
+id: 63
+date: 2024/09/29
+publish_date: 2024/09/09
 location:
-  en: Institute of Information Science
-  zh: 中央研究院資訊科學研究所新館
-  link: https://goo.gl/maps/DZr1kHwf9dAgjJbX8
+  en: Taipei Innovation City Convention Center
+  zh: 臺北矽谷國際會議中心
+  link: https://maps.app.goo.gl/xPdRY5D2UztdNvkS8
 description: |
   1969 年 7 月 20 日，人類首次登陸月球，每一個細節都可能成為致命漏洞，而正是無數來自各行各業的人們共同努力，「挖坑填坑」，讓夢想成真。半世紀後的今天，也有一群人努力在一座小島上耕耘。在 g0v 黑客松面臨斷炊危機時，效法前人登月的愛與行動力，集思廣益發展出新的贊助模式，一起成功重啟大松。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath62n
-project: https://beta.hackfoldr.org/g0v-hackath62n
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath63n
+project: https://beta.hackfoldr.org/g0v-hackath63n
