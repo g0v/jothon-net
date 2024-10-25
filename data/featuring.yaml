@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾參次公民科技園遊會黑客松
-shortname: 公民科技園遊會黑客松
-id: 63
-date: 2024/09/29
-publish_date: 2024/09/09
+name: 台灣零時政府第陸拾肆次黃金比例黑客松
+shortname: 黃金比例黑客松
+id: 64
+date: 2024/11/23
+publish_date: 2024/10/25
 location:
-  en: Taipei Innovation City Convention Center
-  zh: 臺北矽谷國際會議中心
-  link: https://maps.app.goo.gl/xPdRY5D2UztdNvkS8
+  en: Institute of Information Science
+  zh: 中央研究院資訊科學研究所新館
+  link: https://goo.gl/maps/DZr1kHwf9dAgjJbX8
 description: |
-  1969 年 7 月 20 日，人類首次登陸月球，每一個細節都可能成為致命漏洞，而正是無數來自各行各業的人們共同努力，「挖坑填坑」，讓夢想成真。半世紀後的今天，也有一群人努力在一座小島上耕耘。在 g0v 黑客松面臨斷炊危機時，效法前人登月的愛與行動力，集思廣益發展出新的贊助模式，一起成功重啟大松。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath63n
-project: https://beta.hackfoldr.org/g0v-hackath63n
+  「黃金比例」的美來自自然界中的和諧，隱藏在每一個完美的比例背後。這次的黑客松，正因為選在 11 月 23 日舉辦，而 1123 剛好是費波那契數列的開頭，這個數列是黃金比例的基礎，代表著從簡單的數字延展出無窮的可能性。
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath64n
+project: https://beta.hackfoldr.org/g0v-hackath64n
