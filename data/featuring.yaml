@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾肆次黃金比例黑客松
-shortname: 黃金比例黑客松
-id: 64
-date: 2024/11/23
-publish_date: 2024/10/25
+name: 台灣零時政府第陸拾伍次平凡而自由的黑客松
+shortname: 平凡而自由的黑客松
+id: 65
+date: 2025/02/22
+publish_date: 2025/02/06
 location:
-  en: Institute of Information Science
-  zh: 中央研究院資訊科學研究所新館
-  link: https://goo.gl/maps/DZr1kHwf9dAgjJbX8
+  en: National Taiwan University Innovation Hall (SPACE M) 
+  zh: 國立臺灣大學 學新館 SPACE M
+  link: https://maps.app.goo.gl/W6m1s3voBi8mbXAV8
 description: |
-  「黃金比例」的美來自自然界中的和諧，隱藏在每一個完美的比例背後。這次的黑客松，正因為選在 11 月 23 日舉辦，而 1123 剛好是費波那契數列的開頭，這個數列是黃金比例的基礎，代表著從簡單的數字延展出無窮的可能性。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath64n
-project: https://beta.hackfoldr.org/g0v-hackath64n
+  平凡而自由的黑客松一詞，延伸自以臺灣戒嚴時期為背景的作品「返校」，其中的知名台詞「願你能平凡而自由的活著」。
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath65n
+project: https://g0v.hackmd.io/@jothon/g0v-hackath65n/https%3A%2F%2Fg0v.hackmd.io%2FKvzHayP4SPqXRhtrn2QH0w%3Fview
