@@ -73,7 +73,7 @@ $ npm start
 
    ```bash
    jothon-net/data/events/OO.yaml  # 第 N 次黑客松資料
-   jothon-net/static/assets/img/events/OO.jpg  # 上傳第 N 次黑客松主圖 (size 1200 x 628 px), 只吃 .jpg 檔
+   jothon-net/static/assets/img/events/OO.jpg  # 上傳第 N 次黑客松主圖 (16:9 建議 1920 x 1080), 只吃 .jpg 檔
    ```
 
 ### Rebuild and Start
