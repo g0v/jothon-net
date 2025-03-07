@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾伍次平凡而自由的黑客松
-shortname: 平凡而自由的黑客松
-id: 65
-date: 2025/02/22
-publish_date: 2025/02/06
+name: 台灣零時政府第陸拾陸次友愛青年黑客松
+shortname: 友愛青年黑客松
+id: 66
+date: 2025/03/29
+publish_date: 2025/03/07
 location:
-  en: National Taiwan University Innovation Hall (SPACE M) 
-  zh: 國立臺灣大學 學新館 SPACE M
-  link: https://maps.app.goo.gl/W6m1s3voBi8mbXAV8
+  en: Good Ideas Studio
+  zh: 台南好想工作室
+  link: https://maps.app.goo.gl/FsaC7vgSeNYfuz8EA
 description: |
-  平凡而自由的黑客松一詞，延伸自以臺灣戒嚴時期為背景的作品「返校」，其中的知名台詞「願你能平凡而自由的活著」。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath65n
-project: https://g0v.hackmd.io/@jothon/g0v-hackath65n/https%3A%2F%2Fg0v.hackmd.io%2FKvzHayP4SPqXRhtrn2QH0w%3Fview
+  友愛青年黑客松，是 g0v 零時政府與台灣青年聯盟合作舉辦的活動，旨在鼓勵青年學子發揮創意，運用科技力量，為社會帶來正面的改變。
+register: https://g0v.hackmd.io/@jothon/event_promote
+project: https://g0v.hackmd.io/@jothon/event_promote_rundown
