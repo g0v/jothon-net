@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾陸次友愛青年黑客松
-shortname: 友愛青年黑客松
-id: 66
-date: 2025/03/29
-publish_date: 2025/03/07
+name: 台灣零時政府第陸拾柒次沙發很好黑客松
+shortname: 沙發很好黑客松
+id: 67
+date: 2025/05/25
+publish_date: 2025/04/28
 location:
-  en: Good Ideas Studio
-  zh: 台南好想工作室
-  link: https://maps.app.goo.gl/FsaC7vgSeNYfuz8EA
+  en: NPO Hub Taipei
+  zh: 台北NPO聚落
+  link: https://maps.app.goo.gl/PXSXDEaVKrh29C7Q8
 description: |
-  友愛青年黑客松，是 g0v 零時政府與台灣青年聯盟合作舉辦的活動，旨在鼓勵青年學子發揮創意，運用科技力量，為社會帶來正面的改變。
-register: https://g0v.hackmd.io/@jothon/event_promote
+  台灣零時政府黑客松由 g0v 揪松團舉辦，兩個月一次的單天活動，百名與會者來自不同的城市、背景、專長與年紀，利用三分鐘快速發表自己想做的事，並在現場尋找志同道合的夥伴，發揮各自所長，同時透過線上與線下協作的方式，用弄髒雙手的精神來「讓事情發生」。
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath67n
 project: https://g0v.hackmd.io/@jothon/event_promote_rundown
