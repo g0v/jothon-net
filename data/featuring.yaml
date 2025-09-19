@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾捌次每週散步黑客松暨零時小學校數位公民社群五週年
-shortname: 每週散步黑客松
-id: 68
-date: 2025/07/13
-publish_date: 2025/06/20
+name: 台灣零時政府第陸拾玖次防災韌性黑客松
+shortname: 防災韌性黑客松
+id: 69
+date: 2025/09/21
+publish_date: 2025/09/19
 location:
-  en: NPO Hub Taipei
-  zh: 台北NPO聚落
+  en: g0v Community Space
+  zh: g0v 台北社群空間
   link: https://maps.app.goo.gl/PXSXDEaVKrh29C7Q8
 description: |
-  每週散步，新陳代謝，健健康康。暑假來囉，每週散步走走，學校在窗外，協作不間斷。
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath68n
+  本次採用 g0v黑客松 🌌 Hacking + 公民科技青年培力職涯探索工作坊 ⚡ Learning ，雙軌並行模式！公民科技青年培力職涯探索工作坊
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath69n
 project: https://g0v.hackmd.io/@jothon/event_promote_rundown
