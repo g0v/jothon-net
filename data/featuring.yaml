@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第陸拾玖次防災韌性黑客松
-shortname: 防災韌性黑客松
-id: 69
-date: 2025/09/21
-publish_date: 2025/09/19
+name: 台灣零時政府第柒拾次費波那契數列黑客松
+shortname: 費波那契數列黑客松
+id: 70
+date: 2025/11/23
+publish_date: 2025/11/08
 location:
   en: g0v Community Space
   zh: g0v 台北社群空間
   link: https://maps.app.goo.gl/PXSXDEaVKrh29C7Q8
 description: |
-  本次採用 g0v黑客松 🌌 Hacking + 公民科技青年培力職涯探索工作坊 ⚡ Learning ，雙軌並行模式！公民科技青年培力職涯探索工作坊
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath69n
+  0、1、 1、 2、 3、 5、 8、 13、 21、 34、 55、 89、 144、 233、 377、 610、 987......
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath70n
 project: https://g0v.hackmd.io/@jothon/event_promote_rundown
