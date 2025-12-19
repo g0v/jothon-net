@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第柒拾次費波那契數列黑客松
-shortname: 費波那契數列黑客松
-id: 70
-date: 2025/11/23
-publish_date: 2025/11/08
+name: 台灣零時政府第柒拾壹次高雄黑客松
+shortname: 高雄黑客松
+id: 71
+date: 2026/01/25
+publish_date: 2025/12/19
 location:
-  en: g0v Community Space
-  zh: g0v 台北社群空間
-  link: https://maps.app.goo.gl/PXSXDEaVKrh29C7Q8
+  en: Le Phare Co-working Space
+  zh: Le Phare 共享空間
+  link: https://maps.app.goo.gl/dPQb3eCaRtQSCpML8
 description: |
-  0、1、 1、 2、 3、 5、 8、 13、 21、 34、 55、 89、 144、 233、 377、 610、 987......
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath70n
-project: https://g0v.hackmd.io/@jothon/event_promote_rundown
+  第柒拾壹次 g0v 黑客松在高雄
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath71n
+project: https://g0v.hackmd.io/@jothon/g0v-hackath71n/
