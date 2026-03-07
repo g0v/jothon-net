@@ -1,14 +1,14 @@
 show: true
-name: 台灣零時政府第柒拾壹次高雄黑客松
-shortname: 高雄黑客松
-id: 71
-date: 2026/01/25
-publish_date: 2025/12/19
+name: 台灣零時政府第柒拾貳次新源意碼大造化黑客松
+shortname: 新源意碼大造化黑客松
+id: 72
+date: 2026/03/29
+publish_date: 2026/03/05
 location:
-  en: Le Phare Co-working Space
-  zh: Le Phare 共享空間
-  link: https://maps.app.goo.gl/dPQb3eCaRtQSCpML8
+  en: Goodideas Studio
+  zh: 好想工作室
+  link: https://maps.app.goo.gl/2RqyycawxknJkBzv9
 description: |
-  第柒拾壹次 g0v 黑客松在高雄
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath71n
-project: https://g0v.hackmd.io/@jothon/g0v-hackath71n/
+  第柒拾貳次 g0v 黑客松在台南
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath72n
+project: https://g0v.hackmd.io/@jothon/g0v-hackath72n
