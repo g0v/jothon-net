@@ -1,14 +1,15 @@
 show: true
-name: 台灣零時政府第柒拾貳次新源意碼大造化黑客松
-shortname: 新源意碼大造化黑客松
-id: 72
-date: 2026/03/29
-publish_date: 2026/03/05
+name: 台灣零時政府第柒拾參次動手自造黑客松
+shortname: 動手自造黑客松
+id: 73
+date: 2026/05/31
+publish_date: 2026/05/12
 location:
-  en: Goodideas Studio
-  zh: 好想工作室
-  link: https://maps.app.goo.gl/2RqyycawxknJkBzv9
+  en: g0v 台北社群空間
+  zh: g0v Community Hub, Taipei
+  link: https://maps.app.goo.gl/C743C5JL8NkYQ5hp7
 description: |
-  第柒拾貳次 g0v 黑客松在台南
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath72n
-project: https://g0v.hackmd.io/@jothon/g0v-hackath72n
+  動手自造黑客松
+register: https://g0v-jothon.kktix.cc/events/g0v-hackath73n
+# https://g0v.hackmd.io/@jothon/event_promote_rundown
+project: https://g0v.hackmd.io/@jothon/event_promote_rundown
