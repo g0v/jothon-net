@@ -48,12 +48,9 @@ block body
 
     .text-center
       p.lead
-        if event
-          a.btn.btn-primary.btn-lg.mr-1.mt-1(href=featuring.register,target="_blank") #[small Register Now] #[br] 立刻報名
-        else
-          a.btn.btn-primary.btn-lg.mr-1.mt-1(href="#",onclick="scrollto('#subscribe-newsletter',2000)") #[small Subscribe Newsletter] #[br] 訂閱電子報
+        a.btn.btn-primary.btn-lg.mr-1.mt-1(href="https://g0v.hackmd.io/@jothon/event_promote_rundown",target="_blank") #[small Register Now] #[br] 立刻報名
         a.btn.btn-primary.btn-lg.mr-1.mt-1(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30",target="_blank") #[small Donate by Subscribing] #[br] 認養大松
-        a.btn.btn-primary.btn-lg.mt-1(target="_blank" href=featuring.project) #[small Note for Latest Event] #[br] 本期共筆
+        //- a.btn.btn-primary.btn-lg.mt-1(target="_blank" href=featuring.project) #[small Note for Latest Event] #[br] 本期共筆
       br
       #learn-more(onclick="scrollto('#content')")
         small.en Learn More #[br]
@@ -249,10 +246,9 @@ block body
     .text-center
       div #[small Wanna Join?]#[br]手癢了嗎？
       +nbr(1)
-      if event
-        a.btn.btn-primary.mr-2.btn-lg(href="https://g0v-jothon.kktix.cc/events/g0v-hackath" + featuring.id + "n",target="_blank") #[small Register Now]#[br]立刻報名
+      a.btn.btn-primary.mr-2.btn-lg(href="https://g0v.hackmd.io/@jothon/event_promote_rundown",target="_blank") #[small Register Now]#[br]立刻報名
       a.btn.btn-primary.btn-lg.mr-2(href="https://ocf.neticrm.tw/civicrm/contribute/transact?reset=1&id=30") #[small Donate by Subscribing] #[br] 定期定額贊助
-      a.btn.btn-primary.btn-lg(target="_blank" href=featuring.project) #[small Collaborative Note]#[br]當期共筆
+      //- a.btn.btn-primary.btn-lg(target="_blank" href=featuring.project) #[small Collaborative Note]#[br]當期共筆
       //- 等完稿再釋出
         +nbr(2)
         span 或
