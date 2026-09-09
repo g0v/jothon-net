@@ -11,15 +11,15 @@
       .form-group.rel(data-dom="email")
         label 電子郵件帳號 #[small.gray / Email]
         input.form-control(type="text",placeholder="Email, 例如: nobody@g0v.tw",data-model="email")
-        .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.email")]
+        .invalid-feedback.abs #[i.fa.fa-times] #[span(data-text="error.email")]
       .form-group.rel(data-dom="displayname")
         label 顯示名稱 #[small.gray / Display Name]
         input.form-control(type="text",placeholder="例如：㊣煞氣哥㊣",data-model="displayname")
-        .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.displayname")]
+        .invalid-feedback.abs #[i.fa.fa-times] #[span(data-text="error.displayname")]
       .form-group.rel(data-dom="passwd")
         label 密碼 #[small.gray / Password]
         input.form-control(type="password",placeholder="6 個字元以上",data-model="passwd")
-        .invalid-feedback.abs #[i.fa.fa-close] #[span(data-text="error.passwd")]
+        .invalid-feedback.abs #[i.fa.fa-times] #[span(data-text="error.passwd")]
       .btn.btn-block.btn-success.btn-lg.ld.ld-ext-right.clickable(data-dom="action")
         span(data-text="action") 註冊 / Sign Up
         .ld.ld-ring.ld-spin-fast
