@@ -1,15 +1,15 @@
 show: true
-name: 台灣零時政府第柒拾參次動手自造黑客松
-shortname: 動手自造黑客松
-id: 73
-date: 2026/05/31
-publish_date: 2026/05/12
+name: 台灣零時政府第柒拾伍次投出未來黑客松
+shortname: 投出未來黑客松
+id: 75
+date: 2026/11/08
+publish_date: 2026/10/27
 location:
   en: g0v 台北社群空間
   zh: g0v Community Hub, Taipei
   link: https://maps.app.goo.gl/C743C5JL8NkYQ5hp7
 description: |
-  動手自造黑客松
-register: https://g0v-jothon.kktix.cc/events/g0v-hackath73n
+  投出未來黑客松
+register: https://forms.gle/hM7CCmZfXx11vF8N7
 # https://g0v.hackmd.io/@jothon/event_promote_rundown
-project: https://g0v.hackmd.io/@jothon/event_promote_rundown
+project: https://g0v.hackmd.io/@jothon/g0v-hackath75n
